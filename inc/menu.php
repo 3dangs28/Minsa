@@ -58,7 +58,7 @@
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                    <p>Permisos(Desabilitado)</p>
+                    <p>Permisos(Desab.)</p>
                   </a>
                 </li>
             
@@ -75,6 +75,14 @@
                     <p>Médicos</p>
                   </a>
                 </li>
+
+                <li class="nav-item">
+                  <a href="enfermeras.php" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Enfermeras</p>
+                  </a>
+                </li>
+            
             
 
                 <li class="nav-item">

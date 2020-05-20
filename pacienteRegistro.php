@@ -270,7 +270,7 @@
                              <?php  while($row = mysqli_fetch_array($query)){  ?>    
                             <?php     echo "<option value=".$row['ID_CORREGIMIENTO'].">".$row['CORREGIMIENTO']."</option>";
                              }
-                             mysqli_close($con);
+                            
                              ?>
                      
                         </select>
@@ -302,6 +302,32 @@
                 <div class="form-group">
                   <label>Número de casa</label>
                   <input type="text" class="form-control" id="apellido2" name="apellido2" placeholder="Número de casa" required autocomplete="off" >
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Seleccione Unidad de destino</label>
+               
+                  <div class="select2-purple">
+                 
+                 <?php require_once("conn/conexion.php");
+                    $query = mysqli_query($con,"SELECT * FROM AREAS");
+                 ?>
+        
+                <select class="form-control" id="unidad" name="unidad" required>
+
+                <?php  while($row = mysqli_fetch_array($query)){  ?>    
+               <?php     echo "<option value=".$row['ID_AREA'].">".$row['AREA']."</option>";
+                }
+                mysqli_close($con);
+                ?>
+        
+           </select>
+
+     </div>
+               
+               
                 </div>
             </div>
 

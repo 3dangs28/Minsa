@@ -13,7 +13,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Formulario de registro de Médicos</h1>
+            <h1>Formulario de registro de Enfermeras</h1>
           </div>
       
    
@@ -73,28 +73,11 @@
 
 <div class="col-md-6">
          <div class="form-group">
-         <label for="lalo"  class="control-label">Especialidad 1</label>
-            <input type="text" class="form-control" id="esp1" name="esp1" placeholder="Especialidad 1" required autocomplete="off" >
+         <label for="lalo"  class="control-label">Especialidad</label>
+            <input type="text" class="form-control" id="esp" name="esp" placeholder="Especialidad" required autocomplete="off" >
          </div>
  <!-- /.form-group -->
-         <div class="form-group">
-         <label for="lalo"  class="control-label">Especialidad 2</label>
-         <input type="text" class="form-control" id="esp2" name="esp2" placeholder="Especialidad 2" required autocomplete="off" >
-          </div>
- <!-- /.form-group -->
-               
- </div>
-<!-- /.col -->
-
-
-
-<div class="col-md-6">
-         <div class="form-group">
-         <label for="lalo"  class="control-label">Especialidad 3</label>
-            <input type="text" class="form-control" id="esp3" name="esp3" placeholder="Especialidad 3" required autocomplete="off" >
-         </div>
- <!-- /.form-group -->
-         <div class="form-group">
+ <div class="form-group">
          <label for="lalo"  class="control-label">Otras especialidades</label>
          <input type="text" class="form-control" id="otras" name="otras" placeholder="Otra Especialidad" required autocomplete="off" >
           </div>
@@ -106,13 +89,18 @@
 
 
 <div class="col-md-6">
-
-<div class="form-group">
+         <div class="form-group">
          <label for="lalo"  class="control-label">Idoneidad</label>
             <input type="text" class="form-control" id="ido" name="ido" placeholder="Idoneidad" required autocomplete="off" >
          </div>
  <!-- /.form-group -->
- 
+   
+ </div>
+<!-- /.col -->
+
+
+
+<div class="col-md-6">
      <div class="form-group">
        <label>Cédula</label>
        <input type="text" class="form-control" id="cedula" name="cedula" placeholder="cedula" required autocomplete="off" >
