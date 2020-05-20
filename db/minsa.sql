@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2020 a las 12:52:55
+-- Tiempo de generación: 20-05-2020 a las 17:23:29
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -37,7 +37,8 @@ CREATE TABLE IF NOT EXISTS `areas` (
 --
 
 INSERT INTO `areas` (`ID_AREA`, `AREA`) VALUES
-(1, 'Unidad de cuidados intensivos2');
+(1, 'Unidad de intensivos'),
+(2, 'Unidad de recuperación');
 
 -- --------------------------------------------------------
 
@@ -53,7 +54,14 @@ CREATE TABLE IF NOT EXISTS `corregimientos` (
   PRIMARY KEY (`ID_CORREGIMIENTO`),
   KEY `ID_PROVINCIA` (`ID_PROVINCIA`),
   KEY `ID_DISTRITO` (`ID_DISTRITO`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `corregimientos`
+--
+
+INSERT INTO `corregimientos` (`ID_CORREGIMIENTO`, `ID_PROVINCIA`, `ID_DISTRITO`, `CORREGIMIENTO`) VALUES
+(1, 1, 1, '24 de Diciembre');
 
 -- --------------------------------------------------------
 
@@ -83,6 +91,39 @@ CREATE TABLE IF NOT EXISTS `distritos` (
   `DISTRITO` varchar(40) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`ID_DISTRITO`),
   KEY `ID_PROVINCIA` (`ID_PROVINCIA`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=6 ;
+
+--
+-- Volcado de datos para la tabla `distritos`
+--
+
+INSERT INTO `distritos` (`ID_DISTRITO`, `ID_PROVINCIA`, `DISTRITO`) VALUES
+(1, 1, 'Panamá'),
+(2, 1, 'Balboa'),
+(3, 1, 'Chepo'),
+(4, 1, 'Chimán'),
+(5, 1, 'San Miguelito');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `enfermeras`
+--
+
+CREATE TABLE IF NOT EXISTS `enfermeras` (
+  `ID_MEDICO` int(11) NOT NULL AUTO_INCREMENT,
+  `NOMBRE1` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `NOMBRE2` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `APELLIDO1` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `APELLIDO2` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `ESPECIALIDAD` varchar(40) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `OTRAS` text COLLATE utf8_spanish_ci,
+  `IDONEIDAD` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `CEDULA` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `SEXO` varchar(1) COLLATE utf8_spanish_ci NOT NULL,
+  `TELEFONO` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `CORREO` varchar(40) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`ID_MEDICO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -143,6 +184,7 @@ CREATE TABLE IF NOT EXISTS `medicos` (
   `ESPECIALIDAD2` varchar(40) COLLATE utf8_spanish_ci DEFAULT NULL,
   `ESPECIALIDAD3` varchar(40) COLLATE utf8_spanish_ci DEFAULT NULL,
   `OTRAS` text COLLATE utf8_spanish_ci,
+  `IDONEIDAD` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
   `CEDULA` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
   `SEXO` varchar(1) COLLATE utf8_spanish_ci NOT NULL,
   `TELEFONO` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
@@ -217,7 +259,14 @@ CREATE TABLE IF NOT EXISTS `provincias` (
   `ID_PROVINCIA` int(11) NOT NULL AUTO_INCREMENT,
   `PROVINCIA` varchar(40) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`ID_PROVINCIA`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `provincias`
+--
+
+INSERT INTO `provincias` (`ID_PROVINCIA`, `PROVINCIA`) VALUES
+(1, 'Panamá');
 
 -- --------------------------------------------------------
 
@@ -232,15 +281,15 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `FECHA_CREACION` date DEFAULT NULL,
   PRIMARY KEY (`ID_ROL`),
   KEY `ID_SECCION` (`ID_SECCION`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `roles`
 --
 
 INSERT INTO `roles` (`ID_ROL`, `ID_SECCION`, `ROL`, `FECHA_CREACION`) VALUES
-(1, 1, 'RECEPCIÓN', '2020-05-20'),
-(3, 3, 'SOPORTE IT', '2020-05-20');
+(1, 2, 'Soporte IT', '2020-05-20'),
+(2, 1, 'Recepción', '2020-05-20');
 
 -- --------------------------------------------------------
 
@@ -253,15 +302,15 @@ CREATE TABLE IF NOT EXISTS `secciones` (
   `SECCION` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
   `FECHA_CREACION` date DEFAULT NULL,
   PRIMARY KEY (`ID_SECCION`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `secciones`
 --
 
 INSERT INTO `secciones` (`ID_SECCION`, `SECCION`, `FECHA_CREACION`) VALUES
-(1, 'REGISTRO MÉDICO', '2020-05-20'),
-(3, 'CONTROL DEL SISTEMA', '2020-05-20');
+(1, 'Registro Médico', '2020-05-20'),
+(2, 'Sistema', '2020-05-20');
 
 -- --------------------------------------------------------
 
@@ -279,14 +328,14 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `PASS` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`ID_USUARIO`),
   KEY `ID_ROL` (`ID_ROL`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`ID_USUARIO`, `ID_ROL`, `NOMBRE`, `APELLIDO`, `CORREO`, `NICK`, `PASS`) VALUES
-(2, 3, 'Nelson', 'Santana', 'nsantana8@hotmail.com', 'NSantana09', '123');
+(1, 1, 'Nelson', 'Santana', 'nsantana8@hotmail.com', 'NSantana09', '123');
 
 --
 -- Restricciones para tablas volcadas

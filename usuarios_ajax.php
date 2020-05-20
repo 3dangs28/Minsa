@@ -64,7 +64,7 @@ require_once("conn/conexion.php");
 				</tr>
 				<?php
             }
-						mysqli_close($con);
+						//mysqli_close($con);
 			?>
 			</tbody>
 		</table>

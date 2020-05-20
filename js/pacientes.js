@@ -71,12 +71,12 @@ $( "#actualidarDatos" ).submit(function( event ) {
         });
       event.preventDefault();
     });
-    
+     
     $( "#guardarDatos" ).submit(function( event ) {
     var parametros = $(this).serialize();
          $.ajax({
                 type: "POST",
-                url: "miembros/agregar.php",
+                url: "pacientes/agregar.php",
                 data: parametros,
                  beforeSend: function(objeto){
                     $("#datos_ajax_register").html("Mensaje: Cargando...");

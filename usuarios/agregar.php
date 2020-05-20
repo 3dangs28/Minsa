@@ -7,7 +7,6 @@
 	 if (empty($_POST['rol'])){
 			$errors[] = "Rol vacío";
 		} 
-	
 		else if (empty($_POST['nombre'])){
 			$errors[] = "Nombre vacío";
 		} 
@@ -36,8 +35,9 @@
 
 		// escaping, additionally removing everything that could be (html/javascript-) code
 		
-		$rol=mysqli_real_escape_string($con,(strip_tags($_POST["rol"],ENT_QUOTES)));
 
+		
+		$rol=mysqli_real_escape_string($con,(strip_tags($_POST["rol"],ENT_QUOTES)));
 		$nombre=mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
 		$apel=mysqli_real_escape_string($con,(strip_tags($_POST["apellido"],ENT_QUOTES)));
 		$correo=mysqli_real_escape_string($con,(strip_tags($_POST["correo"],ENT_QUOTES)));
@@ -45,9 +45,11 @@
 		$pass=mysqli_real_escape_string($con,(strip_tags($_POST["pass"],ENT_QUOTES)));
 		$estatus = 1;
 
+
+
+
 		$sql="INSERT INTO USUARIOS  (ID_ROL, NOMBRE, APELLIDO, CORREO, NICK, PASS )
-		 VALUES ('".$rol.",'".$nombre."','".$apel."','".$correo."','".$nick."','".$pass."'
-		 )";
+		 VALUES ('".$rol.",'".$nombre."','".$apel."','".$correo."','".$nick."','".$pass."')";
 		$query_update = mysqli_query($con,$sql);
 			if ($query_update){
 				$messages[] = "Los datos han sido guardados satisfactoriamente.";

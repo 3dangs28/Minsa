@@ -27,7 +27,7 @@
 			<section class="content">
             <div class="container-fluid">
 
-
+            <div id="datos_ajax_register"></div>
 
       <div class="card card-default">
           <div class="card-header">
@@ -37,18 +37,18 @@
           <!-- /.card-header -->
           <div class="card-body">
 
-
+          <form id="guardarDatos">
    <div class="row">
 
            <div class="col-md-6">
                 <div class="form-group">
                   <label>Primer nombre</label>
-                  <input type="text" class="form-control" id="nombre1" name="nombre1" placeholder="Nombre:" required autocomplete="off" >
+                  <input type="text" class="form-control" id="nom1" name="nom1" placeholder="Nombre:" required autocomplete="off" >
               </div>
                 <!-- /.form-group -->
               <div class="form-group">
                   <label for="lalo"  class="control-label">Segundo Nombre</label>
-                  <input type="text" class="form-control" id="nombre2" name="nombre2" placeholder="Segundo nombre:" required autocomplete="off" >
+                  <input type="text" class="form-control" id="nom2" name="nom2" placeholder="Segundo nombre:" required autocomplete="off" >
              </div>
                 <!-- /.form-group -->
             </div>
@@ -58,12 +58,12 @@
    <div class="col-md-6">
          <div class="form-group">
          <label for="lalo"  class="control-label">Primer Apellido</label>
-            <input type="text" class="form-control" id="apellido1" name="apellido1" placeholder="Apellido:" required autocomplete="off" >
+            <input type="text" class="form-control" id="apel1" name="apel1" placeholder="Apellido:" required autocomplete="off" >
          </div>
  <!-- /.form-group -->
          <div class="form-group">
          <label for="lalo"  class="control-label">Segundo Apellido</label>
-            <input type="text" class="form-control" id="apellido2" name="apellido2" placeholder="Segundo apellido:" required autocomplete="off" >
+            <input type="text" class="form-control" id="apel2" name="apel2" placeholder="Segundo apellido:" required autocomplete="off" >
          </div>
  <!-- /.form-group -->
                
@@ -74,7 +74,7 @@
 <div class="col-md-6">
          <div class="form-group">
          <label for="lalo"  class="control-label">Edad</label>
-            <input type="text" class="form-control" id="apellido1" name="apellido1" placeholder="Edad" required autocomplete="off" >
+            <input type="number" class="form-control" id="edad" name="edad" placeholder="Edad" required autocomplete="off" >
          </div>
  <!-- /.form-group -->
          <div class="form-group">
@@ -89,12 +89,12 @@
 <div class="col-md-6">
      <div class="form-group">
        <label>Cédula</label>
-       <input type="text" class="form-control" id="nombre1" name="nombre1" placeholder="cedula" required autocomplete="off" >
+       <input type="text" class="form-control" id="ced" name="ced" placeholder="cedula" required autocomplete="off" >
    </div>
      <!-- /.form-group -->
    <div class="form-group">
        <label for="lalo"  class="control-label">Género</label>
-       <select class="form-control" name="genero" id="genero" required>
+       <select class="form-control" name="gen" id="gen" required>
                 <option selected disabled></option>
                 <option value="MASCULINO">MASCULINO</option>
                 <option value="FEMENINO">FEMENINO</option>
@@ -141,7 +141,7 @@
 
 <div class="form-group">
 <label for="lalo"  class="control-label">Teléfono</label>
- <input type="text" class="form-control" id="apellido2" name="apellido2" placeholder="telefono" required autocomplete="off" >
+ <input type="text" class="form-control" id="tel" name="tel" placeholder="telefono" required autocomplete="off" >
 </div>
 <!-- /.form-group -->
     
@@ -154,20 +154,20 @@
  <!-- /.row -->
 
 
-
+ <hr>
  <h5>Datos de procedencia</h5>
-
+ 
  <div class="row">
 
 <div class="col-md-6">
      <div class="form-group">
        <label>Diagnóstico</label>
-       <input type="text" class="form-control" id="nombre1" name="nombre1" placeholder="diagnóstico" required autocomplete="off" >
+       <input type="text" class="form-control" id="diag" name="diag" placeholder="diagnóstico" required autocomplete="off" >
    </div>
      <!-- /.form-group -->
    <div class="form-group">
        <label for="lalo"  class="control-label">Procedencia</label>
-       <input type="text" class="form-control" id="nombre2" name="nombre2" placeholder="procedencia" required autocomplete="off" >
+       <input type="text" class="form-control" id="proce" name="proce" placeholder="procedencia" required autocomplete="off" >
   </div>
      <!-- /.form-group -->
  </div>
@@ -177,12 +177,12 @@
 <div class="col-md-6">
 <div class="form-group">
 <label for="lalo"  class="control-label">Seguro</label>
- <input type="text" class="form-control" id="apellido1" name="apellido1" placeholder="seguro" required autocomplete="off" >
+ <input type="text" class="form-control" id="seguro" name="seguro" placeholder="seguro" required autocomplete="off" >
 </div>
 <!-- /.form-group -->
 <div class="form-group">
 <label for="lalo"  class="control-label">Responsable</label>
- <input type="text" class="form-control" id="apellido2" name="apellido2" placeholder="Familiares responsables" required autocomplete="off" >
+ <input type="text" class="form-control" id="resp" name="resp" placeholder="Familiares responsables" required autocomplete="off" >
 </div>
 <!-- /.form-group -->
     
@@ -196,7 +196,7 @@
 
 
 
-
+ <hr>
 
             <h5>Lugar de residencia</h5>
             <div class="row">
@@ -210,7 +210,7 @@
                                  $query = mysqli_query($con,"SELECT * FROM PROVINCIAS");
                               ?>
                      
-                             <select class="form-control" id="provincia" name="provincia" required>
+                             <select class="form-control" id="pro" name="pro">
             
                              <?php  while($row = mysqli_fetch_array($query)){  ?>    
                             <?php     echo "<option value=".$row['ID_PROVINCIAS'].">".$row['PROVINCIA']."</option>";
@@ -220,7 +220,7 @@
                      
                         </select>
 
-          </div>
+               </div>
                 <!-- /.form-group -->
               </div>
               <!-- /.col -->
@@ -237,7 +237,7 @@
                                  $query = mysqli_query($con,"SELECT * FROM DISTRITOS");
                               ?>
                      
-                             <select class="form-control" id="distrito" name="distrito" required>
+                             <select class="form-control" id="dis" name="dis" required>
             
                              <?php  while($row = mysqli_fetch_array($query)){  ?>    
                             <?php     echo "<option value=".$row['ID_DISTRITO'].">".$row['DISTRITO']."</option>";
@@ -265,7 +265,7 @@
                                  $query = mysqli_query($con,"SELECT * FROM CORREGIMIENTOS");
                               ?>
                      
-                             <select class="form-control" id="corregimiento" name="corregimiento" required>
+                             <select class="form-control" id="corre" name="corre" required>
             
                              <?php  while($row = mysqli_fetch_array($query)){  ?>    
                             <?php     echo "<option value=".$row['ID_CORREGIMIENTO'].">".$row['CORREGIMIENTO']."</option>";
@@ -285,7 +285,7 @@
               <div class="col-12 col-sm-6">
                 <div class="form-group">
                   <label>Barrio</label>
-                  <input type="text" class="form-control" id="apellido2" name="apellido2" placeholder="barrio" required autocomplete="off" >
+                  <input type="text" class="form-control" id="barrio" name="barrio" placeholder="barrio" autocomplete="off" >
                 </div>
             </div>
 
@@ -293,7 +293,7 @@
             <div class="col-12 col-sm-6">
                 <div class="form-group">
                   <label>Calle</label>
-                  <input type="text" class="form-control" id="apellido2" name="apellido2" placeholder="calle" required autocomplete="off" >
+                  <input type="text" class="form-control" id="calle" name="calle" placeholder="calle" required autocomplete="off" >
                 </div>
             </div>
 
@@ -301,13 +301,21 @@
             <div class="col-12 col-sm-6">
                 <div class="form-group">
                   <label>Número de casa</label>
-                  <input type="text" class="form-control" id="apellido2" name="apellido2" placeholder="Número de casa" required autocomplete="off" >
+                  <input type="number" class="form-control" id="casa" name="casa" placeholder="Número de casa" required autocomplete="off" >
                 </div>
             </div>
 
+
+                </div>
+           
+
+                <hr>
+
+            <h5>Unidad de destino</h5>
+            <div class="row">
             <div class="col-12 col-sm-6">
                 <div class="form-group">
-                  <label>Seleccione Unidad de destino</label>
+                  <label>Seleccione</label>
                
                   <div class="select2-purple">
                  
@@ -325,34 +333,35 @@
         
            </select>
 
-     </div>
-               
-               
-                </div>
+            </div>
+
             </div>
 
 
+           
 
             </div>
             <!-- /.row -->
+
+         
           </div>
           <!-- /.card-body -->
 
-          <div class="card-footer">
-                  <button type="submit" class="btn btn-default">Cancelar</button>
-                  <button type="submit" class="btn btn-success float-right">Guardar</button>
-                </div>
     
         </div>
 
        
 
+        <div class="card-footer">
+                  <button type="submit" class="btn btn-default">Cancelar</button>
+                  <button type="submit" class="btn btn-success float-right">Guardar</button>
+                </div>
 
 
       </div>
       <!-- /.row -->
 
-
+      </form>
 
     </section>
     <!-- /.content -->

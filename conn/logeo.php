@@ -73,7 +73,7 @@ if(verificar_login($user,$password,$con,$a,$rol,$c) == 1)
            
 
             switch ($rol) {
-                case "3":
+                case "1":
                 header('Location: ../index.php');
                     break;
                 case "2":
