@@ -18,14 +18,14 @@
       <div class="form-group">
                 							
                               <?php require_once("conn/conexion.php");
-                                 $query = mysqli_query($con,"SELECT ID_APLICACION,APLICACION FROM APLICACIONES");
+                                 $query = mysqli_query($con,"SELECT ID_SECCION,SECCION FROM SECCIONES");
                               ?>
                      
                              <select class="form-control" id="aplicacion" name="aplicacion" required>
                              <option value="">Seleccione Sección</option>
                      
                              <?php  while($row = mysqli_fetch_array($query)){  ?>    
-                            <?php     echo "<option value=".$row['ID_APLICACION'].">".$row['APLICACION']."</option>";
+                            <?php     echo "<option value=".$row['ID_SECCION'].">".$row['SECCION']."</option>";
                              }
                              mysqli_close($con);
                              ?>

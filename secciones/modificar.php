@@ -18,7 +18,7 @@ require_once("../conn/conexion.php");
 		// escaping, additionally removing everything that could be (html/javascript-) code
 		$aplicacion=mysqli_real_escape_string($con,(strip_tags($_POST["aplicacion"],ENT_QUOTES)));
 		$id=intval($_POST['id']);
-		$sql="UPDATE APLICACIONES SET APLICACION='".$aplicacion."'	WHERE ID_APLICACION='".$id."'";
+		$sql="UPDATE SECCIONES SET SECCION='".$aplicacion."'	WHERE ID_SECCION='".$id."'";
 		$query_update = mysqli_query($con,$sql);
 			if ($query_update){
 				$messages[] = "Los datos han sido actualizados satisfactoriamente.";

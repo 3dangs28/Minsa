@@ -1,27 +1,27 @@
 <?php
-	# conectare la base de datos
 
-	require_once("../conn/conexion.php");
+
+require_once("../conn/conexion.php");
 
 	/*Inicia validacion del lado del servidor*/
-	 if (empty($_POST['aplicacion'])){
+	if (empty($_POST['id'])) {
+           $errors[] = "ID vacío";
+        } else if (empty($_POST['aplicacion'])){
 			$errors[] = "Aplicación vacío";
-		} 
-	
-		
-		else if (
-			!empty($_POST['aplicacion'])  
 
+		} else if (
+			!empty($_POST['id']) &&
+			!empty($_POST['aplicacion']) 
+			
 		){
 
 		// escaping, additionally removing everything that could be (html/javascript-) code
-
 		$aplicacion=mysqli_real_escape_string($con,(strip_tags($_POST["aplicacion"],ENT_QUOTES)));
-	
-		$sql="INSERT INTO SECCIONES ( SECCION, FECHA_CREACION) VALUES ('".$aplicacion."',sysdate())";
+		$id=intval($_POST['id']);
+		$sql="UPDATE AREAS SET AREA='".$aplicacion."'	WHERE ID_AREA='".$id."'";
 		$query_update = mysqli_query($con,$sql);
 			if ($query_update){
-				$messages[] = "Los datos han sido guardados satisfactoriamente.";
+				$messages[] = "Los datos han sido actualizados satisfactoriamente.";
 			} else{
 				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
 			}
@@ -57,6 +57,5 @@
 				</div>
 				<?php
 			}
-
 
 ?>

@@ -7,18 +7,13 @@ require_once("conn/conexion.php");
 	include 'pagination.php'; //incluir el archivo de paginación
 	
 		//Cuenta el número total de filas de la tabla*/
-		$count_query   = mysqli_query($con,"SELECT count(*) AS numrows FROM USUARIOS");
+		$count_query   = mysqli_query($con,"SELECT count(*) AS numrows FROM MEDICOS");
 		
 		if ($row= mysqli_fetch_array($count_query)){$numrows = $row['numrows'];}
 
 		$reload = 'index.php';
 		//consulta principal para recuperar los datos
-   $sql ='SELECT t1.ID_USUARIO, t1.ID_ROL, t1.CORREO, t1.NOMBRE, t1.APELLIDO, 
-     t1.NICK, t1.PASS, t2.ROL
-   FROM
-    USUARIOS as t1, ROLES as t2
-        where 
-    t1.ID_ROL = t2.ID_ROL order by ID_USUARIO';
+   $sql ='SELECT * FROM MEDICOS  order by ID_MEDICO';
 		$query = mysqli_query($con,$sql);
 
 
@@ -30,8 +25,9 @@ require_once("conn/conexion.php");
 
         <th>Nombre</th>
         <th>Apellido</th>
-        <th>Rol</th>
-        <th>Correo</th>
+		<th>ESPECIALIDAD1</th>
+		<th>ESPECIALIDAD2</th>
+        <th>ESPECIALIDAD3</th>
 		<th>Acciones</th>
 				</tr>
 			</thead>
@@ -42,24 +38,33 @@ require_once("conn/conexion.php");
 				?>
 				<tr>
 
-					<td><?php echo $row['NOMBRE'];?></td>
-                    <td><?php echo $row['APELLIDO'];?></td>
-                    <td><?php echo $row['ROL'];?></td>
-                    <td><?php echo $row['CORREO'];?></td>
+					<td><?php echo $row['NOMBRE1'];?></td>
+                    <td><?php echo $row['APELLIDO1'];?></td>
+                    <td><?php echo $row['ESPECIALIDAD1'];?></td>
+					<td><?php echo $row['ESPECIALIDAD2'];?></td>
+					<td><?php echo $row['ESPECIALIDAD3'];?></td>
 		
 					<td>
 					<button type="button" class="btn btn-info" data-toggle="modal"
 					 data-target="#dataUpdate" 
-					 data-id="<?php echo $row['ID_USUARIO']?>" 
-					 data-rol="<?php echo $row['ROL']?>"   
-					 data-nombre="<?php echo $row['NOMBRE']?>"
-					 data-apellido="<?php echo $row['APELLIDO']?>"
+					 data-id="<?php echo $row['ID_MEDICO']?>" 
+					 data-nombre1="<?php echo $row['NOMBRE1']?>"
+					 data-nombre2="<?php echo $row['NOMBRE2']?>"
+					 data-apellido1="<?php echo $row['APELLIDO1']?>"
+					 data-apellido2="<?php echo $row['APELLIDO2']?>"
+					 data-esp1="<?php echo $row['ESPECIALIDAD1']?>"
+					 data-esp2="<?php echo $row['ESPECIALIDAD2']?>"
+					 data-esp3="<?php echo $row['ESPECIALIDAD3']?>"
+
+					 data-otras="<?php echo $row['OTRAS']?>"
+					 data-cedula="<?php echo $row['CEDULA']?>"
+					 data-sexo="<?php echo $row['SEXO']?>"
+					 data-tel="<?php echo $row['TELEFONO']?>"
 					 data-correo="<?php echo $row['CORREO']?>"
-					 data-nick="<?php echo $row['NICK']?>"
-					 data-pass="<?php echo $row['PASS']?>"
+					 
 					 
 					 ><i class='nav-icon fa fa-pencil'></i> </button>
-						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['ID_USUARIO']?>"  ><i class='nav-icon fa fa-trash' ></i></button>
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['ID_MEDICO']?>"  ><i class='nav-icon fa fa-trash' ></i></button>
 					</td>
 				</tr>
 				<?php

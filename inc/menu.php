@@ -58,19 +58,19 @@
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                    <p>Permisos</p>
+                    <p>Permisos(Desabilitado)</p>
                   </a>
                 </li>
             
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="areas.php" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                     <p>Áreas</p>
                   </a>
                 </li>
 
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="medicos.php" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                     <p>Médicos</p>
                   </a>
@@ -90,7 +90,7 @@
 
             <li class="nav-item has-treeview">
             <a href="pacienteRegistro.php" class="nav-link">
-              <i class="nav-icon fa fa-github-alt"></i>
+              <i class="nav-icon fa fa-medkit"></i>
               <p>
                 Registro médico
                 <i class="right fa fa-angle-left"></i>
@@ -103,7 +103,7 @@
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-github-alt"></i>
+              <i class="nav-icon fa fa-medkit"></i>
               <p>
                 Unidad de atención
                 <i class="right fa fa-angle-left"></i>

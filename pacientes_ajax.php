@@ -7,14 +7,14 @@ require_once("conn/conexion.php");
 	include 'pagination.php'; //incluir el archivo de paginación
 	
 		//Cuenta el número total de filas de la tabla*/
-		$count_query   = mysqli_query($con,"SELECT count(*) AS numrows FROM MIEMBROS");
+		$count_query   = mysqli_query($con,"SELECT count(*) AS numrows FROM PACIENTES");
 		
 
 		if ($row= mysqli_fetch_array($count_query)){$numrows = $row['numrows'];}
 
 		$reload = 'index.php';
 		//consulta principal para recuperar los datos
-        $sql ='SELECT * FROM MIEMBROS';
+        $sql ='SELECT * FROM PACIENTES';
 		$query = mysqli_query($con,$sql);
 
 

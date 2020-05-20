@@ -1,4 +1,4 @@
-<form id="guardarDatos">
+<form id="guardarDatos" autocomplete="off">
 <div class="modal fade" id="dataRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -17,32 +17,10 @@
       
 
 
-      <div class="form-group">
-                							
-                                     <?php require_once("conn/conexion.php");
-                                        $query = mysqli_query($con,"SELECT ID_APLICACION,APLICACION FROM APLICACIONES");
-                                     ?>
-                            
-                                    <select class="form-control" id="aplicacion" name="aplicacion" required>
-                                    <option value="">Seleccione sección</option>
-                            
-                                    <?php  while($row = mysqli_fetch_array($query)){  ?>    
-                                   <?php     echo "<option value=".$row['ID_APLICACION'].">".$row['APLICACION']."</option>";
-                                    }
-                                
-                                    ?>
-                            
-                            
-                               </select>
-                             
-                            
-             </div>
-                            
-
-
              <div class="form-group">
                 							
          <?php 
+            require_once("conn/conexion.php");
             $query1 = mysqli_query($con,"SELECT ID_ROL,ROL FROM ROLES");
          ?>
 

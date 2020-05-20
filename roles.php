@@ -61,7 +61,7 @@
   <?php include("inc/scripts.php"); ?>
 
 
-	<script src="js/app.js"></script>
+	<script src="js/roles.js"></script>
 	<script>
 		$(document).ready(function(){
 			load(1);

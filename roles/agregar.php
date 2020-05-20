@@ -21,7 +21,7 @@
 		$aplicacion=$_POST["aplicacion"];
 		$rol=mysqli_real_escape_string($con,(strip_tags($_POST["rol"],ENT_QUOTES)));
 	
-		$sql="INSERT INTO ROLES (ID_APLICACION, ROL, FECHA_CREACION) VALUES ('".$aplicacion."','".$rol."',sysdate())";
+		$sql="INSERT INTO ROLES (ID_SECCION, ROL, FECHA_CREACION) VALUES ('".$aplicacion."','".$rol."',sysdate())";
 		$query_update = mysqli_query($con,$sql);
 			if ($query_update){
 				$messages[] = "Los datos han sido guardados satisfactoriamente.";

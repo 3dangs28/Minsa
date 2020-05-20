@@ -3,9 +3,9 @@
   <body>
 	<?php include("inc/header.php"); ?>
 	<?php include("inc/menu.php"); ?>
-  <?php include("modalUsuario/modal_agregar.php");?>
-  <?php include("modalUsuario/modal_modificar.php");?>
-	<?php include("modalUsuario/modal_eliminar.php");?>
+  <?php include("modalAreas/modal_agregar.php");?>
+  <?php include("modalAreas/modal_modificar.php");?>
+  <?php include("modalAreas/modal_eliminar.php");?>
 	
 	 
 	<div id="loader" class="text-center"> <img src="giphy.gif"></div>
@@ -16,7 +16,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Usuarios</h1>
+            <h1>Áreas</h1>
           </div>
           <div class="col-sm-6">
 					<h3 class='text-right'>		
@@ -35,7 +35,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Listado de usuarios</h3>
+              <h3 class="card-title">Listado de Áreas</h3>
             </div>
             <!-- /.card-header -->
             <div id="loader" class="card-body">
@@ -61,7 +61,7 @@
   <?php include("inc/scripts.php"); ?>
 
 
-	<script src="js/usuarios.js"></script>
+	<script src="js/areas.js"></script>
 	<script>
 		$(document).ready(function(){
 			load(1);

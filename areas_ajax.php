@@ -7,13 +7,13 @@ require_once("conn/conexion.php");
 	include 'pagination.php'; //incluir el archivo de paginación
 	
 		//Cuenta el número total de filas de la tabla*/
-		$count_query   = mysqli_query($con,"SELECT count(*) AS numrows FROM SECCIONES");
+		$count_query   = mysqli_query($con,"SELECT count(*) AS numrows FROM AREAS");
 
 		if ($row= mysqli_fetch_array($count_query)){$numrows = $row['numrows'];}
 
 		$reload = 'index.php';
 		//consulta principal para recuperar los datos
-		$query = mysqli_query($con,"SELECT ID_SECCION,SECCION FROM SECCIONES  order by ID_SECCION");
+		$query = mysqli_query($con,"SELECT ID_AREA,AREA FROM AREAS  order by ID_AREA");
 		
 		if ($numrows>0){
 		
@@ -32,11 +32,11 @@ require_once("conn/conexion.php");
 			while($row = mysqli_fetch_array($query)){
 				?>
 				<tr>
-					<td><?php echo $row['ID_SECCION'];?></td>
-					<td><?php echo $row['SECCION'];?></td>
+					<td><?php echo $row['ID_AREA'];?></td>
+					<td><?php echo $row['AREA'];?></td>
 					<td>
-						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#dataUpdate" data-id="<?php echo $row['ID_SECCION']?>" data-aplicacion="<?php echo $row['SECCION']?>"  ><i class='nav-icon fa fa-pencil'></i> </button>
-						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['ID_SECCION']?>"  ><i class='nav-icon fa fa-trash' ></i></button>
+						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#dataUpdate" data-id="<?php echo $row['ID_AREA']?>" data-aplicacion="<?php echo $row['AREA']?>"  ><i class='nav-icon fa fa-pencil'></i> </button>
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['ID_AREA']?>"  ><i class='nav-icon fa fa-trash' ></i></button>
 					</td>
 				</tr>
 				<?php

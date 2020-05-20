@@ -16,11 +16,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Usuarios</h1>
+            <h1>Médicos</h1>
           </div>
           <div class="col-sm-6">
 					<h3 class='text-right'>		
-				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#dataRegister"><i class='glyphicon glyphicon-plus'></i> Agregar</button>
+          <a href="medicoRegistro.php">
+				<button type="button" class="btn btn-success" ><i class='glyphicon glyphicon-plus'></i> Agregar</button></a>
 			</h3>
           </div>
         </div>
@@ -35,7 +36,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Listado de usuarios</h3>
+              <h3 class="card-title">Listado de médicos</h3>
             </div>
             <!-- /.card-header -->
             <div id="loader" class="card-body">
@@ -61,7 +62,7 @@
   <?php include("inc/scripts.php"); ?>
 
 
-	<script src="js/usuarios.js"></script>
+	<script src="js/medicos.js"></script>
 	<script>
 		$(document).ready(function(){
 			load(1);

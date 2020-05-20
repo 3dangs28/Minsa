@@ -18,7 +18,7 @@
 
 		$aplicacion=mysqli_real_escape_string($con,(strip_tags($_POST["aplicacion"],ENT_QUOTES)));
 	
-		$sql="INSERT INTO SECCIONES ( SECCION, FECHA_CREACION) VALUES ('".$aplicacion."',sysdate())";
+		$sql="INSERT INTO AREAS ( AREA) VALUES ('".$aplicacion."')";
 		$query_update = mysqli_query($con,$sql);
 			if ($query_update){
 				$messages[] = "Los datos han sido guardados satisfactoriamente.";

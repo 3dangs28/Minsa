@@ -14,7 +14,7 @@
 		// escaping, additionally removing everything that could be (html/javascript-) code
 		$id=intval($_POST['id']);
 		
-		$sql="DELETE FROM APLICACIONES WHERE ID_APLICACION='".$id."'";
+		$sql="DELETE FROM SECCIONES WHERE ID_SECCION='".$id."'";
 		$query_delete = mysqli_query($con,$sql);
 			if ($query_delete){
 				$messages[] = "Los datos han sido eliminados satisfactoriamente.";
