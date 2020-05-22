@@ -4,7 +4,91 @@
 	<?php include("inc/header.php"); ?>
 	<?php include("inc/menu.php"); ?>
 
-	
+  <script type="text/javascript" language="javascript">
+
+function registra() {
+/*
+var todoGrupo=$("#todoGrupo").is(":checked");
+var x="";
+if (todoGrupo == true){
+    console.log("1");
+    x ="1";
+}
+else{
+    console.log("0");
+    x="0";
+}
+
+*/
+
+var ced = document.getElementById('ced').value;
+var nom1 = document.getElementById('nom1').value;
+var nom2 = document.getElementById('nom2').value;
+var apel1 = document.getElementById('apel1').value;
+var apel2 = document.getElementById('apel2').value;
+var edad = document.getElementById('edad').value;
+var fecha = document.getElementById('fecha').value;
+var gen = document.getElementById('gen').value;
+
+var tsangre = document.getElementById('tsangre').value;
+var tel = document.getElementById('tel').value;
+var diag = document.getElementById('diag').value;
+var proce = document.getElementById('proce').value;
+var seguro = document.getElementById('seguro').value;
+var resp = document.getElementById('resp').value;
+var pro = document.getElementById('pro').value;
+var dis = document.getElementById('dis').value;
+var corre = document.getElementById('corre').value;
+var barrio = document.getElementById('barrio').value;
+var calle = document.getElementById('calle').value;
+var casa = document.getElementById('casa').value;
+var unidad = document.getElementById('unidad').value;
+
+console.log('Éxito!');
+var msj ="<div class='alert alert-success'><strong>¡Registro guardado !</strong></div>";
+var msj2 ="<div class='alert alert-danger'><strong>¡Cantidad no permitida!</strong></div>";
+
+
+$.post("pacientes/agregar2.php", {
+        ced: ced,
+        nom1: nom1,
+        nom2: nom2,
+        apel1: apel1,
+        apel2: apel2,
+        edad: edad,
+        fecha: fecha,
+        gen: gen,
+        tsangre: tsangre,
+        tel: tel,
+        diag: diag,
+        proce: proce,
+        seguro: seguro,
+        resp: resp,
+        pro: pro,
+        dis: dis,
+        corre: corre,
+        barrio: barrio,
+        calle: calle,
+        casa: casa,
+        unidad: unidad
+    }
+,
+    function(data2) {
+      $("#mensaje").html(data2);
+
+       /* 
+        if(data2>0){
+            $("#mensaje").html(msj);	
+      //  busqueda();
+        }else{
+            $("#mensaje").html(msj2);	
+        }
+       */
+    });
+
+}
+
+</script>
 	
   <div class="content-wrapper">
 
@@ -27,7 +111,7 @@
 			<section class="content">
             <div class="container-fluid">
 
-            <div id="datos_ajax_register"></div>
+            <div id="mensaje"></div>
 
       <div class="card card-default">
           <div class="card-header">
@@ -37,9 +121,9 @@
           <!-- /.card-header -->
           <div class="card-body">
 
-          <form id="guardarDatos">
+         
    <div class="row">
-
+ 
            <div class="col-md-6">
                 <div class="form-group">
                   <label>Primer nombre</label>
@@ -79,7 +163,7 @@
  <!-- /.form-group -->
          <div class="form-group">
          <label for="lalo"  class="control-label">Fecha de nacimiento</label>
-            <input type="date" class="form-control" name="fecha" step="1" min="1970-01-01" max="2002-01-01" value="1995-01-01" class="fecha">
+            <input type="date" class="form-control" name="fecha" id="fecha" step="1" min="1970-01-01" max="2002-01-01" value="1995-01-01" class="fecha">
           </div>
  <!-- /.form-group -->
                
@@ -213,7 +297,7 @@
                              <select class="form-control" id="pro" name="pro">
             
                              <?php  while($row = mysqli_fetch_array($query)){  ?>    
-                            <?php     echo "<option value=".$row['ID_PROVINCIAS'].">".$row['PROVINCIA']."</option>";
+                            <?php     echo "<option value=".$row['ID_PROVINCIA'].">".$row['PROVINCIA']."</option>";
                              }
                            
                              ?>
@@ -353,20 +437,22 @@
        
 
         <div class="card-footer">
+      
                   <button type="submit" class="btn btn-default">Cancelar</button>
-                  <button type="submit" class="btn btn-success float-right">Guardar</button>
+                  <button onclick="registra()" class="btn btn-success float-right">Guardar</button>
                 </div>
 
 
       </div>
       <!-- /.row -->
 
-      </form>
+
 
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
 
 
   <?php include("inc/scripts.php"); ?>

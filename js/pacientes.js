@@ -86,7 +86,7 @@ $( "#actualidarDatos" ).submit(function( event ) {
                 
                 load(1);
               }
-        });
+        }); 
       event.preventDefault();
     });
     

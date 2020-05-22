@@ -121,8 +121,6 @@
 		$u=mysqli_real_escape_string($con,(strip_tags($_POST["unidad"],ENT_QUOTES)));
 
 
-
-
 		$sql="INSERT INTO PACIENTES  (ID_AREA, ID_PROVINCIA, ID_DISTRITO, ID_CORREGIMIENTO, NOMBRE1, NOMBRE2, APELLIDO1, APELLIDO2, DIAGNOSTICO, PROCEDENCIA,SEGURO, RESPONSABLES, EDAD, FECHA_NAC, CEDULA, SEXO, TIPAJE, TELEFONO,BARRIO, CALLE, NUMCASA, FECHA)
 		 VALUES ('".$u."','".$pro."','".$dis."','".$corre."','".$n1."','".$n2."','".$a1."','".$a2."','".$diag."','".$proce."','".$seguro."','".$resp."','".$edad."','".$fecha."','".$ced."','".$gen."','".$ts."','".$tel."','".$barrio."','".$calle."','".$casa."',SYSDATE())";
 		$query_update = mysqli_query($con,$sql);
@@ -134,7 +132,9 @@
 		} else {
 			$errors []= "Error desconocido.";
 		}
-		
+
+
+
 		if (isset($errors)){
 			
 			?>
@@ -166,3 +166,4 @@
 
 			mysqli_close($con);
 ?>
+

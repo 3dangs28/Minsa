@@ -25,11 +25,10 @@ require_once("conn/conexion.php");
 				<tr>
 
         <th>Nombre</th>
+		<th>Apellido</th>
         <th>Cédula</th>
-        <th>Correo</th>
         <th>Télefono</th>
         <th>Estatus</th>
-        <th>Ingreso</th>
 		<th>Acciones</th>
 				</tr>
 			</thead>
@@ -40,15 +39,15 @@ require_once("conn/conexion.php");
 				?>
 				<tr>
 
-					<td><?php echo $row['PR_NOMBRE'];?></td>
+					<td><?php echo $row['NOMBRE1'];?></td>
+					<td><?php echo $row['APELLIDO1'];?></td>
                     <td><?php echo $row['CEDULA'];?></td>
-                    <td><?php echo $row['CORREO'];?></td>
                     <td><?php echo $row['TELEFONO'];?></td>
                
            
 										<td>
 										<?php  
-										if ($row['ESTATUS']==1){
+										if ($row['ESTADO']==1){
 											echo 'ACTIVO';
 										}
 										else{
@@ -61,12 +60,12 @@ require_once("conn/conexion.php");
                         <button type="button" class="btn btn-info" data-toggle="modal" 
 												data-target="#dataUpdate" 
 						data-id="<?php echo $row['ID_MIEMBRO']?>" 
-                        data-usr="<?php echo $row['ID_USR']?>" 
+                        data-usr="<?php echo $row['ID_PACIENTE']?>" 
                         data-cedula="<?php echo $row['CEDULA']?>"
-                        data-nombre1="<?php echo $row['PR_NOMBRE']?>"
-                        data-nombre2="<?php echo $row['SG_NOMBRE']?>" 
-                        data-apellido1="<?php echo $row['PR_APELLIDO']?>"
-                        data-apellido2="<?php echo $row['PR_APELLIDO']?>"
+                        data-nombre1="<?php echo $row['NOMBRE1']?>"
+                        data-nombre2="<?php echo $row['NOMBRE2']?>" 
+                        data-apellido1="<?php echo $row['APELLIDO1']?>"
+                        data-apellido2="<?php echo $row['APELLIDO2']?>"
 												data-gen="<?php echo $row['GENERO']?>"
                         data-correo="<?php echo $row['CORREO']?>"
 					            	data-tel="<?php echo $row['TELEFONO']?>" 
