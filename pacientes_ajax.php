@@ -29,6 +29,7 @@ require_once("conn/conexion.php");
         <th>Cédula</th>
         <th>Télefono</th>
         <th>Estatus</th>
+		<th>Fecha_Nacimiento</th>
 		<th>Acciones</th>
 				</tr>
 			</thead>
@@ -55,25 +56,23 @@ require_once("conn/conexion.php");
 										}
 										;?>
 										</td>
-                    <td><?php echo $row['FECHA_REG'];?></td>
+                    <td><?php echo $row['FECHA'];?></td>
 					<td>
                         <button type="button" class="btn btn-info" data-toggle="modal" 
-												data-target="#dataUpdate" 
-						data-id="<?php echo $row['ID_MIEMBRO']?>" 
+						data-target="#dataUpdate" 
+					
                         data-usr="<?php echo $row['ID_PACIENTE']?>" 
                         data-cedula="<?php echo $row['CEDULA']?>"
                         data-nombre1="<?php echo $row['NOMBRE1']?>"
                         data-nombre2="<?php echo $row['NOMBRE2']?>" 
                         data-apellido1="<?php echo $row['APELLIDO1']?>"
                         data-apellido2="<?php echo $row['APELLIDO2']?>"
-												data-gen="<?php echo $row['GENERO']?>"
-                        data-correo="<?php echo $row['CORREO']?>"
-					            	data-tel="<?php echo $row['TELEFONO']?>" 
-                        data-dir="<?php echo $row['DIRECCION']?>" 
-					            	data-estatus="<?php echo $row['ESTATUS']?>"
+						data-gen="<?php echo $row['SEXO']?>"
+              
+					   data-estatus="<?php echo $row['ESTADO']?>"
                          
                          ><i class='nav-icon fa fa-pencil'></i></button>
-						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['ID_MIEMBRO']?>"  ><i class='nav-icon fa fa-trash' ></i></button>
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['ID_PACIENTE']?>"  ><i class='nav-icon fa fa-trash' ></i></button>
 					</td>
 				</tr>
 				<?php
