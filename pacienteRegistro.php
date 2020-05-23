@@ -6,6 +6,8 @@
 
   <script type="text/javascript" language="javascript">
 
+
+
 function registra() {
 /*
 var todoGrupo=$("#todoGrupo").is(":checked");
@@ -21,6 +23,32 @@ else{
 
 */
 
+
+function blanquear(){
+
+document.getElementById('ced').value='';
+document.getElementById('nom1').value='';
+document.getElementById('nom2').value='';
+document.getElementById('apel1').value='';
+document.getElementById('apel2').value='';
+document.getElementById('edad').value='';
+document.getElementById('fecha').value='1995-01-01';
+document.getElementById('gen').value='';
+document.getElementById('tsangre').value='';
+document.getElementById('tel').value='';
+document.getElementById('diag').value='';
+document.getElementById('proce').value='';
+document.getElementById('seguro').value='';
+document.getElementById('resp').value='';
+document.getElementById('pro').value='';
+document.getElementById('dis').value='';
+document.getElementById('corre').value='';
+document.getElementById('barrio').value='';
+document.getElementById('calle').value='';
+document.getElementById('casa').value='';
+document.getElementById('unidad').value='';
+}
+
 var ced = document.getElementById('ced').value;
 var nom1 = document.getElementById('nom1').value;
 var nom2 = document.getElementById('nom2').value;
@@ -29,7 +57,6 @@ var apel2 = document.getElementById('apel2').value;
 var edad = document.getElementById('edad').value;
 var fecha = document.getElementById('fecha').value;
 var gen = document.getElementById('gen').value;
-
 var tsangre = document.getElementById('tsangre').value;
 var tel = document.getElementById('tel').value;
 var diag = document.getElementById('diag').value;
@@ -45,11 +72,8 @@ var casa = document.getElementById('casa').value;
 var unidad = document.getElementById('unidad').value;
 
 console.log('Éxito!');
-var msj ="<div class='alert alert-success'><strong>¡Registro guardado !</strong></div>";
-var msj2 ="<div class='alert alert-danger'><strong>¡Cantidad no permitida!</strong></div>";
 
-
-$.post("pacientes/agregar2.php", {
+$.post("pacientes/agregar.php", {
         ced: ced,
         nom1: nom1,
         nom2: nom2,
@@ -71,12 +95,18 @@ $.post("pacientes/agregar2.php", {
         calle: calle,
         casa: casa,
         unidad: unidad
-    }
-,
+    },
     function(data2) {
       $("#mensaje").html(data2);
-
-       /* 
+      $('html,body').animate({ scrollTop: 0 }, 600);
+   var n = data2.includes("Bien")
+   console.log(data2);
+   console.log(n);
+    
+      if (n==true){
+        blanquear();
+      }
+     /*
         if(data2>0){
             $("#mensaje").html(msj);	
       //  busqueda();
@@ -132,7 +162,7 @@ $.post("pacientes/agregar2.php", {
                 <!-- /.form-group -->
               <div class="form-group">
                   <label for="lalo"  class="control-label">Segundo Nombre</label>
-                  <input type="text" class="form-control" id="nom2" name="nom2" placeholder="Segundo nombre:" required autocomplete="off" >
+                  <input type="text" class="form-control" id="nom2" name="nom2" placeholder="Segundo nombre:"  autocomplete="off" >
              </div>
                 <!-- /.form-group -->
             </div>
@@ -147,7 +177,7 @@ $.post("pacientes/agregar2.php", {
  <!-- /.form-group -->
          <div class="form-group">
          <label for="lalo"  class="control-label">Segundo Apellido</label>
-            <input type="text" class="form-control" id="apel2" name="apel2" placeholder="Segundo apellido:" required autocomplete="off" >
+            <input type="text" class="form-control" id="apel2" name="apel2" placeholder="Segundo apellido:"  autocomplete="off" >
          </div>
  <!-- /.form-group -->
                
@@ -163,7 +193,7 @@ $.post("pacientes/agregar2.php", {
  <!-- /.form-group -->
          <div class="form-group">
          <label for="lalo"  class="control-label">Fecha de nacimiento</label>
-            <input type="date" class="form-control" name="fecha" id="fecha" step="1" min="1970-01-01" max="2002-01-01" value="1995-01-01" class="fecha">
+            <input type="date" class="form-control" name="fecha" id="fecha" step="1" value="1995-01-01" class="fecha">
           </div>
  <!-- /.form-group -->
                
@@ -177,7 +207,7 @@ $.post("pacientes/agregar2.php", {
    </div>
      <!-- /.form-group -->
    <div class="form-group">
-       <label for="lalo"  class="control-label">Género</label>
+       <label for="lalo"  class="control-label">Sexo</label>
        <select class="form-control" name="gen" id="gen" required>
                 <option selected disabled></option>
                 <option value="MASCULINO">MASCULINO</option>
@@ -207,7 +237,7 @@ $.post("pacientes/agregar2.php", {
 <div class="col-md-6">
 
 <div class="form-group">
-<label for="lalo"  class="control-label">Tipaje</label>
+<label for="lalo"  class="control-label">Tipo de sangre</label>
 <select class="form-control" name="tsangre" id="tsangre"  required>
                     <option selected disabled></option>
                     <option value="A NEG.">A NEG.</option>

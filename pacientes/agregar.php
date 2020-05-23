@@ -7,15 +7,16 @@
 	 if (empty($_POST['nom1'])){
 			$errors[] = "Primer Nombre vacío";
 		} 
+	/*
 		else if (empty($_POST['nom2'])){
-			$errors[] = "Segundo Nombre vacío";
-		} 
+		$errors[] = "Segundo Nombre vacío";
+		} */
 		else if (empty($_POST['apel1'])){
 			$errors[] = "Primer Apellido vacío";
-		} 
+		} /*
 		else if (empty($_POST['apel2'])){
-			$errors[] = "Segundo Apellido vacío";
-		} 
+		$errors[] = "Segundo Apellido vacío";
+		} */
 		else if (empty($_POST['edad'])){
 			$errors[] = "Edad vacía";
 		}
@@ -73,9 +74,9 @@
 		else if (
 			!empty($_POST['ced']) && 
 			!empty($_POST['nom1']) &&
-			!empty($_POST['nom2']) &&
+		//	!empty($_POST['nom2']) &&
 			!empty($_POST['apel1']) && 
-			!empty($_POST['apel2']) &&
+		//	!empty($_POST['apel2']) &&
 			!empty($_POST['edad']) && 
 			!empty($_POST['fecha']) && 
 			!empty($_POST['gen']) && 
@@ -121,8 +122,6 @@
 		$u=mysqli_real_escape_string($con,(strip_tags($_POST["unidad"],ENT_QUOTES)));
 
 
-
-
 		$sql="INSERT INTO PACIENTES  (ID_AREA, ID_PROVINCIA, ID_DISTRITO, ID_CORREGIMIENTO, NOMBRE1, NOMBRE2, APELLIDO1, APELLIDO2, DIAGNOSTICO, PROCEDENCIA,SEGURO, RESPONSABLES, EDAD, FECHA_NAC, CEDULA, SEXO, TIPAJE, TELEFONO,BARRIO, CALLE, NUMCASA, FECHA)
 		 VALUES ('".$u."','".$pro."','".$dis."','".$corre."','".$n1."','".$n2."','".$a1."','".$a2."','".$diag."','".$proce."','".$seguro."','".$resp."','".$edad."','".$fecha."','".$ced."','".$gen."','".$ts."','".$tel."','".$barrio."','".$calle."','".$casa."',SYSDATE())";
 		$query_update = mysqli_query($con,$sql);
@@ -134,7 +133,9 @@
 		} else {
 			$errors []= "Error desconocido.";
 		}
-		
+
+
+
 		if (isset($errors)){
 			
 			?>
@@ -166,3 +167,4 @@
 
 			mysqli_close($con);
 ?>
+

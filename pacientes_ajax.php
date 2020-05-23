@@ -14,7 +14,7 @@ require_once("conn/conexion.php");
 
 		$reload = 'index.php';
 		//consulta principal para recuperar los datos
-        $sql ='SELECT * FROM PACIENTES';
+        $sql ='SELECT * FROM PACIENTES WHERE ESTADO=0';
 		$query = mysqli_query($con,$sql);
 
 
