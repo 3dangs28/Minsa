@@ -14,7 +14,7 @@ require_once("conn/conexion.php");
 
 		$reload = 'index.php';
 		//consulta principal para recuperar los datos
-        $sql ='SELECT * FROM PACIENTES WHERE ESTADO=0';
+        $sql ='SELECT * FROM PACIENTES WHERE ESTADO=0 ORDER BY ID_PACIENTE ASC';
 		$query = mysqli_query($con,$sql);
 
 
@@ -27,9 +27,9 @@ require_once("conn/conexion.php");
         <th>Nombre</th>
 		<th>Apellido</th>
         <th>Cédula</th>
-        <th>Télefono</th>
-        <th>Estatus</th>
-		<th>Fecha_Nacimiento</th>
+        <th>Unidad</th>
+        <th>Cuarto</th>
+		<th>Cama</th>
 		<th>Acciones</th>
 				</tr>
 			</thead>
