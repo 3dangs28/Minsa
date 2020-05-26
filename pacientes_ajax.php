@@ -23,7 +23,7 @@ require_once("conn/conexion.php");
 		<table ID="example1" class="table table-bordered">
 			  <thead>
 				<tr>
-
+	    <th>#</th>
         <th>Nombre</th>
 		<th>Apellido</th>
         <th>Cédula</th>
@@ -39,7 +39,7 @@ require_once("conn/conexion.php");
 			while($row = mysqli_fetch_array($query)){
 				?>
 				<tr>
-
+			    <td>	<a href="consulta.php">Ver</a></td>
 					<td><?php echo $row['NOMBRE1'];?></td>
 					<td><?php echo $row['APELLIDO1'];?></td>
                     <td><?php echo $row['CEDULA'];?></td>

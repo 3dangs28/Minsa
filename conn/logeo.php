@@ -70,12 +70,17 @@ if(verificar_login($user,$password,$con,$a,$rol,$c) == 1)
             $_SESSION['iduser']=$a; 
             $_SESSION['rol']=$rol; 
             $_SESSION['userName']=$c; 
-           
+           echo $rol;
 
             switch ($rol) {
+                   //rol de sistema
                 case "1":
                 header('Location: ../index.php');
                     break;
+                    //rol de médico
+                case "3":
+                header('Location: ../index.php');
+                     break;
                 case "2":
                 header('Location: ../login.html');
                     break;
