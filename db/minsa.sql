@@ -2,10 +2,10 @@
 -- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2020 a las 17:23:29
--- Versión del servidor: 5.6.17
--- Versión de PHP: 5.5.12
+-- Host: 127.0.0.1
+-- Generation Time: May 26, 2020 at 11:19 AM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,33 +17,34 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `minsa`
+-- Database: `minsa`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `areas`
+-- Table structure for table `areas`
 --
 
 CREATE TABLE IF NOT EXISTS `areas` (
   `ID_AREA` int(11) NOT NULL AUTO_INCREMENT,
   `AREA` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`ID_AREA`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
 
 --
--- Volcado de datos para la tabla `areas`
+-- Dumping data for table `areas`
 --
 
 INSERT INTO `areas` (`ID_AREA`, `AREA`) VALUES
 (1, 'Unidad de intensivos'),
-(2, 'Unidad de recuperación');
+(2, 'Unidad de recuperación'),
+(3, 'Leo el iguano');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `corregimientos`
+-- Table structure for table `corregimientos`
 --
 
 CREATE TABLE IF NOT EXISTS `corregimientos` (
@@ -57,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `corregimientos` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
 
 --
--- Volcado de datos para la tabla `corregimientos`
+-- Dumping data for table `corregimientos`
 --
 
 INSERT INTO `corregimientos` (`ID_CORREGIMIENTO`, `ID_PROVINCIA`, `ID_DISTRITO`, `CORREGIMIENTO`) VALUES
@@ -66,7 +67,7 @@ INSERT INTO `corregimientos` (`ID_CORREGIMIENTO`, `ID_PROVINCIA`, `ID_DISTRITO`,
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `dietas`
+-- Table structure for table `dietas`
 --
 
 CREATE TABLE IF NOT EXISTS `dietas` (
@@ -82,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `dietas` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `distritos`
+-- Table structure for table `distritos`
 --
 
 CREATE TABLE IF NOT EXISTS `distritos` (
@@ -94,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `distritos` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=6 ;
 
 --
--- Volcado de datos para la tabla `distritos`
+-- Dumping data for table `distritos`
 --
 
 INSERT INTO `distritos` (`ID_DISTRITO`, `ID_PROVINCIA`, `DISTRITO`) VALUES
@@ -107,7 +108,7 @@ INSERT INTO `distritos` (`ID_DISTRITO`, `ID_PROVINCIA`, `DISTRITO`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `enfermeras`
+-- Table structure for table `enfermeras`
 --
 
 CREATE TABLE IF NOT EXISTS `enfermeras` (
@@ -124,12 +125,20 @@ CREATE TABLE IF NOT EXISTS `enfermeras` (
   `TELEFONO` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `CORREO` varchar(40) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`ID_MEDICO`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `enfermeras`
+--
+
+INSERT INTO `enfermeras` (`ID_MEDICO`, `NOMBRE1`, `NOMBRE2`, `APELLIDO1`, `APELLIDO2`, `ESPECIALIDAD`, `OTRAS`, `IDONEIDAD`, `CEDULA`, `SEXO`, `TELEFONO`, `CORREO`) VALUES
+(1, '1', '1', '1', '1', '1', '1', '1', '1', 'F', '1', '1'),
+(2, '1', '1', '1', '1', '1', '1', '1', '1', 'M', '1', '1');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `enfermerias`
+-- Table structure for table `enfermerias`
 --
 
 CREATE TABLE IF NOT EXISTS `enfermerias` (
@@ -157,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `enfermerias` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `hmedi`
+-- Table structure for table `hmedi`
 --
 
 CREATE TABLE IF NOT EXISTS `hmedi` (
@@ -171,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `hmedi` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `medicos`
+-- Table structure for table `medicos`
 --
 
 CREATE TABLE IF NOT EXISTS `medicos` (
@@ -190,12 +199,20 @@ CREATE TABLE IF NOT EXISTS `medicos` (
   `TELEFONO` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `CORREO` varchar(40) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`ID_MEDICO`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `medicos`
+--
+
+INSERT INTO `medicos` (`ID_MEDICO`, `NOMBRE1`, `NOMBRE2`, `APELLIDO1`, `APELLIDO2`, `ESPECIALIDAD1`, `ESPECIALIDAD2`, `ESPECIALIDAD3`, `OTRAS`, `IDONEIDAD`, `CEDULA`, `SEXO`, `TELEFONO`, `CORREO`) VALUES
+(1, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'M', '1', '1'),
+(2, 'Angel', 'Michael', 'Garcia', 'Salazar', 'Gato1', 'Gato2', 'Gato3', 'programador', 'lala01', '8-796-2481', 'M', '6851-7784', '3dangs28@gmail.com');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pacientes`
+-- Table structure for table `pacientes`
 --
 
 CREATE TABLE IF NOT EXISTS `pacientes` (
@@ -229,12 +246,39 @@ CREATE TABLE IF NOT EXISTS `pacientes` (
   KEY `ID_PROVINCIA` (`ID_PROVINCIA`),
   KEY `ID_DISTRITO` (`ID_DISTRITO`),
   KEY `ID_CORREGIMIENTO` (`ID_CORREGIMIENTO`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=22 ;
+
+--
+-- Dumping data for table `pacientes`
+--
+
+INSERT INTO `pacientes` (`ID_PACIENTE`, `ID_AREA`, `ID_PROVINCIA`, `ID_DISTRITO`, `ID_CORREGIMIENTO`, `NOMBRE1`, `NOMBRE2`, `APELLIDO1`, `APELLIDO2`, `DIAGNOSTICO`, `PROCEDENCIA`, `SEGURO`, `RESPONSABLES`, `EDAD`, `FECHA_NAC`, `CEDULA`, `SEXO`, `TIPAJE`, `TELEFONO`, `RELIGION`, `BARRIO`, `CALLE`, `NUMCASA`, `ESTADO`, `FECHA`) VALUES
+(1, 2, 1, 3, 1, '1', '1', '1', '1', '1', '1', '1', '1', 1, '1995-01-01', '1', 'F', 'B NEG.', '1', NULL, '1', '1', 1, 0, '2020-05-22'),
+(2, 3, 1, 3, 1, 'Iguana', 'Cardoze', 'Cardoze', 'Cardoze', 'Ta loco', 'sin procencia', '777', 'Maricruz Valencia y el abuelo', 13, '1995-01-01', '8-796-2481', 'M', 'O POS.', '6851-7784', NULL, 'Gonzalillo', '8', 10, 0, '2020-05-22'),
+(3, 1, 1, 1, 1, 'Angel', '', 'Garcia', '', 'no tiene', 'no tiene', '68-00-9900', 'el tío peluche', 33, '1995-01-01', '8-796-2481', 'M', 'O POS.', '6851-7784', NULL, 'Sin Barrio', '8', 10, 0, '2020-05-22'),
+(4, 1, 1, 1, 1, 'Angel', '', 'Garcia', '', 'no tiene', 'no tiene', '68-00-9900', 'el tío peluche', 33, '1995-01-01', '8-796-2481', 'M', 'O POS.', '6851-7784', NULL, 'Sin Barrio', '8', 10, 0, '2020-05-22'),
+(5, 1, 1, 1, 1, 'Angel', '', 'Garcia', '', 'no tiene', 'no tiene', '68-00-9900', 'el tío peluche', 33, '1995-01-01', '8-796-2481', 'M', 'O POS.', '6851-7784', NULL, 'Sin Barrio', '8', 10, 0, '2020-05-22'),
+(6, 2, 1, 1, 1, 'Roberto', '1', 'Garcia', '1', 'no tiene', 'no tiene', 'no tiene', 'la abuela', 33, '1995-01-01', '28', 'M', 'O POS.', '6851-7784', NULL, 'macaracas', '1', 28, 0, '2020-05-22'),
+(7, 1, 1, 1, 1, '1', '1', '1', '1', '1', '1', '1', '1', 1, '1995-01-01', '1', 'M', 'O NEG.', '1', NULL, '1', '1', 1, 0, '2020-05-22'),
+(8, 1, 1, 1, 1, '1', '1', '1', '1', '1', '1', '1', '1', 1, '1995-01-01', '1', 'M', 'O NEG.', '1', NULL, '1', '1', 1, 0, '2020-05-22'),
+(9, 1, 1, 1, 1, '1', '1', '1', '1', '1', '1', '1', '1', 1, '1995-01-01', '1', 'F', 'AB NEG.', '1', NULL, '1', '1', 1, 0, '2020-05-22'),
+(10, 1, 1, 1, 1, '1', '1', '1', '1', '1', '1', '1', '1', 1, '1995-01-01', '1', 'M', 'B NEG.', '1', NULL, '1', '1', 1, 0, '2020-05-22'),
+(11, 1, 1, 1, 1, '1', '1', '1', '1', '1', '1', '1', '1', 1, '1995-01-01', '1', 'M', 'B NEG.', '1', NULL, '1', '1', 1, 0, '2020-05-22'),
+(12, 1, 1, 1, 1, '2', '2', '2', '2', '2', '2', '2', '2', 2, '1995-01-01', '2', 'F', 'B NEG.', '2', NULL, '2', '2', 2, 0, '2020-05-22'),
+(13, 1, 1, 1, 1, '1', '1', '1', '1', '1', '1', '1', '1', 1, '1995-01-01', '1', 'F', 'B NEG.', '1', NULL, '1', '1', 1, 0, '2020-05-22'),
+(14, 1, 1, 1, 1, '1', '1', '1', '1', '1', '1', '1', '1', 1, '1995-01-01', '1', 'F', 'O NEG.', '1', NULL, '1', '1', 1, 0, '2020-05-22'),
+(15, 1, 1, 1, 1, '2', '2', '2', '2', '2', '2', '2', '2', 2, '1995-01-01', '2', 'F', 'O NEG.', '2', NULL, '2', '2', 2, 0, '2020-05-22'),
+(16, 1, 1, 1, 1, '2', '2', '2', '2', '2', '2', '2', '2', 2, '1995-01-01', '2', 'F', 'O NEG.', '2', NULL, '2', '2', 2, 0, '2020-05-22'),
+(17, 1, 1, 1, 1, '2', '2', '2', '2', '2', '2', '2', '2', 2, '1995-01-01', '2', 'F', 'O NEG.', '2', NULL, '2', '2', 2, 0, '2020-05-22'),
+(18, 1, 1, 1, 1, '3', '3', '3', '3', '3', '3', '3', '3', 3, '1995-01-01', '3', 'M', 'B NEG.', '3', NULL, '3', '3', 3, 0, '2020-05-22'),
+(19, 1, 1, 1, 1, '6', '6', '6', '6', '6', '6', '6', '6', 6, '1995-01-01', '6', 'F', 'A NEG.', '6', NULL, '6', '6', 6, 0, '2020-05-22'),
+(20, 2, 1, 3, 1, 'Sergio', '', 'Nelson', '', '1', '1', '1', 'la abuela', 1, '1995-01-28', '1', 'M', 'A POS.', '64', NULL, 'cerro pelado', '1', 1, 0, '2020-05-23'),
+(21, 2, 1, 2, 1, 'Guachimingo', 'Tercero', 'Gato', 'Mentecato', 'No tiene', 'No tiene procedencia', '8-796-2481', 'La abuela', 28, '1995-01-01', '8-796-2481', 'M', 'O NEG.', '6851-7784', NULL, 'No tiene barrio', '8', 10, 0, '2020-05-26');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `permisos`
+-- Table structure for table `permisos`
 --
 
 CREATE TABLE IF NOT EXISTS `permisos` (
@@ -252,7 +296,7 @@ CREATE TABLE IF NOT EXISTS `permisos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `provincias`
+-- Table structure for table `provincias`
 --
 
 CREATE TABLE IF NOT EXISTS `provincias` (
@@ -262,7 +306,7 @@ CREATE TABLE IF NOT EXISTS `provincias` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
 
 --
--- Volcado de datos para la tabla `provincias`
+-- Dumping data for table `provincias`
 --
 
 INSERT INTO `provincias` (`ID_PROVINCIA`, `PROVINCIA`) VALUES
@@ -271,7 +315,7 @@ INSERT INTO `provincias` (`ID_PROVINCIA`, `PROVINCIA`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE IF NOT EXISTS `roles` (
@@ -281,20 +325,21 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `FECHA_CREACION` date DEFAULT NULL,
   PRIMARY KEY (`ID_ROL`),
   KEY `ID_SECCION` (`ID_SECCION`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
 
 --
--- Volcado de datos para la tabla `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`ID_ROL`, `ID_SECCION`, `ROL`, `FECHA_CREACION`) VALUES
 (1, 2, 'Soporte IT', '2020-05-20'),
-(2, 1, 'Recepción', '2020-05-20');
+(2, 1, 'Recepción', '2020-05-20'),
+(3, 3, 'Médico', '2020-05-26');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `secciones`
+-- Table structure for table `secciones`
 --
 
 CREATE TABLE IF NOT EXISTS `secciones` (
@@ -302,20 +347,21 @@ CREATE TABLE IF NOT EXISTS `secciones` (
   `SECCION` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
   `FECHA_CREACION` date DEFAULT NULL,
   PRIMARY KEY (`ID_SECCION`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
 
 --
--- Volcado de datos para la tabla `secciones`
+-- Dumping data for table `secciones`
 --
 
 INSERT INTO `secciones` (`ID_SECCION`, `SECCION`, `FECHA_CREACION`) VALUES
 (1, 'Registro Médico', '2020-05-20'),
-(2, 'Sistema', '2020-05-20');
+(2, 'Sistema', '2020-05-20'),
+(3, 'Unidad de atención', '2020-05-26');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
@@ -328,53 +374,55 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `PASS` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`ID_USUARIO`),
   KEY `ID_ROL` (`ID_ROL`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`ID_USUARIO`, `ID_ROL`, `NOMBRE`, `APELLIDO`, `CORREO`, `NICK`, `PASS`) VALUES
-(1, 1, 'Nelson', 'Santana', 'nsantana8@hotmail.com', 'NSantana09', '123');
+(1, 1, 'Nelson', 'Santana', 'nsantana8@hotmail.com', 'NSantana09', '123'),
+(2, 1, 'Angel', 'Garcia', 'gato@gmail.com', 'gato', '123'),
+(3, 3, 'Angel', 'Garcia', 'gato@gato.com', '8-796-2481', '123');
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `corregimientos`
+-- Constraints for table `corregimientos`
 --
 ALTER TABLE `corregimientos`
   ADD CONSTRAINT `corregimientos_ibfk_1` FOREIGN KEY (`ID_PROVINCIA`) REFERENCES `provincias` (`ID_PROVINCIA`),
   ADD CONSTRAINT `corregimientos_ibfk_2` FOREIGN KEY (`ID_DISTRITO`) REFERENCES `distritos` (`ID_DISTRITO`);
 
 --
--- Filtros para la tabla `dietas`
+-- Constraints for table `dietas`
 --
 ALTER TABLE `dietas`
   ADD CONSTRAINT `dietas_ibfk_1` FOREIGN KEY (`ID_PACIENTE`) REFERENCES `pacientes` (`ID_PACIENTE`);
 
 --
--- Filtros para la tabla `distritos`
+-- Constraints for table `distritos`
 --
 ALTER TABLE `distritos`
   ADD CONSTRAINT `distritos_ibfk_1` FOREIGN KEY (`ID_PROVINCIA`) REFERENCES `provincias` (`ID_PROVINCIA`);
 
 --
--- Filtros para la tabla `enfermerias`
+-- Constraints for table `enfermerias`
 --
 ALTER TABLE `enfermerias`
   ADD CONSTRAINT `enfermerias_ibfk_1` FOREIGN KEY (`ID_PACIENTE`) REFERENCES `pacientes` (`ID_PACIENTE`),
   ADD CONSTRAINT `enfermerias_ibfk_2` FOREIGN KEY (`ID_MEDICO`) REFERENCES `medicos` (`ID_MEDICO`);
 
 --
--- Filtros para la tabla `hmedi`
+-- Constraints for table `hmedi`
 --
 ALTER TABLE `hmedi`
   ADD CONSTRAINT `hmedi_ibfk_1` FOREIGN KEY (`ID_PACIENTE`) REFERENCES `pacientes` (`ID_PACIENTE`);
 
 --
--- Filtros para la tabla `pacientes`
+-- Constraints for table `pacientes`
 --
 ALTER TABLE `pacientes`
   ADD CONSTRAINT `pacientes_ibfk_1` FOREIGN KEY (`ID_AREA`) REFERENCES `areas` (`ID_AREA`),
@@ -383,19 +431,19 @@ ALTER TABLE `pacientes`
   ADD CONSTRAINT `pacientes_ibfk_4` FOREIGN KEY (`ID_CORREGIMIENTO`) REFERENCES `corregimientos` (`ID_CORREGIMIENTO`);
 
 --
--- Filtros para la tabla `permisos`
+-- Constraints for table `permisos`
 --
 ALTER TABLE `permisos`
   ADD CONSTRAINT `permisos_ibfk_1` FOREIGN KEY (`ID_ROL`) REFERENCES `roles` (`ID_ROL`);
 
 --
--- Filtros para la tabla `roles`
+-- Constraints for table `roles`
 --
 ALTER TABLE `roles`
   ADD CONSTRAINT `roles_ibfk_1` FOREIGN KEY (`ID_SECCION`) REFERENCES `secciones` (`ID_SECCION`);
 
 --
--- Filtros para la tabla `usuarios`
+-- Constraints for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`ID_ROL`) REFERENCES `roles` (`ID_ROL`);
