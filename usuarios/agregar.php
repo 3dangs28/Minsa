@@ -35,7 +35,6 @@
 
 		// escaping, additionally removing everything that could be (html/javascript-) code
 		
-
 		
 		$rol=mysqli_real_escape_string($con,(strip_tags($_POST["rol"],ENT_QUOTES)));
 		$nombre=mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
@@ -47,9 +46,9 @@
 
 
 
-
 		$sql="INSERT INTO USUARIOS  (ID_ROL, NOMBRE, APELLIDO, CORREO, NICK, PASS )
-		 VALUES ('".$rol.",'".$nombre."','".$apel."','".$correo."','".$nick."','".$pass."')";
+		VALUES ('".$rol."','".$nombre."','".$apel."','".$correo."','".$nick."','".$pass."')";
+
 		$query_update = mysqli_query($con,$sql);
 			if ($query_update){
 				$messages[] = "Los datos han sido guardados satisfactoriamente.";

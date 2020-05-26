@@ -60,7 +60,7 @@
   <?php include("inc/scripts.php"); ?>
 
 
-	<script src="js/medicos.js"></script>
+	<script src="js/enfermeras.js"></script>
 	<script>
 		$(document).ready(function(){
 			load(1);

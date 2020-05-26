@@ -4,50 +4,84 @@
 	require_once("../conn/conexion.php");
 
 	/*Inicia validacion del lado del servidor*/
-	 if (empty($_POST['rol'])){
-			$errors[] = "Rol vacío";
-		} 
-	
-		else if (empty($_POST['nombre'])){
-			$errors[] = "Nombre vacío";
-		} 
-		else if (empty($_POST['apellido'])){
-			$errors[] = "Apellido vacío";
-		} 
-		else if (empty($_POST['correo'])){
-			$errors[] = "Correo vacío";
-		} 
+	if (empty($_POST['nom1'])){
+		$errors[] = "Primer Nombre vacío";
+	} 
+/*
+	else if (empty($_POST['nom2'])){
+	$errors[] = "Segundo Nombre vacío";
+	} */
+	else if (empty($_POST['apel1'])){
+		$errors[] = "Primer Apellido vacío";
+	} /*
+	else if (empty($_POST['apel2'])){
+	$errors[] = "Segundo Apellido vacío";
+	} */
+	else if (empty($_POST['esp1'])){
+		$errors[] = "Especialidad 1 vacía";
+	}
+	else if (empty($_POST['esp2'])){
+		$errors[] = "Especialidad 2 vacía";
+	}
+	else if (empty($_POST['esp3'])){
+		$errors[] = "Especialidad 3 vacía";
+	}
+	else if (empty($_POST['otras'])){
+		$errors[] = "Otras vacía";
+	}
+	else if (empty($_POST['ido'])){
+		$errors[] = "Idoneidad vacía";
+	}
+	else if (empty($_POST['ced'])){
+		$errors[] = "Cédula vacía";
+	}
+	else if (empty($_POST['gen'])){
+		$errors[] = "Genero vacía";
+	}
+	else if (empty($_POST['tel'])){
+		$errors[] = "Télefono vacía";
+	}
+	else if (empty($_POST['correo'])){
+		$errors[] = "Correo vacío";
+	} 
 	 
-		else if (empty($_POST['nick'])){
-			$errors[] = "Nick vacío";
-		} 
-		else if (empty($_POST['pass'])){
-			$errors[] = "Contraseña vacío";
-		} 
 		else if (
-			!empty($_POST['rol']) && 
-			!empty($_POST['nombre']) &&
-			!empty($_POST['apellido']) && 
-			!empty($_POST['correo']) && 
-			!empty($_POST['nick']) &&  
-			!empty($_POST['pass'])
+			!empty($_POST['ced']) && 
+			!empty($_POST['nom1']) &&
+		//	!empty($_POST['nom2']) &&
+			!empty($_POST['apel1']) && 
+		//	!empty($_POST['apel2']) &&
+		    !empty($_POST['ido']) && 
+		    !empty($_POST['esp1']) && 
+			!empty($_POST['esp2']) && 
+			!empty($_POST['esp3']) && 
+			!empty($_POST['otras']) && 
+			!empty($_POST['gen']) && 
+			!empty($_POST['tel']) && 
+			!empty($_POST['correo'])
+
 			
 		){
 
 		// escaping, additionally removing everything that could be (html/javascript-) code
 		
-		$rol=mysqli_real_escape_string($con,(strip_tags($_POST["rol"],ENT_QUOTES)));
-
-		$nombre=mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));
-		$apel=mysqli_real_escape_string($con,(strip_tags($_POST["apellido"],ENT_QUOTES)));
+		$n1=mysqli_real_escape_string($con,(strip_tags($_POST["nom1"],ENT_QUOTES)));
+		$n2=mysqli_real_escape_string($con,(strip_tags($_POST["nom2"],ENT_QUOTES)));
+		$a1=mysqli_real_escape_string($con,(strip_tags($_POST["apel1"],ENT_QUOTES)));
+		$a2=mysqli_real_escape_string($con,(strip_tags($_POST["apel2"],ENT_QUOTES)));
+		$ido=mysqli_real_escape_string($con,(strip_tags($_POST["ido"],ENT_QUOTES)));
+		$e1=mysqli_real_escape_string($con,(strip_tags($_POST["esp1"],ENT_QUOTES)));
+		$e2=mysqli_real_escape_string($con,(strip_tags($_POST["esp2"],ENT_QUOTES)));
+		$e3=mysqli_real_escape_string($con,(strip_tags($_POST["esp3"],ENT_QUOTES)));
+		$otras=mysqli_real_escape_string($con,(strip_tags($_POST["otras"],ENT_QUOTES)));
+		$ced=mysqli_real_escape_string($con,(strip_tags($_POST["ced"],ENT_QUOTES)));
+		$gen=mysqli_real_escape_string($con,(strip_tags($_POST["gen"],ENT_QUOTES)));
+		$tel=mysqli_real_escape_string($con,(strip_tags($_POST["tel"],ENT_QUOTES)));
 		$correo=mysqli_real_escape_string($con,(strip_tags($_POST["correo"],ENT_QUOTES)));
-		$nick=mysqli_real_escape_string($con,(strip_tags($_POST["nick"],ENT_QUOTES)));
-		$pass=mysqli_real_escape_string($con,(strip_tags($_POST["pass"],ENT_QUOTES)));
-		$estatus = 1;
 
-		$sql="INSERT INTO USUARIOS  (ID_ROL, NOMBRE, APELLIDO, CORREO, NICK, PASS )
-		 VALUES ('".$rol.",'".$nombre."','".$apel."','".$correo."','".$nick."','".$pass."'
-		 )";
+
+		$sql="INSERT INTO MEDICOS ( NOMBRE1, NOMBRE2, APELLIDO1, APELLIDO2, ESPECIALIDAD1, ESPECIALIDAD2, ESPECIALIDAD3, OTRAS, IDONEIDAD,CEDULA, SEXO, TELEFONO, CORREO )  
+		VALUES ('".$n1."','".$n2."','".$a1."','".$a2."','".$e1."','".$e2."','".$e3."','".$otras."','".$ido."','".$ced."','".$gen."','".$tel."','".$correo."')";
 		$query_update = mysqli_query($con,$sql);
 			if ($query_update){
 				$messages[] = "Los datos han sido guardados satisfactoriamente.";

@@ -2,7 +2,7 @@ function load(page){
     var parametros = {"action":"ajax","page":page};
     $("#loader").fadeIn('slow');
     $.ajax({
-        url:'medicos_ajax.php',
+        url:'enfermeras_ajax.php',
         data: parametros,
          beforeSend: function(objeto){
         $("#loader").html("<img src='giphy.gif'>");
