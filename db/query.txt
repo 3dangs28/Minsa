@@ -1,0 +1,69 @@
+create or replace PACKAGE PACK_SOLICITUD_CORREO_CARGA 
+    is
+    type t_cursor is REF CURSOR;
+
+procedure INSERTAR_ID_CORREO_TEMP(p_resp out number);
+
+PROCEDURE ACTUALIZAR_ID_FECHA(p_ID_ANTERIOR out number, p_ID_ULTIMO out number, p_resp out number);
+
+PROCEDURE VALIDAR_EXISTE_CORREO(P_desde IN number,
+                                 p_hasta in number,
+                                 p_RESP IN OUT number);
+
+PROCEDURE VALIDAR_EXISTE_CEDULA(P_desde IN number,
+                                 p_hasta in number, 
+                                 p_RESP IN OUT number);
+
+PROCEDURE DEPURAR_CEDULAS_CORREO15(p_ID_ULTIMO IN NUMBER, p_Resp IN OUT number);
+
+PROCEDURE DEPURAR_CEDULAS_CORREO16(p_ID_ULTIMO IN NUMBER, p_Resp IN OUT number);
+
+PROCEDURE SELECT_LISTA_REPETIDOS(o_cursor in out t_cursor);
+
+procedure INSERT_CORREO_PRE_ACTIVO (P_ID_CORREO IN NUMBER,
+                                    P_ESTAMENTO IN NUMBER,
+                                    P_NOMBRE IN VARCHAR2,
+                                    P_APELLIDO IN VARCHAR2,
+                                    P_CORREO IN VARCHAR2, 
+                                    P_UBICA_1 IN VARCHAR2,
+                                    P_UBICA_2 IN VARCHAR2,
+                                    P_USUARIO IN VARCHAR2,
+                                    P_RESPUESTA IN OUT NUMBER);
+
+procedure DEPURAR_CORREOS_REPETIDOS_CED(P_desde IN number,
+                                 p_hasta in number,
+                                 o_cursor in out t_cursor,
+                                 p_repetidos in out number,
+                                 p_inactivados in out number);
+
+procedure DEPURAR_CORREOS_REPET_CED_DIST(P_desde IN number,
+                                 p_hasta in number,
+                                 o_cursor in out t_cursor,
+                                 p_repetidos in out number);
+ 
+PROCEDURE CONTEO_ACTUALIZA_ESTATUS(P_desde IN number,
+                                 p_hasta in number,
+                                 p_existecedula out number,
+                                 p_existecorreo out number,
+                                 p_exiteced_correo out number);
+                                 
+PROCEDURE INSERTAR_CORREOS_FINALES(p_usuario IN VARCHAR2,
+                                 P_desde IN number,
+                                 p_hasta in number,
+                                 p_insertados out number,
+                                 p_descartados out number);
+                                 
+ 
+PROCEDURE SELECT_INSERTAR_UBIC_ESTAMENTO (P_desde IN number,
+                                 p_hasta in number, 
+                                 P_USUARIO in varchar2, 
+                                 p_inserta in out number,
+                                 p_existentes in out number);
+
+PROCEDURE INSERTAR_CORREOS_PRE_ACTIVOS(P_desde IN number,
+                                 p_hasta in number, 
+                                 P_USUARIO in varchar2, 
+                                 p_inserta in out number,
+                                 p_existentes in out number);
+                                 
+END PACK_SOLICITUD_CORREO_CARGA;
