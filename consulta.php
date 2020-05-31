@@ -5,110 +5,56 @@
 	<?php include("inc/menu.php"); ?>
 
 
-    <?php
-
-  echo $_SESSION['iduser'];
-    ?>
 
 
-  <script type="text/javascript" language="javascript">
+<script type="text/javascript" language="javascript">
 
 
 
 function registra() {
 
-
-function blanquear(){
-
-document.getElementById('ced').value='';
-document.getElementById('nom1').value='';
-document.getElementById('nom2').value='';
-document.getElementById('apel1').value='';
-document.getElementById('apel2').value='';
-document.getElementById('edad').value='';
-document.getElementById('fecha').value='1995-01-01';
-document.getElementById('gen').value='';
-document.getElementById('tsangre').value='';
-document.getElementById('tel').value='';
-document.getElementById('diag').value='';
-document.getElementById('proce').value='';
-document.getElementById('seguro').value='';
-document.getElementById('resp').value='';
-document.getElementById('pro').value='';
-document.getElementById('dis').value='';
-document.getElementById('corre').value='';
-document.getElementById('barrio').value='';
-document.getElementById('calle').value='';
-document.getElementById('casa').value='';
-document.getElementById('unidad').value='';
-}
-
-var ced = document.getElementById('ced').value;
-var nom1 = document.getElementById('nom1').value;
-var nom2 = document.getElementById('nom2').value;
-var apel1 = document.getElementById('apel1').value;
-var apel2 = document.getElementById('apel2').value;
-var edad = document.getElementById('edad').value;
-var fecha = document.getElementById('fecha').value;
-var gen = document.getElementById('gen').value;
-var tsangre = document.getElementById('tsangre').value;
-var tel = document.getElementById('tel').value;
+var gato = 'gato';
+var id = document.getElementById('id').value;
+var idmedico = document.getElementById('idmedico').value;
+var mvisita = document.getElementById('mvisita').value;
+var alergia = document.getElementById('alergia').value;
+var app = document.getElementById('app').value;
+var aqx = document.getElementById('aqx').value;
+var ahf = document.getElementById('ahf').value;
+var indi = document.getElementById('indi').value;
+var efisico = document.getElementById('efisico').value;
 var diag = document.getElementById('diag').value;
-var proce = document.getElementById('proce').value;
-var seguro = document.getElementById('seguro').value;
-var resp = document.getElementById('resp').value;
-var pro = document.getElementById('pro').value;
-var dis = document.getElementById('dis').value;
-var corre = document.getElementById('corre').value;
-var barrio = document.getElementById('barrio').value;
-var calle = document.getElementById('calle').value;
-var casa = document.getElementById('casa').value;
-var unidad = document.getElementById('unidad').value;
+document.getElementById('diag').value = gato;
 
 console.log('Éxito!');
 
-$.post("pacientes/agregar.php", {
-        ced: ced,
-        nom1: nom1,
-        nom2: nom2,
-        apel1: apel1,
-        apel2: apel2,
-        edad: edad,
-        fecha: fecha,
-        gen: gen,
-        tsangre: tsangre,
-        tel: tel,
-        diag: diag,
-        proce: proce,
-        seguro: seguro,
-        resp: resp,
-        pro: pro,
-        dis: dis,
-        corre: corre,
-        barrio: barrio,
-        calle: calle,
-        casa: casa,
-        unidad: unidad
+$.post("consulta/agregar.php", {
+        id: id,
+        idmedico: idmedico,
+        mvisita: mvisita,
+        alergia: alergia,
+        app: app,
+        aqx: aqx,
+        ahf: ahf,
+        indi: indi,
+        efisico: efisico,
+        diag: diag
     },
     function(data2) {
       $("#mensaje").html(data2);
       $('html,body').animate({ scrollTop: 0 }, 600);
-   var n = data2.includes("Bien")
+       window.location.replace("pacientes.php");
+    });
+      /*
+   var n = data2.includes("Bien");
    console.log(data2);
    console.log(n);
     
       if (n==true){
-        blanquear();
+       // blanquear();
       }
-     /*
-        if(data2>0){
-            $("#mensaje").html(msj);	
-      //  busqueda();
-        }else{
-            $("#mensaje").html(msj2);	
-        }
-       */
-    });
+ */
+ 
 
 }
 
@@ -139,6 +85,51 @@ $.post("pacientes/agregar.php", {
             <?php
 
 echo $_SESSION['iduser'];
+$usr = $_SESSION['iduser'];
+echo '<br>';
+$id = $_GET['id'];
+
+require_once("conn/conexion.php");
+$sql ="SELECT NOMBRE1, APELLIDO1, EDAD, DIAGNOSTICO, CEDULA, FECHA_NAC, DIAGNOSTICO FROM PACIENTES WHERE ID_PACIENTE=$id";
+$query = mysqli_query($con,$sql);
+
+$datos = array();
+
+  while($row = mysqli_fetch_array($query))
+  {
+    $datos =$row;
+  }
+
+//-----------------------------------------------------
+$cedula ='';
+
+$sql2 ="SELECT NICK  FROM USUARIOS WHERE ID_USUARIO=$usr";
+$query2 = mysqli_query($con,$sql2);
+
+while($row2 = mysqli_fetch_array($query2))
+{
+  $cedula =$row2['NICK'];
+}
+
+echo '<br>';
+echo 'cedula: '.$cedula;
+
+//-----------------------------------------------------
+$medico = '';
+$sql3 ="SELECT ID_MEDICO  FROM MEDICOS WHERE CEDULA='".$cedula."';";
+$query3 = mysqli_query($con,$sql3);
+
+while($row3 = mysqli_fetch_array($query3))
+{
+  $medico =$row3['ID_MEDICO'];
+}
+
+echo '<br>';
+echo 'Id médico: '.$medico;
+
+
+
+
 
   ?>
 
@@ -156,12 +147,14 @@ echo $_SESSION['iduser'];
            <div class="col-md-6">
                 <div class="form-group">
                   <label>Nombre</label>
-                  <input type="text" class="form-control" id="nom1" name="nom1" readonly >
+                  <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $id; ?>"  >
+                  <input type="hidden" class="form-control" id="idmedico" name="idmedico" value="<?php echo $medico; ?>"  >
+                  <input type="text" class="form-control" value="<?php echo $datos[0]." ".$datos[1]; ?>" readonly >
               </div>
                 <!-- /.form-group -->
                 <div class="form-group">
          <label for="lalo"  class="control-label">Edad</label>
-            <input type="number" class="form-control" id="edad" name="edad" readonly >
+            <input type="number" class="form-control"  value="<?php echo $datos[2];?>" readonly >
          </div>
 
 
@@ -179,13 +172,13 @@ echo $_SESSION['iduser'];
 
 <div class="form-group">
        <label>Cédula</label>
-       <input type="text" class="form-control" id="ced" name="ced" readonly >
+       <input type="text" class="form-control"  value="<?php echo $datos[4];?>" readonly >
    </div>
         
  <!-- /.form-group -->
          <div class="form-group">
          <label for="lalo"  class="control-label">Fecha de nacimiento</label>
-            <input type="date" class="form-control" name="fecha" id="fecha" step="1" value="1995-01-01" class="fecha" readonly >
+            <input type="date" class="form-control" step="1" value="<?php echo $datos[5];?>"  readonly >
           </div>
  <!-- /.form-group -->
      
@@ -197,8 +190,6 @@ echo $_SESSION['iduser'];
 
 
 
-
-
  <div class="row">
 
 
@@ -206,7 +197,8 @@ echo $_SESSION['iduser'];
 
 <div class="form-group">
 <label for="lalo"  class="control-label">Diagnostico</label>
-<textarea class="form-control" id="diagnostico" name="diagnostico" rows="3" readonly></textarea>
+<input type="text" class="form-control"   value="<?php echo $datos[3];?>" readonly >
+
 
 </div>
 <!-- /.form-group -->
@@ -227,7 +219,7 @@ echo $_SESSION['iduser'];
 
 <div class="col-md-6">
      <div class="form-group">
-       <label>Motivo de visita</label>
+       <label>Historia actual</label>
        <textarea class="form-control" id="mvisita" name="mvisita" rows="3" ></textarea>
    </div>
      <!-- /.form-group -->
@@ -316,9 +308,6 @@ echo $_SESSION['iduser'];
               <!-- /.col -->
 
 
-
-
-
                 </div>
            
 
@@ -330,7 +319,7 @@ echo $_SESSION['iduser'];
 
         <div class="card-footer">
                   <button type="submit" class="btn btn-default">Cancelar</button>
-                  <button onclick="registra()" class="btn btn-success float-right">Guardar</button>
+                  <button onclick="registra()" class="btn btn-success float-right">gato</button>
                 </div>
       </div>
       <!-- /.row -->

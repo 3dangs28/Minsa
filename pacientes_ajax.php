@@ -14,9 +14,9 @@ require_once("conn/conexion.php");
 
 		$reload = 'index.php';
 		//consulta principal para recuperar los datos
-        $sql ='SELECT * FROM PACIENTES WHERE ESTADO=0 ORDER BY ID_PACIENTE ASC';
+        $sql ='SELECT * FROM PACIENTES ORDER BY ID_PACIENTE ASC';
 		$query = mysqli_query($con,$sql);
-
+// sacar el estado para validar la vista de ingreso
 
 		if ($numrows>0){
 			?>
@@ -39,7 +39,8 @@ require_once("conn/conexion.php");
 			while($row = mysqli_fetch_array($query)){
 				?>
 				<tr>
-			    <td>	<a href="consulta.php">Ver</a></td>
+		
+				<?php	echo '<td><a href="consulta.php?id='.$row['ID_PACIENTE'].'">Ver</a></td>'; ?>
 					<td><?php echo $row['NOMBRE1'];?></td>
 					<td><?php echo $row['APELLIDO1'];?></td>
                     <td><?php echo $row['CEDULA'];?></td>
