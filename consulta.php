@@ -13,7 +13,6 @@
 
 function registra() {
 
-var gato = 'gato';
 var id = document.getElementById('id').value;
 var idmedico = document.getElementById('idmedico').value;
 var mvisita = document.getElementById('mvisita').value;
@@ -24,7 +23,7 @@ var ahf = document.getElementById('ahf').value;
 var indi = document.getElementById('indi').value;
 var efisico = document.getElementById('efisico').value;
 var diag = document.getElementById('diag').value;
-document.getElementById('diag').value = gato;
+
 
 console.log('Éxito!');
 
@@ -319,7 +318,7 @@ echo 'Id médico: '.$medico;
 
         <div class="card-footer">
                   <button type="submit" class="btn btn-default">Cancelar</button>
-                  <button onclick="registra()" class="btn btn-success float-right">gato</button>
+                  <button onclick="registra()" class="btn btn-success float-right">Guardar</button>
                 </div>
       </div>
       <!-- /.row -->

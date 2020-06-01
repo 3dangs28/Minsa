@@ -24,6 +24,7 @@ require_once("conn/conexion.php");
 			  <thead>
 				<tr>
 	    <th>#</th>
+		<th>Enf.</th>
         <th>Nombre</th>
 		<th>Apellido</th>
         <th>Cédula</th>
@@ -40,7 +41,8 @@ require_once("conn/conexion.php");
 				?>
 				<tr>
 		
-				<?php	echo '<td><a href="consulta.php?id='.$row['ID_PACIENTE'].'">Ver</a></td>'; ?>
+				<?php	echo '<td><a href="consulta.php?id='.$row['ID_PACIENTE'].'">Ver</a></td>
+		                       <td> <a href="consultaEnf.php?id='.$row['ID_PACIENTE'].'">Enfermera</a></td>'; ?>
 					<td><?php echo $row['NOMBRE1'];?></td>
 					<td><?php echo $row['APELLIDO1'];?></td>
                     <td><?php echo $row['CEDULA'];?></td>
