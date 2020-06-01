@@ -83,7 +83,7 @@ $.post("consulta/agregar.php", {
     <section class="content">
       <div class="row">
         <div class="col-md-3">
-          <a href="compose.html" class="btn btn-primary btn-block mb-3">Atender otro</a>
+          <a href="pacientes.php" class="btn btn-primary btn-block mb-3">Finalizar</a>
 
           <div class="card">
             <div class="card-header">
@@ -98,16 +98,23 @@ $.post("consulta/agregar.php", {
               <ul class="nav nav-pills flex-column">
                 <li class="nav-item active">
                   <a href="#" class="nav-link">
-                    <i class="fas fa-inbox"></i> Registro médico
+                    <i class="fas fa-inbox"></i> Registro médico (Reges)
                     <span class="badge bg-primary float-right">12</span>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="far fa-envelope"></i> Registro de de consulta
+                    <i class="far fa-envelope"></i> Admisión médica
                   </a>
                 </li>
            
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-envelope"></i> Evalución médica
+                  </a>
+                </li>
+
+
            
               </ul>
             </div>
@@ -116,7 +123,7 @@ $.post("consulta/agregar.php", {
           <!-- /.card -->
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Atención</h3>
+              <h3 class="card-title">Expediente de admisión</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
@@ -162,6 +169,52 @@ $.post("consulta/agregar.php", {
                   <a href="#" class="nav-link">
                     <i class="far fa-circle text-primary"></i>
                     Eliminación Urinaria
+                  </a>
+                </li>
+
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle text-primary"></i>
+                    Eliminación instestinal
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle text-primary"></i>
+                    Deambulación
+                  </a>
+                </li>
+
+
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle text-primary"></i>
+                    Dolor
+                  </a>
+                </li>
+
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle text-primary"></i>
+                    Estado de la piel
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle text-primary"></i>
+                    Escala de riesgo de downton
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle text-primary"></i>
+                    Escala de Norton riesgo de ulcera por presión
                   </a>
                 </li>
 

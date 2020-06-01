@@ -144,8 +144,19 @@
                   <i class="fa fa-angle-left right"></i>
                 </p>
               </a>
-           
             </li>
+
+            <li class="nav-item has-treeview">
+              <a href="reportePDF.php" class="nav-link">
+                <i class="nav-icon fa fa-bar-chart"></i>
+                <p>
+                 Ejemplo de pdf
+                  <i class="fa fa-angle-left right"></i>
+                </p>
+              </a>
+            </li>
+
+
 
       
             <ul class="nav ">
