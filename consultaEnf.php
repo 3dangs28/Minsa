@@ -142,6 +142,30 @@ $.post("consulta/agregar.php", {
                     Circulación
                   </a>
                 </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle text-primary"></i>
+                    Mucosa oral
+                  </a>
+                </li>
+
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle text-primary"></i>
+                    Comunicación
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle text-primary"></i>
+                    Eliminación Urinaria
+                  </a>
+                </li>
+
+
               </ul>
             </div>
             <!-- /.card-body -->
@@ -161,7 +185,7 @@ $.post("consulta/agregar.php", {
 
 <div class="card card-warning">
               <div class="card-header">
-                <h3 class="card-title">General Elements</h3>
+                <h3 class="card-title">Admisión</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
