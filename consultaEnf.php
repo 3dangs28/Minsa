@@ -85,48 +85,119 @@ $.post("consulta/agregar.php", {
         <div class="col-md-3">
           <a href="pacientes.php" class="btn btn-primary btn-block mb-3">Finalizar</a>
 
+
+
+
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Ver Expedientes</h3>
 
               <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
               </div>
             </div>
+
             <div class="card-body p-0" style="display: block;">
               <ul class="nav nav-pills flex-column">
                 <li class="nav-item active">
                   <a href="#" class="nav-link">
-                    <i class="fas fa-inbox"></i> Registro médico (Reges)
+                    <i class="fa fa-inbox"></i> Registro médico (Reges)
                     <span class="badge bg-primary float-right">12</span>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="far fa-envelope"></i> Admisión médica
+                    <i class="fa fa-envelope"></i> Admisión médica
                   </a>
                 </li>
            
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="far fa-envelope"></i> Evalución médica
+                    <i class="fa fa-envelope"></i> Evalución médica
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.card-body -->
+
+
+          </div>
+          <!-- /.card -->
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Exp. de enfermería</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body p-0" style="display: block;">
+              <ul class="nav nav-pills flex-column">
+                <li class="nav-item active">
+                  <a href="#" class="nav-link">
+                    <i class="fa fa-inbox"></i>Hoja de medicamento
+                    <span class="badge bg-primary float-right">12</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fa fa-envelope"></i> Nota de enfermería
+                  </a>
+                </li>
+           
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fa fa-envelope"></i> Indicaciones médicas
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fa fa-envelope"></i> Signos Vitales
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fa fa-envelope"></i> Tarjeta de medicamento
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fa fa-envelope"></i> Plan cuido
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fa fa-envelope"></i> Glicemia capilar y presión arterial
                   </a>
                 </li>
 
 
-           
               </ul>
             </div>
             <!-- /.card-body -->
+
+
           </div>
           <!-- /.card -->
+
+
+
+
+
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Expediente de admisión</h3>
+              <h3 class="card-title">Nota de admisión</h3>
 
               <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
               </div>
             </div>
@@ -134,25 +205,25 @@ $.post("consulta/agregar.php", {
               <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="far fa-circle text-danger"></i>
+                    <i class="fa fa-circle text-danger"></i>
                     Admisión
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="far fa-circle text-warning"></i> Respiración
+                    <i class="fa fa-circle text-warning"></i> Respiración
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="far fa-circle text-primary"></i>
+                    <i class="fa fa-circle text-primary"></i>
                     Circulación
                   </a>
                 </li>
 
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="far fa-circle text-primary"></i>
+                    <i class="fa fa-circle text-primary"></i>
                     Mucosa oral
                   </a>
                 </li>
@@ -160,14 +231,14 @@ $.post("consulta/agregar.php", {
 
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="far fa-circle text-primary"></i>
+                    <i class="fa fa-circle text-primary"></i>
                     Comunicación
                   </a>
                 </li>
 
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="far fa-circle text-primary"></i>
+                    <i class="fa fa-circle text-primary"></i>
                     Eliminación Urinaria
                   </a>
                 </li>
@@ -175,14 +246,14 @@ $.post("consulta/agregar.php", {
 
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="far fa-circle text-primary"></i>
+                    <i class="fa fa-circle text-primary"></i>
                     Eliminación instestinal
                   </a>
                 </li>
 
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="far fa-circle text-primary"></i>
+                    <i class="fa fa-circle text-primary"></i>
                     Deambulación
                   </a>
                 </li>
@@ -191,7 +262,7 @@ $.post("consulta/agregar.php", {
 
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="far fa-circle text-primary"></i>
+                    <i class="fa fa-circle text-primary"></i>
                     Dolor
                   </a>
                 </li>
@@ -199,21 +270,21 @@ $.post("consulta/agregar.php", {
 
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="far fa-circle text-primary"></i>
+                    <i class="fa fa-circle text-primary"></i>
                     Estado de la piel
                   </a>
                 </li>
 
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="far fa-circle text-primary"></i>
+                    <i class="fa fa-circle text-primary"></i>
                     Escala de riesgo de downton
                   </a>
                 </li>
 
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="far fa-circle text-primary"></i>
+                    <i class="fa fa-circle text-primary"></i>
                     Escala de Norton riesgo de ulcera por presión
                   </a>
                 </li>
@@ -276,17 +347,17 @@ $.post("consulta/agregar.php", {
 
                   <!-- input states -->
                   <div class="form-group">
-                    <label class="col-form-label" for="inputSuccess"><i class="fas fa-check"></i> Input with
+                    <label class="col-form-label" for="inputSuccess"><i class="fa fa-check"></i> Input with
                       success</label>
                     <input type="text" class="form-control is-valid" id="inputSuccess" placeholder="Enter ...">
                   </div>
                   <div class="form-group">
-                    <label class="col-form-label" for="inputWarning"><i class="far fa-bell"></i> Input with
+                    <label class="col-form-label" for="inputWarning"><i class="fa fa-bell"></i> Input with
                       warning</label>
                     <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Enter ...">
                   </div>
                   <div class="form-group">
-                    <label class="col-form-label" for="inputError"><i class="far fa-times-circle"></i> Input with
+                    <label class="col-form-label" for="inputError"><i class="fa fa-times-circle"></i> Input with
                       error</label>
                     <input type="text" class="form-control is-invalid" id="inputError" placeholder="Enter ...">
                   </div>

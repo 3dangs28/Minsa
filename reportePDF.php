@@ -3,7 +3,7 @@
 require('fpdf.php');
 
 //$codigo =$_GET["codigo"];
-$codigo ='';
+$codigo =utf8_decode('Código de registro o id paciente');
 
 $pais_p = utf8_decode('PAÍS: ');
 $pasaP_p =utf8_decode('PASAPORTE / CÉDULA:   ');
@@ -73,7 +73,7 @@ $sello = 'SELLO';
         $tit_d = utf8_decode('reporte');
         $tit_e = utf8_decode('INSCRIPCIÓN DE PACIENTE');
         // Logo
-    //    $this->Image('img/minsaCH.png',17,25,28);
+       $this->Image('img/minsaCH.png',17,25);
         // Arial bold 15
         $this->SetFont('Arial','B',12);
     
@@ -90,7 +90,8 @@ $sello = 'SELLO';
        $this->Cell(80,7,''.$tit_e.'',0,1,'C');
     
       // Logo 
-      //  $this->Image('img/minsaCH.png',165,28,22);
+      //último parámetro ajusta el tamaño de la imagen
+      $this->Image('img/minsaCH.png',165,28,30);
     
         // Line break
         $this->Ln(20);
@@ -124,7 +125,7 @@ $pdf->Cell(0,10,''.$codigo.'',0,1);
 
 //posición universidad
 $pdf->SetXY(20,65);
-$pdf->Cell(0,10,'Localización: Gato de prueba',0,1);
+$pdf->Cell(0,10,'Nomobre de la prueba: Gato de prueba',0,1);
 
 //posición país
 $pdf->SetXY(20, 75);
@@ -170,7 +171,7 @@ $pdf->SetXY(50, 150);
 $pdf->Cell(0,8,''.$correo_p.''.$correo.'',0,1);
 
 //posición y tamaño de la foto
-$pdf->Image(''.$foto.'',145,88,35);
+//$pdf->Image(''.$foto.'',145,88,35);
 
 
 $pdf->SetXY(30, 230);

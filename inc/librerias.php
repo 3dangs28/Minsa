@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker-bs3.css">
   <!-- iCheck for checkboxes and radio inputs -->
   <link rel="stylesheet" href="plugins/iCheck/all.css">
+
   <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap4.css">
   <!-- Bootstrap Color Picker -->
   <link rel="stylesheet" href="plugins/colorpicker/bootstrap-colorpicker.min.css">
@@ -31,3 +32,6 @@
 
 
 </head>
+
+
+
