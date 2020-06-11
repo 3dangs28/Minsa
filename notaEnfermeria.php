@@ -2,8 +2,7 @@
 
   <body>
 	<?php include("inc/header.php"); ?>
-  <?php include("inc/menu.php");
-       ?>
+	<?php include("inc/menu.php"); ?>
 
 
 <script type="text/javascript" language="javascript">
@@ -59,8 +58,8 @@ $.post("consulta/agregar.php", {
 	
 <?php
 
-$id =$_SESSION['idPaciente'];
 
+$id =$_SESSION['idPaciente'];
 
 require_once("conn/conexion.php");
 $sql ="SELECT NOMBRE1, APELLIDO1, EDAD, DIAGNOSTICO, CEDULA, FECHA_NAC, DIAGNOSTICO FROM PACIENTES WHERE ID_PACIENTE=$id";
@@ -116,7 +115,7 @@ $datos = array();
 <!-- entrada  -->
 <div class="card card-warning">
               <div class="card-header">
-                <h3 class="card-title">Hoja de medicamentos</h3>
+                <h3 class="card-title">Nota de Enfermería</h3>
               </div>
 
    <!-- /.card-header -->
@@ -125,55 +124,13 @@ $datos = array();
 
           
 
-                  <div class="row">
-                    <div class="col-sm-4">
-                      <!-- select -->
-                      <div class="form-group">
-                        <label>Dosis</label>
-                        <select class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <label>Vía</label>
-                        <select class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <label>Intervalo</label>
-                        <select class="form-control" >
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
-
-
 
       
                   <div class="row">
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
-                        <label>Medicamento</label>
+                        <label>Dieta</label>
                         <input type="text" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>

@@ -55,13 +55,14 @@
             <div class="card-body p-0" style="display: block;">
               <ul class="nav nav-pills flex-column">
                 <li class="nav-item active">
-                   <?php	echo '<a href="hojamedica.php?id='.$id.'" class="nav-link">'; ?>
+                   <?php	echo '<a href="hojamedica.php" class="nav-link">'; ?>
                     <i class="fa fa-inbox"></i>Hoja de medicamento
                     <span class="badge bg-primary float-right">12</span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+             
+                  <?php	echo '<a href="notaEnfermeria.php" class="nav-link">'; ?>
                     <i class="fa fa-envelope"></i> Nota de enfermería
                   </a>
                 </li>
@@ -124,7 +125,8 @@
             <div class="card-body p-0">
               <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                <?php	echo '<a href="consultaEnf.php?id='.$_SESSION['idPaciente'].'" class="nav-link">'; ?>
+         
                     <i class="fa fa-circle text-danger"></i>
                     Admisión
                   </a>

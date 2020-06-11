@@ -3,7 +3,9 @@
 
   <body>
 	<?php include("inc/header.php"); ?>
-	<?php include("inc/menu.php"); ?>
+  <?php include("inc/menu.php"); 
+
+  ?>
 
 
 
@@ -62,10 +64,11 @@ $.post("consulta/agregar.php", {
 <?php
 
 
-$id = $_GET['id'];
+$_SESSION['idPaciente'] = $_GET['id'];
+$id =$_SESSION['idPaciente'];
 
 require_once("conn/conexion.php");
-$sql ="SELECT NOMBRE1, APELLIDO1, EDAD, DIAGNOSTICO, CEDULA, FECHA_NAC, DIAGNOSTICO FROM PACIENTES WHERE ID_PACIENTE=$id";
+$sql ="SELECT NOMBRE1, APELLIDO1, EDAD, DIAGNOSTICO, CEDULA, FECHA_NAC FROM PACIENTES WHERE ID_PACIENTE=$id";
 $query = mysqli_query($con,$sql);
 
 $datos = array();
@@ -90,7 +93,7 @@ $datos = array();
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-            <h1><?php echo $datos[0]." ".$datos[1]; ?></h1>
+            <h1><?php echo "Paciente: ".$datos[0]." ".$datos[1]." ".$datos[4]; ?></h1>
              
             </ol>
           </div>
@@ -119,9 +122,240 @@ $datos = array();
 
 <!-- entrada  -->
 
+<div class="card card-warning">
+              <div class="card-header">
+                <h3 class="card-title"> Admisión</h3>
+              </div>
+
+   <!-- /.card-header -->
+              <div class="card-body">
+                <form role="form">
+
+          
+
+
+      
+                  <div class="row">
+                  <div class="col-sm-12">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Médico</label>
+                        <input type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Procedencia</label>
+                        <input type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                     <!-- textarea -->
+                     <div class="form-group">
+                        <label>Diagnostico</label>
+                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  
+
+                  <div class="row">
+             
+             <div class="col-sm-4">
+               <!-- text input -->
+               <div class="form-group">
+                 <label>Fecha Nacimiento</label>
+                 <input type="text" class="form-control"  readonly>
+               </div>
+             </div>
+             <div class="col-sm-4">
+              <!-- textarea -->
+              <div class="form-group">
+                 <label>Seguro social</label>
+                 <input type="text" class="form-control" >
+               </div>
+             </div>
+             <div class="col-sm-4">
+              <!-- textarea -->
+              <div class="form-group">
+                 <label>Idioma</label>
+                 <input type="text" class="form-control" >
+               </div>
+             </div>
+           </div>
+              
+                  
+                  <div class="row">
+             
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Edad</label>
+                        <input type="text" class="form-control" value="<?php echo $datos[2]; ?>" readonly>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                     <!-- textarea -->
+                     <div class="form-group">
+                        <label>Religión</label>
+                        <input type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>
+                  </div>
+                  
+
+
+                  <div class="row">
+                
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Responsable</label>
+                        <input type="text" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                     <!-- textarea -->
+                     <div class="form-group">
+                        <label>Télefono</label>
+                        <input type="text" class="form-control" >
+                      </div>
+                    </div>
+                  </div>
+<hr>
+<h4>Signos Vitales</h4>
+                  <div class="row">
+                
+                <div class="col-sm-2">
+                  <!-- text input -->
+                  <div class="form-group">
+                    <label>T</label>
+                    <input type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                 <!-- textarea -->
+                 <div class="form-group">
+                    <label>P</label>
+                    <input type="text" class="form-control" >
+                  </div>
+                </div>
+
+                <div class="col-sm-2">
+                 <!-- textarea -->
+                 <div class="form-group">
+                    <label>R</label>
+                    <input type="text" class="form-control" >
+                  </div>
+                </div>
+
+                <div class="col-sm-2">
+                 <!-- textarea -->
+                 <div class="form-group">
+                    <label>P/A</label>
+                    <input type="text" class="form-control" >
+                  </div>
+                </div>
+
+                <div class="col-sm-2">
+                 <!-- textarea -->
+                 <div class="form-group">
+                    <label>SO2</label>
+                    <input type="text" class="form-control" >
+                  </div>
+                </div>
+
+              </div>
+
+              <hr>
+
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>Condición Especial</label>
+                        <select class="form-control">
+                          <option>Ciego</option>
+                          <option>Sordo</option>
+                          <option>Mudo</option>
+                          <option>Ciego/sordo</option>
+                          <option>Ciego/Mudo</option>
+                          <option>Mudo/sordo</option>
+                          <option>Ciego/Mudo/sordo</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Forma de lladada</label>
+                        <select class="form-control">
+                          <option>Silla de Rueda</option>
+                          <option>En Camilla</option>
+                          <option>Muleta</option>
+                          <option>Bastón</option>
+                        
+                        </select>
+                      </div>
+                    </div>
+                 
+                  </div>
+<hr>
+                  <h4>GLASGOW</h4>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>Verbal</label>
+                        <select class="form-control">
+                          <option>5</option>
+                          <option>4</option>
+                          <option>3</option>
+                          <option>2</option>
+                          <option>1</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Ojos</label>
+                        <select class="form-control">
+                          <option>4</option>
+                          <option>3</option>
+                          <option>2</option>
+                          <option>1</option>
+                        
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Motor</label>
+                        <select class="form-control" >
+                          <option>6</option>
+                          <option>5</option>
+                           <option>4</option>
+                          <option>3</option>
+                          <option>2</option>
+                          <option>1</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+
+      
+                </form>
+              </div>
+              <!-- /.card-body -->
 
 <!-- salida  -->
 
+<div class="card-footer">
+          <button type="submit" class="btn btn-default">Cancelar</button>
+          <button onclick="registra()" class="btn btn-success float-right">Guardar</button>
+       </div>
 
 
   
