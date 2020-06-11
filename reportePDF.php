@@ -1,5 +1,6 @@
 <?php
-//include '../conexion/config.php';
+
+require_once("conn/conexion.php");
 require('fpdf.php');
 
 //$codigo =$_GET["codigo"];
@@ -71,6 +72,7 @@ $sello = 'SELLO';
         $tit_b = utf8_decode('de prueba');
         $tit_c = utf8_decode('ejemplo');
         $tit_d = utf8_decode('reporte');
+
         $tit_e = utf8_decode('INSCRIPCIÓN DE PACIENTE');
         // Logo
        $this->Image('img/minsaCH.png',17,25);

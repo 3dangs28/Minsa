@@ -1,5 +1,6 @@
 <?php include("inc/librerias.php"); ?>
 
+
   <body>
 	<?php include("inc/header.php"); ?>
 	<?php include("inc/menu.php"); ?>
@@ -8,7 +9,6 @@
 
 
 <script type="text/javascript" language="javascript">
-
 
 
 function registra() {
@@ -59,6 +59,26 @@ $.post("consulta/agregar.php", {
 
 </script>
 	
+<?php
+
+
+$id = $_GET['id'];
+
+require_once("conn/conexion.php");
+$sql ="SELECT NOMBRE1, APELLIDO1, EDAD, DIAGNOSTICO, CEDULA, FECHA_NAC, DIAGNOSTICO FROM PACIENTES WHERE ID_PACIENTE=$id";
+$query = mysqli_query($con,$sql);
+
+$datos = array();
+
+  while($row = mysqli_fetch_array($query))
+  {
+    $datos =$row;
+  }
+
+  ?>
+
+
+
 <div class="content-wrapper" style="min-height: 1157.69px;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -70,7 +90,7 @@ $.post("consulta/agregar.php", {
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-            <h1>Nombre del Paciente</h1>
+            <h1><?php echo $datos[0]." ".$datos[1]; ?></h1>
              
             </ol>
           </div>
@@ -88,377 +108,16 @@ $.post("consulta/agregar.php", {
 
 
 
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Ver Expedientes</h3>
 
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-              </div>
-            </div>
+    <!-- /.inicio menú form -->
 
-            <div class="card-body p-0" style="display: block;">
-              <ul class="nav nav-pills flex-column">
-                <li class="nav-item active">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-inbox"></i> Registro médico (Reges)
-                    <span class="badge bg-primary float-right">12</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-envelope"></i> Admisión médica
-                  </a>
-                </li>
-           
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-envelope"></i> Evalución médica
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <!-- /.card-body -->
-
-
-          </div>
-          <!-- /.card -->
-
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Exp. de enfermería</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-              </div>
-            </div>
-
-            <div class="card-body p-0" style="display: block;">
-              <ul class="nav nav-pills flex-column">
-                <li class="nav-item active">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-inbox"></i>Hoja de medicamento
-                    <span class="badge bg-primary float-right">12</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-envelope"></i> Nota de enfermería
-                  </a>
-                </li>
-           
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-envelope"></i> Indicaciones médicas
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-envelope"></i> Signos Vitales
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-envelope"></i> Tarjeta de medicamento
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-envelope"></i> Plan cuido
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-envelope"></i> Glicemia capilar y presión arterial
-                  </a>
-                </li>
-
-
-              </ul>
-            </div>
-            <!-- /.card-body -->
-
-
-          </div>
-          <!-- /.card -->
-
-
-
-
-
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Nota de admisión</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-              </div>
-            </div>
-            <div class="card-body p-0">
-              <ul class="nav nav-pills flex-column">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-circle text-danger"></i>
-                    Admisión
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-circle text-warning"></i> Respiración
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-circle text-primary"></i>
-                    Circulación
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-circle text-primary"></i>
-                    Mucosa oral
-                  </a>
-                </li>
-
-
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-circle text-primary"></i>
-                    Comunicación
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-circle text-primary"></i>
-                    Eliminación Urinaria
-                  </a>
-                </li>
-
-
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-circle text-primary"></i>
-                    Eliminación instestinal
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-circle text-primary"></i>
-                    Deambulación
-                  </a>
-                </li>
-
-
-
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-circle text-primary"></i>
-                    Dolor
-                  </a>
-                </li>
-
-
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-circle text-primary"></i>
-                    Estado de la piel
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-circle text-primary"></i>
-                    Escala de riesgo de downton
-                  </a>
-                </li>
-
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-circle text-primary"></i>
-                    Escala de Norton riesgo de ulcera por presión
-                  </a>
-                </li>
-
-
-              </ul>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-9">
-   
-
+    <?php include("menuForms.php"); ?>
           
-
+    <!-- /.fin menú form -->
 
 
 
 <!-- entrada  -->
-
-<div class="card card-warning">
-              <div class="card-header">
-                <h3 class="card-title">Admisión</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <form role="form">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Text</label>
-                        <input type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Text Disabled</label>
-                        <input type="text" class="form-control" placeholder="Enter ..." disabled="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- textarea -->
-                      <div class="form-group">
-                        <label>Textarea</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Textarea Disabled</label>
-                        <textarea class="form-control" rows="3" placeholder="Enter ..." disabled=""></textarea>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- input states -->
-                  <div class="form-group">
-                    <label class="col-form-label" for="inputSuccess"><i class="fa fa-check"></i> Input with
-                      success</label>
-                    <input type="text" class="form-control is-valid" id="inputSuccess" placeholder="Enter ...">
-                  </div>
-                  <div class="form-group">
-                    <label class="col-form-label" for="inputWarning"><i class="fa fa-bell"></i> Input with
-                      warning</label>
-                    <input type="text" class="form-control is-warning" id="inputWarning" placeholder="Enter ...">
-                  </div>
-                  <div class="form-group">
-                    <label class="col-form-label" for="inputError"><i class="fa fa-times-circle"></i> Input with
-                      error</label>
-                    <input type="text" class="form-control is-invalid" id="inputError" placeholder="Enter ...">
-                  </div>
-
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- checkbox -->
-                      <div class="form-group">
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox">
-                          <label class="form-check-label">Checkbox</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" checked="">
-                          <label class="form-check-label">Checkbox checked</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" disabled="">
-                          <label class="form-check-label">Checkbox disabled</label>
-                        </div>
-                      </div>
-                    </div> 
-                    <div class="col-sm-6">
-                      <!-- radio -->
-                      <div class="form-group">
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="radio1">
-                          <label class="form-check-label">Radio</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="radio1" checked="">
-                          <label class="form-check-label">Radio checked</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" disabled="">
-                          <label class="form-check-label">Radio disabled</label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- select -->
-                      <div class="form-group">
-                        <label>Select</label>
-                        <select class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Select Disabled</label>
-                        <select class="form-control" disabled="">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <!-- Select multiple-->
-                      <div class="form-group">
-                        <label>Select Multiple</label>
-                        <select multiple="" class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Select Multiple Disabled</label>
-                        <select multiple="" class="form-control" disabled="">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <!-- /.card-body -->
-            </div>
-
 
 
 <!-- salida  -->
