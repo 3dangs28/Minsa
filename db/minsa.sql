@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2020 at 04:27 AM
+-- Generation Time: Jun 16, 2020 at 03:12 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `areas` (
   `ID_AREA` int(11) NOT NULL AUTO_INCREMENT,
   `AREA` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `ESTADO` int(11) DEFAULT '0',
   PRIMARY KEY (`ID_AREA`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
 
@@ -36,10 +37,24 @@ CREATE TABLE IF NOT EXISTS `areas` (
 -- Dumping data for table `areas`
 --
 
-INSERT INTO `areas` (`ID_AREA`, `AREA`) VALUES
-(1, 'Unidad de intensivos'),
-(2, 'Unidad de recuperación'),
-(3, 'Leo el iguano');
+INSERT INTO `areas` (`ID_AREA`, `AREA`, `ESTADO`) VALUES
+(1, 'Unidad de intensivos', 1),
+(2, 'Unidad de recuperación', 1),
+(3, 'Iguachin3', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `camas`
+--
+
+CREATE TABLE IF NOT EXISTS `camas` (
+  `ID_CAMA` varchar(1) COLLATE utf8_spanish_ci NOT NULL,
+  `ID_CUARTO` int(11) NOT NULL,
+  `ESTADO` int(11) DEFAULT '0',
+  PRIMARY KEY (`ID_CAMA`),
+  KEY `ID_CUARTO` (`ID_CUARTO`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -96,6 +111,28 @@ CREATE TABLE IF NOT EXISTS `corregimientos` (
 
 INSERT INTO `corregimientos` (`ID_CORREGIMIENTO`, `ID_PROVINCIA`, `ID_DISTRITO`, `CORREGIMIENTO`) VALUES
 (1, 1, 1, '24 de Diciembre');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cuartos`
+--
+
+CREATE TABLE IF NOT EXISTS `cuartos` (
+  `ID_CUARTO` int(11) NOT NULL AUTO_INCREMENT,
+  `CUARTO` int(11) NOT NULL,
+  `ID_AREA` int(11) NOT NULL,
+  `ESTADO` int(11) DEFAULT '0',
+  PRIMARY KEY (`ID_CUARTO`),
+  KEY `ID_AREA` (`ID_AREA`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `cuartos`
+--
+
+INSERT INTO `cuartos` (`ID_CUARTO`, `CUARTO`, `ID_AREA`, `ESTADO`) VALUES
+(1, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -279,7 +316,7 @@ CREATE TABLE IF NOT EXISTS `pacientes` (
   KEY `ID_PROVINCIA` (`ID_PROVINCIA`),
   KEY `ID_DISTRITO` (`ID_DISTRITO`),
   KEY `ID_CORREGIMIENTO` (`ID_CORREGIMIENTO`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `pacientes`
@@ -306,7 +343,8 @@ INSERT INTO `pacientes` (`ID_PACIENTE`, `ID_AREA`, `ID_PROVINCIA`, `ID_DISTRITO`
 (18, 1, 1, 1, 1, '3', '3', '3', '3', '3', '3', '3', '3', 3, '1995-01-01', '3', 'M', 'B NEG.', '3', NULL, '3', '3', 3, 0, '2020-05-22'),
 (19, 1, 1, 1, 1, '6', '6', '6', '6', '6', '6', '6', '6', 6, '1995-01-01', '6', 'F', 'A NEG.', '6', NULL, '6', '6', 6, 0, '2020-05-22'),
 (20, 2, 1, 3, 1, 'Sergio', '', 'Nelson', '', '1', '1', '1', 'la abuela', 1, '1995-01-28', '1', 'M', 'A POS.', '64', NULL, 'cerro pelado', '1', 1, 0, '2020-05-23'),
-(21, 2, 1, 2, 1, 'Guachimingo', 'Tercero', 'Gato', 'Mentecato', 'No tiene', 'No tiene procedencia', '8-796-2481', 'La abuela', 28, '1995-01-01', '8-796-2481', 'M', 'O NEG.', '6851-7784', NULL, 'No tiene barrio', '8', 10, 0, '2020-05-26');
+(21, 2, 1, 2, 1, 'Guachimingo', 'Tercero', 'Gato', 'Mentecato', 'No tiene', 'No tiene procedencia', '8-796-2481', 'La abuela', 28, '1995-01-01', '8-796-2481', 'M', 'O NEG.', '6851-7784', NULL, 'No tiene barrio', '8', 10, 0, '2020-05-26'),
+(22, 1, 1, 1, 1, 'Madruga', 'Madruga', 'Madruga', 'Madruga', 'Madruga', 'Madruga', 'Madruga', 'Madruga', 5, '1995-01-01', 'Madruga', 'M', 'A POS.', 'Madruga', NULL, 'Madruga', 'Madruga', 5, 0, '2020-06-13');
 
 -- --------------------------------------------------------
 
@@ -423,6 +461,12 @@ INSERT INTO `usuarios` (`ID_USUARIO`, `ID_ROL`, `NOMBRE`, `APELLIDO`, `CORREO`, 
 --
 
 --
+-- Constraints for table `camas`
+--
+ALTER TABLE `camas`
+  ADD CONSTRAINT `camas_ibfk_1` FOREIGN KEY (`ID_CUARTO`) REFERENCES `cuartos` (`ID_CUARTO`);
+
+--
 -- Constraints for table `consultas`
 --
 ALTER TABLE `consultas`
@@ -435,6 +479,12 @@ ALTER TABLE `consultas`
 ALTER TABLE `corregimientos`
   ADD CONSTRAINT `corregimientos_ibfk_1` FOREIGN KEY (`ID_PROVINCIA`) REFERENCES `provincias` (`ID_PROVINCIA`),
   ADD CONSTRAINT `corregimientos_ibfk_2` FOREIGN KEY (`ID_DISTRITO`) REFERENCES `distritos` (`ID_DISTRITO`);
+
+--
+-- Constraints for table `cuartos`
+--
+ALTER TABLE `cuartos`
+  ADD CONSTRAINT `cuartos_ibfk_1` FOREIGN KEY (`ID_AREA`) REFERENCES `areas` (`ID_AREA`);
 
 --
 -- Constraints for table `dietas`

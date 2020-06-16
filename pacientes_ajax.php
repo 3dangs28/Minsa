@@ -1,107 +1,59 @@
-<?php
  
-require_once("conn/conexion.php");
-		
-	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
-	if($action == 'ajax'){
-	include 'pagination.php'; //incluir el archivo de paginación
-	
-		//Cuenta el número total de filas de la tabla*/
-		$count_query   = mysqli_query($con,"SELECT count(*) AS numrows FROM PACIENTES");
-		
 
-		if ($row= mysqli_fetch_array($count_query)){$numrows = $row['numrows'];}
+ <div id="jsGrid1"></div>
 
-		$reload = 'index.php';
-		//consulta principal para recuperar los datos
-        $sql ='SELECT * FROM PACIENTES ORDER BY ID_PACIENTE ASC';
-		$query = mysqli_query($con,$sql);
-// sacar el estado para validar la vista de ingreso
 
-		if ($numrows>0){
-			?>
-		<table ID="example1" class="table table-bordered">
-			  <thead>
-				<tr>
-	    <th>#</th>
-		<th>Enf.</th>
-        <th>Nombre</th>
-		<th>Apellido</th>
-        <th>Cédula</th>
-        <th>Unidad</th>
-        <th>Cuarto</th>
-		<th>Cama</th>
-		<th>Acciones</th>
-				</tr>
-			</thead>
-			<tbody>
+ 
+<script>
+$(document).ready(function() {
 
-			<?php
-			while($row = mysqli_fetch_array($query)){
-				?>
-				<tr>
-		
-				<?php	echo '<td><a href="consulta.php?id='.$row['ID_PACIENTE'].'">Ver</a></td>
-		                       <td> <a href="consultaEnf.php?id='.$row['ID_PACIENTE'].'">Enfermera</a></td>'; ?>
-					<td><?php echo $row['NOMBRE1'];?></td>
-					<td><?php echo $row['APELLIDO1'];?></td>
-                    <td><?php echo $row['CEDULA'];?></td>
-                    <td><?php echo $row['TELEFONO'];?></td>
-               
-           
-										<td>
-										<?php  
-										if ($row['ESTADO']==1){
-											echo 'ACTIVO';
-										}
-										else{
-											echo 'INACTIVO';
-										}
-										;?>
-										</td>
-                    <td><?php echo $row['FECHA'];?></td>
-					<td>
-                        <button type="button" class="btn btn-info" data-toggle="modal" 
-						data-target="#dataUpdate" 
-					
-                        data-usr="<?php echo $row['ID_PACIENTE']?>" 
-                        data-cedula="<?php echo $row['CEDULA']?>"
-                        data-nombre1="<?php echo $row['NOMBRE1']?>"
-                        data-nombre2="<?php echo $row['NOMBRE2']?>" 
-                        data-apellido1="<?php echo $row['APELLIDO1']?>"
-                        data-apellido2="<?php echo $row['APELLIDO2']?>"
-						data-gen="<?php echo $row['SEXO']?>"
-              
-					   data-estatus="<?php echo $row['ESTADO']?>"
-                         
-                         ><i class='nav-icon fa fa-pencil'></i></button>
-						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['ID_PACIENTE']?>"  ><i class='nav-icon fa fa-trash' ></i></button>
-					</td>
-				</tr>
-				<?php
-            }
-					
-			?>
-			</tbody>
-		</table>
-	
+   $("#jsGrid1").jsGrid({
 
-			<?php
-			
-		} else {
-			?>
-			<div class="alert alert-warning alert-dismissable">
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              <h4>Aviso!!!</h4> No hay datos para mostrar
-            </div>
-			<?php
-		}
+       height: "auto",
+       width: "100%",
 
-	}
-	mysqli_close($con);
-?>
-  <script>
-  $(function () {
-    $("#example1").DataTable();
+     sorting: true,
+     paging: true,
+     autoload: true,
+     pageSize:10,
+     pageButtonCount:5,
+   
+     deleteConfirm: "Quieres borrar esta locura",
+
+     controller : {
+     loadData: function (filter){
+      // console.log(filter);
+      return $.ajax({
+        type: "GET",
+        url: "data.php",
+        data: filter,
+        dataType: "json"
+                  });
+         }
+ 
+    },
+fields: [
+   { name: "id", type: "text", align: "center", },
+   { name: "Nombre"},
+   { name: "Apellido"},
+   { name: "Cedula"},
+   { name: "Address"}
+],
+
+rowClick : function(args){
+ document.location.href = "consultaEnf.php?id="+args.item['id'];
+},
+
+sortorder: "desc",
+sortname : "id",
+noDataContent : "Sin datos",
+pagerFormat: "Página: {first} {prev} {pages} {next} {last}    {pageIndex} de {pageCount}",
+pagePrevText: "Previo",
+pageNextText: "Siguiente",
+pageFirstText: "Primero",
+pageLastText: "Último"
+  
+   });
+
   });
 </script>

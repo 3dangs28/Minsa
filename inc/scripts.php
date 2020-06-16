@@ -17,5 +17,10 @@
 <script src="dist/js/pages/dashboard3.js"></script>
 <script src="plugins/chart.js/Chart.min.js"></script>
 
+<!-- jsGrid -->
+
+<script src="plugins/jsgrid/jsgrid.min.js"></script>
+
+
 
 

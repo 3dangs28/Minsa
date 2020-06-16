@@ -7,13 +7,22 @@ require_once("conn/conexion.php");
 	include 'pagination.php'; //incluir el archivo de paginación
 	
 		//Cuenta el número total de filas de la tabla*/
-		$count_query   = mysqli_query($con,"SELECT count(*) AS numrows FROM SECCIONES");
+		$count_query   = mysqli_query($con,"SELECT count(*) AS numrows FROM CUARTOS");
 
 		if ($row= mysqli_fetch_array($count_query)){$numrows = $row['numrows'];}
 
 		$reload = 'index.php';
 		//consulta principal para recuperar los datos
-		$query = mysqli_query($con,"SELECT ID_SECCION,SECCION FROM SECCIONES  order by ID_SECCION");
+
+
+
+$sql = 'SELECT a.ID_CUARTO, a.ID_AREA, b.AREA, a.ESTADO
+from
+CUARTOS a, AREAS b
+where
+a.ID_AREA = b.ID_AREA';
+
+		$query = mysqli_query($con,$sql);
 		
 		if ($numrows>0){
 		
@@ -21,10 +30,10 @@ require_once("conn/conexion.php");
 		<table ID="example1" class="table table-bordered">
 			  <thead>
 				<tr>
-				<th>Código</th>
-                <th>Nombre</th>
-		        <th>Acción</th>
-			
+				<th>Área</th>
+                <th>Cuarto</th>
+				<th>Estado</th>
+		        <th>Acciones</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -33,16 +42,13 @@ require_once("conn/conexion.php");
 			while($row = mysqli_fetch_array($query)){
 				?>
 				<tr>
-					<td><?php echo $row['ID_SECCION'];?></td>
-					<td><?php echo $row['SECCION'];?></td>
+			    	<td><?php echo $row['AREA'];?></td>
+					<td><?php echo $row['ID_CUARTO'];?></td>
+					<td><?php echo $row['ESTADO'];?></td>
+					
 					<td>
-
-					<a href=""  data-toggle="modal" data-target="#dataUpdate" data-id="<?php echo $row['ID_SECCION']?>" data-aplicacion="<?php echo $row['SECCION']?>"  >
-					<i class='nav-icon fa fa-pencil'></i> </a>
-					
-					<a href=""   data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['ID_SECCION']?>"  >
-					<i class='nav-icon fa fa-trash' ></i> </a>
-					
+						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#dataUpdate" data-id="<?php echo $row['ID_CUARTO']?>" data-aplicacion="<?php echo $row['ESTADO']?>"  ><i class='nav-icon fa fa-pencil'></i> </button>
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['ID_CUARTO']?>"  ><i class='nav-icon fa fa-trash' ></i></button>
 					</td>
 				</tr>
 				<?php

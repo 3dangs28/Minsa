@@ -252,6 +252,27 @@ $.post("pacientes/agregar.php", {
 
 </div>
 <!-- /.form-group -->
+</div>
+<!-- /.col -->
+
+
+<div class="col-md-6">
+
+<div class="form-group">
+<label for="lalo"  class="control-label">Religión</label>
+<input type="text" class="form-control" id="reli" name="reli" placeholder="Religión" required autocomplete="off" >
+
+</div>
+<!-- /.form-group -->
+</div>
+<!-- /.col -->
+
+
+</div>
+ <!-- /.row -->
+
+ <div class="row">
+ <div class="col-md-6">
 
 <div class="form-group">
 <label for="lalo"  class="control-label">Teléfono</label>
@@ -261,11 +282,11 @@ $.post("pacientes/agregar.php", {
     
 </div>
 <!-- /.col -->
-
-
-
 </div>
  <!-- /.row -->
+
+
+
 
 
  <hr>

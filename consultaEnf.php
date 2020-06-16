@@ -3,9 +3,7 @@
 
   <body>
 	<?php include("inc/header.php"); ?>
-  <?php include("inc/menu.php"); 
-
-  ?>
+  <?php include("inc/menu.php"); ?>
 
 
 
@@ -88,12 +86,12 @@ $datos = array();
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Registro</h1>
+            <h3>Registro</h3>
           </div>
 
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-            <h1><?php echo "Paciente: ".$datos[0]." ".$datos[1]." ".$datos[4]; ?></h1>
+            <h5><?php echo "Paciente: ".$datos[0]." ".$datos[1]." ".$datos[4]; ?></h5>
              
             </ol>
           </div>

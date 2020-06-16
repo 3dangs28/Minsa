@@ -3,6 +3,9 @@
   <body>
 	<?php include("inc/header.php"); ?>
 	<?php include("inc/menu.php"); ?>
+  <?php include("modalCuartos/modal_agregar.php");?>
+  <?php include("modalCuartos/modal_modificar.php");?>
+  <?php include("modalCuartos/modal_eliminar.php");?>
 	
 	 
 	<div id="loader" class="text-center"> <img src="giphy.gif"></div>
@@ -13,9 +16,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Pacientes</h1>
+            <h1>Cuartos</h1>
           </div>
-    
+          <div class="col-sm-6">
+					<h3 class='text-right'>		
+				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#dataRegister"><i class='glyphicon glyphicon-plus'></i> Agregar</button>
+			</h3>
+          </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -28,7 +35,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Listado de pacientes</h3>
+              <h3 class="card-title">Listado de Cuartos</h3>
             </div>
             <!-- /.card-header -->
             <div id="loader" class="card-body">
@@ -54,7 +61,7 @@
   <?php include("inc/scripts.php"); ?>
 
 
-	<script src="js/pacientes.js"></script>
+	<script src="js/cuartos.js"></script>
 	<script>
 		$(document).ready(function(){
 			load(1);

@@ -32,6 +32,9 @@
 		else if (empty($_POST['tsangre'])){
 			$errors[] = "Tipo de sangre vacío";
 		} 
+		else if (empty($_POST['reli'])){
+			$errors[] = "Religión vacío";
+		} 
 		else if (empty($_POST['tel'])){
 			$errors[] = "Teléfono vacío";
 		} 
@@ -80,6 +83,7 @@
 			!empty($_POST['edad']) && 
 			!empty($_POST['fecha']) && 
 			!empty($_POST['gen']) && 
+			!empty($_POST['reli']) && 
 			!empty($_POST['tsangre']) && 
 			!empty($_POST['tel']) && 
 			!empty($_POST['diag']) && 
@@ -111,6 +115,7 @@
 		$fecha=mysqli_real_escape_string($con,(strip_tags($_POST["fecha"],ENT_QUOTES)));
 		$ced=mysqli_real_escape_string($con,(strip_tags($_POST["ced"],ENT_QUOTES)));
 		$gen=mysqli_real_escape_string($con,(strip_tags($_POST["gen"],ENT_QUOTES)));
+		$re=mysqli_real_escape_string($con,(strip_tags($_POST["reli"],ENT_QUOTES)));
 		$ts=mysqli_real_escape_string($con,(strip_tags($_POST["tsangre"],ENT_QUOTES)));
 		$tel=mysqli_real_escape_string($con,(strip_tags($_POST["tel"],ENT_QUOTES)));
 		$pro=mysqli_real_escape_string($con,(strip_tags($_POST["pro"],ENT_QUOTES)));
@@ -122,8 +127,8 @@
 		$u=mysqli_real_escape_string($con,(strip_tags($_POST["unidad"],ENT_QUOTES)));
 
 
-		$sql="INSERT INTO PACIENTES  (ID_AREA, ID_PROVINCIA, ID_DISTRITO, ID_CORREGIMIENTO, NOMBRE1, NOMBRE2, APELLIDO1, APELLIDO2, DIAGNOSTICO, PROCEDENCIA,SEGURO, RESPONSABLES, EDAD, FECHA_NAC, CEDULA, SEXO, TIPAJE, TELEFONO,BARRIO, CALLE, NUMCASA, FECHA)
-		 VALUES ('".$u."','".$pro."','".$dis."','".$corre."','".$n1."','".$n2."','".$a1."','".$a2."','".$diag."','".$proce."','".$seguro."','".$resp."','".$edad."','".$fecha."','".$ced."','".$gen."','".$ts."','".$tel."','".$barrio."','".$calle."','".$casa."',SYSDATE())";
+		$sql="INSERT INTO PACIENTES  (ID_AREA, ID_PROVINCIA, ID_DISTRITO, ID_CORREGIMIENTO, NOMBRE1, NOMBRE2, APELLIDO1, APELLIDO2, DIAGNOSTICO, PROCEDENCIA,SEGURO, RESPONSABLES, EDAD, FECHA_NAC, CEDULA, SEXO, TIPAJE,RELIGION, TELEFONO,BARRIO, CALLE, NUMCASA, FECHA)
+		 VALUES ('".$u."','".$pro."','".$dis."','".$corre."','".$n1."','".$n2."','".$a1."','".$a2."','".$diag."','".$proce."','".$seguro."','".$resp."','".$edad."','".$fecha."','".$ced."','".$gen."','".$ts."','".$re."','".$tel."','".$barrio."','".$calle."','".$casa."',SYSDATE())";
 		$query_update = mysqli_query($con,$sql);
 			if ($query_update){
 				$messages[] = "Los datos han sido guardados satisfactoriamente.";

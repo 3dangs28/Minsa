@@ -23,7 +23,7 @@ require_once("conn/conexion.php");
 				<tr>
 				<th>Código</th>
                 <th>Nombre</th>
-		       <th>Acciones</th>
+		       <th>Acción</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -35,8 +35,11 @@ require_once("conn/conexion.php");
 					<td><?php echo $row['ID_ROL'];?></td>
 					<td><?php echo $row['ROL'];?></td>
 					<td>
-						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#dataUpdate" data-id="<?php echo $row['ID_ROL']?>" data-rol="<?php echo $row['ROL']?>"  ><i class='nav-icon fa fa-pencil'></i> </button>
-						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['ID_ROL']?>"  ><i class='nav-icon fa fa-trash' ></i></button>
+					<a href=""  data-toggle="modal" data-target="#dataUpdate" data-id="<?php echo $row['ID_ROL']?>" data-rol="<?php echo $row['ROL']?>"  >
+					<i class='nav-icon fa fa-pencil'></i> </a>
+					<a href=""  data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['ID_ROL']?>"   >
+					<i class='nav-icon fa fa-trash' ></i> </a>
+						
 					</td>
 				</tr>
 				<?php
