@@ -61,7 +61,7 @@ $.ajax({
 				<th>Área</th>
 				<th>Cuarto</th>
                 <th>Cama</th>
-				<th>Estado</th>KS
+				<th>Estado</th>
 		        <th>Acciones</th>
 				</tr>
 			</thead>

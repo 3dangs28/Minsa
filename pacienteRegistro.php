@@ -5,6 +5,102 @@
 	<?php include("inc/menu.php"); ?>
 
   <script type="text/javascript" language="javascript">
+    function procesar_data_cuarto() {
+        var cod = document.getElementById('unidad').value;
+        var cuarto = document.getElementById('cuarto').value;
+        //carga la sedess
+        $.post("sin/carga_cuartos.php", {
+                cod: cod,
+                c: cuarto,
+                t: '2'
+            },
+            function(data2) {
+                //$("#recargado").html(data2);
+                procesar_cama(data2);
+                console.log(data2);
+            });
+    }
+
+    function procesar_cama(jsonResponse) {
+        var libro = jQuery.parseJSON(jsonResponse); // Objeto JavaScript.
+        var libroCant = jQuery.parseJSON(jsonResponse).length;
+        var j = 1;
+        var x = document.getElementById("cama");
+        removeOptions(x);
+
+        var option = document.createElement("option");
+        option.text = "";
+        option.text = "-----";
+        option.value = "%";
+        x.add(option);
+
+        for (i = 0; i < libroCant; i++) { // Datos del Libro insertados en la Tabla del Popup.
+            var option = document.createElement("option");
+            option.text = libro[i].cama;
+            option.value = libro[i].id;
+            x.add(option);
+        }
+    }
+
+    function removeOptions(selectbox) {
+        var i;
+        for (i = selectbox.options.length - 1; i >= 0; i--) {
+            selectbox.remove(i);
+        }
+    }
+    </script>
+
+
+
+
+  <script type="text/javascript" language="javascript">
+    function procesar_datos() {
+        var cod = document.getElementById('unidad').value;
+        //carga la sedess
+        console.log(cod);
+        $.post("sin/carga_cuartos.php", {
+                cod: cod,
+                c: 'nada',
+                t: '1'
+            },
+            function(data2) {
+                //$("#recargado").html(data2);
+                procesar_cuarto(data2);
+                console.log(data2);
+            });
+    }
+
+    function procesar_cuarto(jsonResponse) {
+        var libro = jQuery.parseJSON(jsonResponse); // Objeto JavaScript.
+        var libroCant = jQuery.parseJSON(jsonResponse).length;
+        var j = 1;
+        var x = document.getElementById("cuarto");
+        removeOptions(x);
+
+        var option = document.createElement("option");
+        option.text = "";
+        option.text = "-----";
+        option.value = "%";
+        x.add(option);
+
+        for (i = 0; i < libroCant; i++) { // Datos del Libro insertados en la Tabla del Popup.
+            var option = document.createElement("option");
+            option.text = libro[i].cuarto;
+            option.value = libro[i].id;
+            x.add(option);
+        }
+    }
+
+    function removeOptions(selectbox) {
+        var i;
+        for (i = selectbox.options.length - 1; i >= 0; i--) {
+            selectbox.remove(i);
+        }
+    }
+    </script>
+
+
+  <script type="text/javascript" language="javascript">
 
 
 
@@ -458,8 +554,8 @@ $.post("pacientes/agregar.php", {
                     $query = mysqli_query($con,"SELECT * FROM AREAS");
                  ?>
         
-                <select class="form-control" id="unidad" name="unidad" required>
-
+                <select class="form-control" id="unidad" name="unidad" onchange="procesar_datos();" required>
+                <option value="%">------</option>
                 <?php  while($row = mysqli_fetch_array($query)){  ?>    
                <?php     echo "<option value=".$row['ID_AREA'].">".$row['AREA']."</option>";
                 }
@@ -481,9 +577,31 @@ $.post("pacientes/agregar.php", {
             </div>
             <!-- /.row -->
 
-         
+
+            <div class="col-12 col-sm-6">
+             <div class="form-row">           
+                 <label for="inputState">Cuarto</label>
+                      <select class="form-control " id="cuarto" name="cuarto" onchange="procesar_data_cuarto();" >
+                              <option value="%">------</option>
+                      </select>
+                                
+              </div><!-- fin de form-row -->
+             </div>
+
+
           </div>
           <!-- /.card-body -->
+
+
+          <div class="row">
+            <div class="col-12 col-sm-6">
+            <label for="inputState">Cama</label>
+                      <select class="form-control " id="cama" name="cama">
+                              <option value="%">------</option>
+                      </select>
+            </div>
+         </div>
+
 
     
         </div>
