@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2020 at 03:12 AM
+-- Generation Time: Jun 21, 2020 at 07:44 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -39,8 +39,8 @@ CREATE TABLE IF NOT EXISTS `areas` (
 
 INSERT INTO `areas` (`ID_AREA`, `AREA`, `ESTADO`) VALUES
 (1, 'Unidad de intensivos', 1),
-(2, 'Unidad de recuperación', 1),
-(3, 'Iguachin3', 1);
+(2, 'Sala 1', 1),
+(3, 'Sala 2', 1);
 
 -- --------------------------------------------------------
 
@@ -49,12 +49,20 @@ INSERT INTO `areas` (`ID_AREA`, `AREA`, `ESTADO`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `camas` (
-  `ID_CAMA` varchar(1) COLLATE utf8_spanish_ci NOT NULL,
+  `ID_CAMA` int(11) NOT NULL AUTO_INCREMENT,
+  `CAMA` int(11) NOT NULL,
   `ID_CUARTO` int(11) NOT NULL,
-  `ESTADO` int(11) DEFAULT '0',
+  `ESTADO` varchar(1) COLLATE utf8_spanish_ci DEFAULT 'a',
   PRIMARY KEY (`ID_CAMA`),
   KEY `ID_CUARTO` (`ID_CUARTO`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `camas`
+--
+
+INSERT INTO `camas` (`ID_CAMA`, `CAMA`, `ID_CUARTO`, `ESTADO`) VALUES
+(1, 1, 1, 'a');
 
 -- --------------------------------------------------------
 
@@ -122,17 +130,18 @@ CREATE TABLE IF NOT EXISTS `cuartos` (
   `ID_CUARTO` int(11) NOT NULL AUTO_INCREMENT,
   `CUARTO` int(11) NOT NULL,
   `ID_AREA` int(11) NOT NULL,
-  `ESTADO` int(11) DEFAULT '0',
+  `ESTADO` varchar(1) COLLATE utf8_spanish_ci DEFAULT 'a',
   PRIMARY KEY (`ID_CUARTO`),
   KEY `ID_AREA` (`ID_AREA`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `cuartos`
 --
 
 INSERT INTO `cuartos` (`ID_CUARTO`, `CUARTO`, `ID_AREA`, `ESTADO`) VALUES
-(1, 0, 1, 0);
+(1, 1, 2, 'a'),
+(2, 1, 3, 'a');
 
 -- --------------------------------------------------------
 
