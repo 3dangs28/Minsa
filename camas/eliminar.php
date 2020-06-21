@@ -1,56 +1,26 @@
 <?php
-	# conectare la base de datos
 
+	# conectare la base de datos
 	require_once("../conn/conexion.php");
 
 	/*Inicia validacion del lado del servidor*/
 	 if (empty($_POST['id'])){
-			$errors[] = "Nombre cuarto vacío";
-		} 
-		else if (empty($_POST['area'])){
-			$errors[] = "area";
-		} 
-		
-		else if (
-			!empty($_POST['id'])   &&
-			!empty($_POST['area'])  
+			$errors[] = "ID vacío";
+		}   else if (
+			!empty($_POST['id']) 
+			 
 		){
 
 		// escaping, additionally removing everything that could be (html/javascript-) code
+		$id=intval($_POST['id']);
 
-		$id=$_POST["id"];
-		$area=$_POST["area"];
-//------------------------
-
-$aux =0;
-
-$sql2="select CUARTO from CUARTOS  where CUARTO='".$id."' and ID_AREA='".$area."'";
-$result = mysqli_query($con,$sql2);
-if (mysqli_num_rows($result) > 0){
-	//si ya existe ese cuarto
-   $aux = 1;
-}
-else{
-	//si no existe
-	$aux =0;
-}
-
-
-//-----
-if ($aux==0){
-	$sql="INSERT INTO CUARTOS (CUARTO,ID_AREA) VALUES ('".$id."','".$area."')";
-		$query_update = mysqli_query($con,$sql);
-			if ($query_update){
-				$messages[] = "Los datos han sido guardados satisfactoriamente.";
+		$sql="DELETE FROM CAMAS WHERE ID_CAMA='".$id."'";
+		$query_delete = mysqli_query($con,$sql);
+			if ($query_delete){
+				$messages[] = "Los datos han sido eliminados satisfactoriamente.";
 			} else{
-				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
+				$errors []= "Lo siento algo ha salido mal intenta nuevamente, puede que este utilizandose en registros de pacientes.".mysqli_error($con);
 			}
-}else{
-	$errors []= "Ya existe cuarto en unidad.";
-}
-	
-
-
 		} else {
 			$errors []= "Error desconocido.";
 		}
@@ -83,6 +53,5 @@ if ($aux==0){
 				</div>
 				<?php
 			}
-
 
 ?>

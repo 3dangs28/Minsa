@@ -5,26 +5,26 @@
 
 	/*Inicia validacion del lado del servidor*/
 	 if (empty($_POST['id'])){
-			$errors[] = "Nombre cuarto vacío";
+			$errors[] = "Nombre cama vacío";
 		} 
-		else if (empty($_POST['area'])){
-			$errors[] = "area";
+		else if (empty($_POST['cuarto'])){
+			$errors[] = "Cuarto vacio";
 		} 
 		
 		else if (
 			!empty($_POST['id'])   &&
-			!empty($_POST['area'])  
+			!empty($_POST['cuarto'])  
 		){
 
 		// escaping, additionally removing everything that could be (html/javascript-) code
 
 		$id=$_POST["id"];
-		$area=$_POST["area"];
+		$cuarto=$_POST["cuarto"];
 //------------------------
 
 $aux =0;
 
-$sql2="select CUARTO from CUARTOS  where CUARTO='".$id."' and ID_AREA='".$area."'";
+$sql2="select ID_CAMA from CAMAS  where CAMA='".$id."' and ID_CUARTO='".$cuarto."'";
 $result = mysqli_query($con,$sql2);
 if (mysqli_num_rows($result) > 0){
 	//si ya existe ese cuarto
@@ -38,7 +38,7 @@ else{
 
 //-----
 if ($aux==0){
-	$sql="INSERT INTO CUARTOS (CUARTO,ID_AREA) VALUES ('".$id."','".$area."')";
+	$sql="INSERT INTO CAMAS (CAMA,ID_CUARTO) VALUES ('".$id."','".$cuarto."')";
 		$query_update = mysqli_query($con,$sql);
 			if ($query_update){
 				$messages[] = "Los datos han sido guardados satisfactoriamente.";
@@ -46,7 +46,7 @@ if ($aux==0){
 				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
 			}
 }else{
-	$errors []= "Ya existe cuarto en unidad.";
+	$errors []= "Ya existe la cama en unidad.";
 }
 	
 

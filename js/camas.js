@@ -2,7 +2,7 @@ function load(page){
     var parametros = {"action":"ajax","page":page};
     $("#loader").fadeIn('slow');
     $.ajax({
-        url:'cuartos_ajax.php',
+        url:'camas_ajax.php',
         data: parametros,
          beforeSend: function(objeto){
         $("#loader").html("<img src='giphy.gif'>");
@@ -43,7 +43,7 @@ $( "#actualidarDatos" ).submit(function( event ) {
     var parametros = $(this).serialize();
          $.ajax({
                 type: "POST",
-                url: "cuartos/modificar.php",
+                url: "camas/modificar.php",
                 data: parametros,
                  beforeSend: function(objeto){
                     $("#datos_ajax").html("Mensaje: Cargando...");
@@ -61,7 +61,7 @@ $( "#actualidarDatos" ).submit(function( event ) {
     var parametros = $(this).serialize();
          $.ajax({
                 type: "POST",
-                url: "cuartos/agregar.php",
+                url: "camas/agregar.php",
                 data: parametros,
                  beforeSend: function(objeto){
                     $("#datos_ajax_register").html("Mensaje: Cargando...");
@@ -79,7 +79,7 @@ $( "#actualidarDatos" ).submit(function( event ) {
     var parametros = $(this).serialize();
          $.ajax({
                 type: "POST",
-                url: "cuartos/eliminar.php",
+                url: "camas/eliminar.php",
                 data: parametros,
                  beforeSend: function(objeto){
                     $(".datos_ajax_delete").html("Mensaje: Cargando...");

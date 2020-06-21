@@ -5,7 +5,7 @@
       
 
     <div class="modal-header">
-                    <h5 class="modal-title">Formulario para agregar Cuartos</h5>
+                    <h5 class="modal-title">Formulario para agregar Camas</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -16,16 +16,24 @@
       <div id="datos_ajax_register"></div>
 
       <div class="form-group">
-                							
+      <label for="perfa" class="control-label">Cuarto:</label>       							
       <?php require_once("conn/conexion.php");
-                                 $query = mysqli_query($con,"SELECT ID_AREA,AREA FROM AREAS WHERE ESTADO =1");
+//$sql = "select * from CUARTOS";
+    $sql = "SELECT a.ID_CUARTO, a.CUARTO, b.AREA 
+    FROM CUARTOS a, AREAS b  
+    where  a.ID_AREA = b.ID_AREA AND a.ESTADO = 'a'";
+     
+     
+                                 $query = mysqli_query($con,$sql);
                               ?>
                      
-                             <select class="form-control" id="area" name="area" required>
-                             <option value="">Seleccione área</option>
+                             <select class="form-control" id="cuarto" name="cuarto" required>
+                             <option value="">Seleccione cuarto</option>
                      
                              <?php  while($row = mysqli_fetch_array($query)){  ?>    
-                             <?php     echo "<option value=".$row['ID_AREA'].">".$row['AREA']."</option>";
+                             
+                             <?php  // echo "<option value=".$row['ID_CUARTO'].">".$row['CUARTO']."</option>";
+                              echo "<option value=".$row['ID_CUARTO'].">"."Cuarto: ".$row['CUARTO']." en ".$row['AREA']."</option>";
                              }
                              mysqli_close($con);
                              ?>
@@ -38,9 +46,9 @@
 
 
       <div class="form-group">
-            <label for="perfa" class="control-label">Nombre del cuarto:</label>
+            <label for="perfa" class="control-label">Nombre de cama:</label>
            
-            <input type="number" min="1" pattern="^[0-9]+" class="form-control" id="id" name="id" placeholder="número de cuarto" required autocomplete="off" >
+            <input type="number" min="1" pattern="^[0-9]+" class="form-control" id="id" name="id" placeholder="número de cama" required autocomplete="off" >
 		  </div>
 	 
 

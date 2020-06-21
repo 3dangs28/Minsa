@@ -82,6 +82,13 @@
                   </a>
                 </li>
                 <li class="nav-item">
+                  <a href="camas.php" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                    <p>Camas</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
                   <a href="medicos.php" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                     <p>Médicos</p>

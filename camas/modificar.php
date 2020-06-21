@@ -1,28 +1,41 @@
 <?php
-	# conectare la base de datos
 
-	require_once("../conn/conexion.php");
+
+require_once("../conn/conexion.php");
 
 	/*Inicia validacion del lado del servidor*/
-	 if (empty($_POST['id'])){
-			$errors[] = "Nombre cuarto vacío";
+	if (empty($_POST['id'])) {
+           $errors[] = "ID vacío";
+        } else if (empty($_POST['cuarto'])){
+			$errors[] = "Cuarto vacío";
+
 		} 
-		else if (empty($_POST['area'])){
-			$errors[] = "area";
+		else if (empty($_POST['area2'])){
+			$errors[] = "Área vacío";
+
 		} 
-		
+		else if (empty($_POST['estado'])){
+			$errors[] = "Estado vacío";
+
+		} 
 		else if (
-			!empty($_POST['id'])   &&
-			!empty($_POST['area'])  
-		){
+			!empty($_POST['id']) &&
+			!empty($_POST['cuarto']) &&
+			!empty($_POST['area2']) &&
+			!empty($_POST['estado']) 
+			
+		){ 
 
 		// escaping, additionally removing everything that could be (html/javascript-) code
+	
+		$id=intval($_POST['id']);
+		$cuarto=mysqli_real_escape_string($con,(strip_tags($_POST["cuarto"],ENT_QUOTES)));
+		$area=mysqli_real_escape_string($con,(strip_tags($_POST["area2"],ENT_QUOTES)));
+		$estado=mysqli_real_escape_string($con,(strip_tags($_POST["estado"],ENT_QUOTES)));
 
-		$id=$_POST["id"];
-		$area=$_POST["area"];
-//------------------------
 
-$aux =0;
+
+		$aux =0;
 
 $sql2="select CUARTO from CUARTOS  where CUARTO='".$id."' and ID_AREA='".$area."'";
 $result = mysqli_query($con,$sql2);
@@ -35,25 +48,27 @@ else{
 	$aux =0;
 }
 
-
-//-----
+	//-----
 if ($aux==0){
-	$sql="INSERT INTO CUARTOS (CUARTO,ID_AREA) VALUES ('".$id."','".$area."')";
+		$sql="UPDATE CUARTOS SET CUARTO='".$cuarto."',ID_AREA='".$area."',ESTADO='".$estado."'	WHERE ID_CUARTO='".$id."'";
 		$query_update = mysqli_query($con,$sql);
 			if ($query_update){
-				$messages[] = "Los datos han sido guardados satisfactoriamente.";
+				$messages[] = "Los datos han sido actualizados satisfactoriamente.";
 			} else{
 				$errors []= "Lo siento algo ha salido mal intenta nuevamente.".mysqli_error($con);
 			}
-}else{
-	$errors []= "Ya existe cuarto en unidad.";
-}
-	
+		}else{
+			$errors []= "Ya existe la cama en la unidad.";
+		}
+			
 
 
 		} else {
 			$errors []= "Error desconocido.";
 		}
+
+
+
 		
 		if (isset($errors)){
 			
@@ -83,6 +98,5 @@ if ($aux==0){
 				</div>
 				<?php
 			}
-
 
 ?>
