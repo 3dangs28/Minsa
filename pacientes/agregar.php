@@ -72,6 +72,14 @@
 		else if (empty($_POST['unidad'])){
 			$errors[] = "Unidad vacío";
 		} 
+		else if (empty($_POST['cuarto'])){
+			$errors[] = "Cuarto vacío";
+		} 
+
+		else if (empty($_POST['unidad'])){
+			$errors[] = "Cama vacío";
+		} 
+
 
 
 		else if (
@@ -96,6 +104,8 @@
 			!empty($_POST['barrio']) && 
 			!empty($_POST['calle']) &&  
 			!empty($_POST['casa']) &&  
+			!empty($_POST['cuarto']) &&  
+			!empty($_POST['cama']) &&  
 			!empty($_POST['unidad'])
 			
 		){
@@ -125,10 +135,18 @@
 		$calle=mysqli_real_escape_string($con,(strip_tags($_POST["calle"],ENT_QUOTES)));
 		$casa=mysqli_real_escape_string($con,(strip_tags($_POST["casa"],ENT_QUOTES)));
 		$u=mysqli_real_escape_string($con,(strip_tags($_POST["unidad"],ENT_QUOTES)));
+		$cuarto=mysqli_real_escape_string($con,(strip_tags($_POST["cuarto"],ENT_QUOTES)));
+		$cama=mysqli_real_escape_string($con,(strip_tags($_POST["cama"],ENT_QUOTES)));
 
 
-		$sql="INSERT INTO PACIENTES  (ID_AREA, ID_PROVINCIA, ID_DISTRITO, ID_CORREGIMIENTO, NOMBRE1, NOMBRE2, APELLIDO1, APELLIDO2, DIAGNOSTICO, PROCEDENCIA,SEGURO, RESPONSABLES, EDAD, FECHA_NAC, CEDULA, SEXO, TIPAJE,RELIGION, TELEFONO,BARRIO, CALLE, NUMCASA, FECHA)
-		 VALUES ('".$u."','".$pro."','".$dis."','".$corre."','".$n1."','".$n2."','".$a1."','".$a2."','".$diag."','".$proce."','".$seguro."','".$resp."','".$edad."','".$fecha."','".$ced."','".$gen."','".$ts."','".$re."','".$tel."','".$barrio."','".$calle."','".$casa."',SYSDATE())";
+
+		$sql="INSERT INTO PACIENTES  (ID_AREA,ID_CUARTO,ID_CAMA, ID_PROVINCIA, ID_DISTRITO, ID_CORREGIMIENTO, NOMBRE1, NOMBRE2, APELLIDO1, APELLIDO2, DIAGNOSTICO, PROCEDENCIA,SEGURO, RESPONSABLES, EDAD, FECHA_NAC, CEDULA, SEXO, TIPAJE,RELIGION, TELEFONO,BARRIO, CALLE, NUMCASA, FECHA)
+		 VALUES ('".$u."','".$cuarto."','".$cama."','".$pro."','".$dis."','".$corre."','".$n1."','".$n2."','".$a1."','".$a2."','".$diag."','".$proce."','".$seguro."','".$resp."','".$edad."','".$fecha."','".$ced."','".$gen."','".$ts."','".$re."','".$tel."','".$barrio."','".$calle."','".$casa."',SYSDATE())";
+
+$sql2="UPDATE CAMAS SET USO='u'	WHERE ID_CAMA='".$cama."'";
+$query_update2 = mysqli_query($con,$sql2);
+
+
 		$query_update = mysqli_query($con,$sql);
 			if ($query_update){
 				$messages[] = "Los datos han sido guardados satisfactoriamente.";

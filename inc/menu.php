@@ -138,12 +138,20 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pacientes.php" class="nav-link">
+                <a href="pacientesDr.php" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Pacientes</p>
+                  <p>Pacientes Dr.</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="pacientes.php" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>Pacientes Enf.</p>
+                </a>
+              </li>
+
             </ul>
+
           </li>
 
 

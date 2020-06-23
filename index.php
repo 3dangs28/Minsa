@@ -43,10 +43,35 @@
               <span class="info-box-icon bg-info elevation-1"><i class="fa fa-gear"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Atendidos</span>
+
+  <?php 
+  
+$db = new mysqli('localhost', 'root', '', 'minsa');
+$result = $db->query("SELECT count(*) as total from AREAS");
+$row = $result->fetch_row();
+$total= $row[0];
+
+$re = $db->query("SELECT count(*) as total from CAMAS where USO='u'");
+$row1 = $re->fetch_row();
+$camas= $row1[0];
+
+
+$re2 = $db->query("SELECT count(*) as total from CAMAS where USO='l'");
+$row2 = $re2->fetch_row();
+$camasLibres= $row2[0];
+
+$re3 = $db->query("SELECT count(*) as total from PACIENTES");
+$row3 = $re3->fetch_row();
+$pacientes= $row3[0];
+  
+  ?>
+                  
+                     
+                        
+                <span class="info-box-text">Número de salas</span>
                 <span class="info-box-number">
-                  10
-                  <small>%</small>
+                <?php echo $total; ?>
+                <!--    <small>%</small>-->
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -59,8 +84,8 @@
               <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-google-plus"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Medicados</span>
-                <span class="info-box-number">41,410</span>
+                <span class="info-box-text">Camas usadas</span>
+                <span class="info-box-number">    <?php echo $camas; ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -76,8 +101,8 @@
               <span class="info-box-icon bg-success elevation-1"><i class="fa fa-shopping-cart"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Evaluados</span>
-                <span class="info-box-number">760</span>
+                <span class="info-box-text">Camas libres</span>
+                <span class="info-box-number"><?php echo $camasLibres; ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -90,7 +115,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">No. de Pacientes</span>
-                <span class="info-box-number">2,000</span>
+                <span class="info-box-number"><?php echo $pacientes; ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>

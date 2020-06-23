@@ -9,7 +9,7 @@ $t = $_POST['t'];
 $c = $_POST['c'];
 
 if($t=='1'){
-    $query = mysqli_query($con,"SELECT ID_CUARTO,CUARTO FROM CUARTOS WHERE ID_AREA='".$cod."'");
+    $query = mysqli_query($con,"SELECT ID_CUARTO,CUARTO FROM CUARTOS WHERE ESTADO='a' AND ID_AREA='".$cod."'");
             
     $json = '[';
     $first = true;
@@ -25,7 +25,7 @@ if($t=='1'){
 
 if($t=='2'){
    
-    $query2 = mysqli_query($con,"SELECT ID_CAMA,CAMA FROM CAMAS WHERE ID_CUARTO='".$c."'");
+    $query2 = mysqli_query($con,"SELECT ID_CAMA,CAMA FROM CAMAS WHERE USO='l' AND ESTADO='a' AND ID_CUARTO='".$c."'");
             
     $json = '[';
     $first = true;

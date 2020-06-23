@@ -25,7 +25,7 @@ $(document).ready(function() {
       // console.log(filter);
       return $.ajax({
         type: "GET",
-        url: "dataEnf.php",
+        url: "data.php",
         data: filter,
         dataType: "json"
                   });
@@ -47,7 +47,7 @@ fields: [
 
 
 rowClick : function(args){
- document.location.href = "consultaEnf.php?id="+args.item['id'];
+ document.location.href = "consulta.php?id="+args.item['id'];
 },
 
 sortorder: "desc",

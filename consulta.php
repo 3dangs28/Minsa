@@ -83,9 +83,8 @@ $.post("consulta/agregar.php", {
 
             <?php
 
-echo $_SESSION['iduser'];
+//echo $_SESSION['iduser'];
 $usr = $_SESSION['iduser'];
-echo '<br>';
 $id = $_GET['id'];
 
 require_once("conn/conexion.php");
@@ -111,7 +110,7 @@ while($row2 = mysqli_fetch_array($query2))
 }
 
 echo '<br>';
-echo 'cedula: '.$cedula;
+echo 'Médico cédula: '.$cedula;
 
 //-----------------------------------------------------
 $medico = '';
@@ -128,13 +127,11 @@ echo 'Id médico: '.$medico;
 
 
 
-
-
   ?>
 
       <div class="card card-default">
           <div class="card-header">
-            <h3 class="card-title">Datos personales</h3>
+            <h3 class="card-title">Datos personales del paciente</h3>
           </div>
 
           <!-- /.card-header -->

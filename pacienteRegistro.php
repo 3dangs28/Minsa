@@ -135,6 +135,7 @@ document.getElementById('tel').value='';
 document.getElementById('diag').value='';
 document.getElementById('proce').value='';
 document.getElementById('seguro').value='';
+document.getElementById('reli').value='';
 document.getElementById('resp').value='';
 document.getElementById('pro').value='';
 document.getElementById('dis').value='';
@@ -143,6 +144,8 @@ document.getElementById('barrio').value='';
 document.getElementById('calle').value='';
 document.getElementById('casa').value='';
 document.getElementById('unidad').value='';
+document.getElementById('cuarto').value='';
+document.getElementById('cama').value='';
 }
 
 var ced = document.getElementById('ced').value;
@@ -159,6 +162,7 @@ var diag = document.getElementById('diag').value;
 var proce = document.getElementById('proce').value;
 var seguro = document.getElementById('seguro').value;
 var resp = document.getElementById('resp').value;
+var reli = document.getElementById('reli').value;
 var pro = document.getElementById('pro').value;
 var dis = document.getElementById('dis').value;
 var corre = document.getElementById('corre').value;
@@ -166,6 +170,8 @@ var barrio = document.getElementById('barrio').value;
 var calle = document.getElementById('calle').value;
 var casa = document.getElementById('casa').value;
 var unidad = document.getElementById('unidad').value;
+var cuarto = document.getElementById('cuarto').value;
+var cama = document.getElementById('cama').value;
 
 console.log('Éxito!');
 
@@ -184,13 +190,16 @@ $.post("pacientes/agregar.php", {
         proce: proce,
         seguro: seguro,
         resp: resp,
+        reli: reli,
         pro: pro,
         dis: dis,
         corre: corre,
         barrio: barrio,
         calle: calle,
         casa: casa,
-        unidad: unidad
+        unidad: unidad,
+        cuarto: cuarto,
+        cama: cama
     },
     function(data2) {
       $("#mensaje").html(data2);
@@ -535,7 +544,7 @@ $.post("pacientes/agregar.php", {
                   <input type="number" class="form-control" id="casa" name="casa" placeholder="Número de casa" required autocomplete="off" >
                 </div>
             </div>
-
+ 
 
                 </div>
            

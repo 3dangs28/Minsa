@@ -18,7 +18,7 @@
       <div class="form-group">
                 							
       <?php require_once("conn/conexion.php");
-                                 $query = mysqli_query($con,"SELECT ID_AREA,AREA FROM AREAS WHERE ESTADO =1");
+                                 $query = mysqli_query($con,"SELECT ID_AREA,AREA FROM AREAS");
                               ?>
                      
                              <select class="form-control" id="area" name="area" required>
