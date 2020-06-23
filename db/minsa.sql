@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2020 at 07:44 PM
+-- Generation Time: Jun 23, 2020 at 07:36 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -31,16 +31,15 @@ CREATE TABLE IF NOT EXISTS `areas` (
   `AREA` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
   `ESTADO` int(11) DEFAULT '0',
   PRIMARY KEY (`ID_AREA`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `areas`
 --
 
 INSERT INTO `areas` (`ID_AREA`, `AREA`, `ESTADO`) VALUES
-(1, 'Unidad de intensivos', 1),
-(2, 'Sala 1', 1),
-(3, 'Sala 2', 1);
+(1, 'sala 1', 0),
+(2, 'sala 2', 0);
 
 -- --------------------------------------------------------
 
@@ -52,17 +51,21 @@ CREATE TABLE IF NOT EXISTS `camas` (
   `ID_CAMA` int(11) NOT NULL AUTO_INCREMENT,
   `CAMA` int(11) NOT NULL,
   `ID_CUARTO` int(11) NOT NULL,
+  `USO` varchar(1) COLLATE utf8_spanish_ci DEFAULT 'l',
   `ESTADO` varchar(1) COLLATE utf8_spanish_ci DEFAULT 'a',
   PRIMARY KEY (`ID_CAMA`),
   KEY `ID_CUARTO` (`ID_CUARTO`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `camas`
 --
 
-INSERT INTO `camas` (`ID_CAMA`, `CAMA`, `ID_CUARTO`, `ESTADO`) VALUES
-(1, 1, 1, 'a');
+INSERT INTO `camas` (`ID_CAMA`, `CAMA`, `ID_CUARTO`, `USO`, `ESTADO`) VALUES
+(1, 1, 1, 'l', 'a'),
+(2, 2, 1, 'l', 'a'),
+(3, 3, 1, 'u', 'a'),
+(4, 4, 1, 'l', 'a');
 
 -- --------------------------------------------------------
 
@@ -87,15 +90,14 @@ CREATE TABLE IF NOT EXISTS `consultas` (
   PRIMARY KEY (`ID_CONSULTA`),
   KEY `ID_PACIENTE` (`ID_PACIENTE`),
   KEY `ID_MEDICO` (`ID_MEDICO`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `consultas`
 --
 
 INSERT INTO `consultas` (`ID_CONSULTA`, `ID_PACIENTE`, `ID_MEDICO`, `MVISITA`, `ALERGIA`, `APP`, `AHF`, `AQX`, `INDICACIONES`, `EXAFISICO`, `DIAGNOSTICO`, `FECHA_HORA`, `OBSERVACION`) VALUES
-(1, 3, 2, 'historial', 'alergía', 'app', 'ahf', 'aqx', 'indicaciones médicas', 'examén físico', 'diagnóstico', '2020-05-30', NULL),
-(2, 6, 2, 'ASDF', 'ASDF', 'ADF', 'ASDF', 'ADSF', 'ADF', 'ASDF', 'ASDF', '2020-05-30', NULL);
+(1, 1, 1, 'Viene con muchos problemas', 'tiene muchas alergías', 'app', 'tiene ahf', 'no se sabe', 'debe quedarse en reposo y comer sopita', 'no tiene', 'revisión diaria para evolución', '2020-06-22', NULL);
 
 -- --------------------------------------------------------
 
@@ -118,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `corregimientos` (
 --
 
 INSERT INTO `corregimientos` (`ID_CORREGIMIENTO`, `ID_PROVINCIA`, `ID_DISTRITO`, `CORREGIMIENTO`) VALUES
-(1, 1, 1, '24 de Diciembre');
+(1, 1, 1, 'Ancón');
 
 -- --------------------------------------------------------
 
@@ -140,8 +142,8 @@ CREATE TABLE IF NOT EXISTS `cuartos` (
 --
 
 INSERT INTO `cuartos` (`ID_CUARTO`, `CUARTO`, `ID_AREA`, `ESTADO`) VALUES
-(1, 1, 2, 'a'),
-(2, 1, 3, 'a');
+(1, 1, 1, 'a'),
+(2, 1, 2, 'a');
 
 -- --------------------------------------------------------
 
@@ -171,18 +173,16 @@ CREATE TABLE IF NOT EXISTS `distritos` (
   `DISTRITO` varchar(40) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`ID_DISTRITO`),
   KEY `ID_PROVINCIA` (`ID_PROVINCIA`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `distritos`
 --
 
 INSERT INTO `distritos` (`ID_DISTRITO`, `ID_PROVINCIA`, `DISTRITO`) VALUES
-(1, 1, 'Panamá'),
+(1, 1, 'San Miguelito'),
 (2, 1, 'Balboa'),
-(3, 1, 'Chepo'),
-(4, 1, 'Chimán'),
-(5, 1, 'San Miguelito');
+(3, 1, 'Panamá');
 
 -- --------------------------------------------------------
 
@@ -204,15 +204,7 @@ CREATE TABLE IF NOT EXISTS `enfermeras` (
   `TELEFONO` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `CORREO` varchar(40) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`ID_MEDICO`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `enfermeras`
---
-
-INSERT INTO `enfermeras` (`ID_MEDICO`, `NOMBRE1`, `NOMBRE2`, `APELLIDO1`, `APELLIDO2`, `ESPECIALIDAD`, `OTRAS`, `IDONEIDAD`, `CEDULA`, `SEXO`, `TELEFONO`, `CORREO`) VALUES
-(1, '1', '1', '1', '1', '1', '1', '1', '1', 'F', '1', '1'),
-(2, '1', '1', '1', '1', '1', '1', '1', '1', 'M', '1', '1');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -278,15 +270,14 @@ CREATE TABLE IF NOT EXISTS `medicos` (
   `TELEFONO` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `CORREO` varchar(40) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`ID_MEDICO`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `medicos`
 --
 
 INSERT INTO `medicos` (`ID_MEDICO`, `NOMBRE1`, `NOMBRE2`, `APELLIDO1`, `APELLIDO2`, `ESPECIALIDAD1`, `ESPECIALIDAD2`, `ESPECIALIDAD3`, `OTRAS`, `IDONEIDAD`, `CEDULA`, `SEXO`, `TELEFONO`, `CORREO`) VALUES
-(1, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 'M', '1', '1'),
-(2, 'Angel', 'Michael', 'Garcia', 'Salazar', 'Gato1', 'Gato2', 'Gato3', 'programador', 'lala01', '8-796-2481', 'M', '6851-7784', '3dangs28@gmail.com');
+(1, 'Angel', 'Michael', 'Garcia', 'Salazar', 'Medicina General', 'Gato', 'Odontologo', 'nada', '89asdfa-asdf', '8-796-2481', 'M', '6851-7784', 'gato@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -297,6 +288,8 @@ INSERT INTO `medicos` (`ID_MEDICO`, `NOMBRE1`, `NOMBRE2`, `APELLIDO1`, `APELLIDO
 CREATE TABLE IF NOT EXISTS `pacientes` (
   `ID_PACIENTE` int(11) NOT NULL AUTO_INCREMENT,
   `ID_AREA` int(11) NOT NULL,
+  `ID_CUARTO` int(11) NOT NULL,
+  `ID_CAMA` int(11) NOT NULL,
   `ID_PROVINCIA` int(11) NOT NULL,
   `ID_DISTRITO` int(11) NOT NULL,
   `ID_CORREGIMIENTO` int(11) NOT NULL,
@@ -322,38 +315,19 @@ CREATE TABLE IF NOT EXISTS `pacientes` (
   `FECHA` date DEFAULT NULL,
   PRIMARY KEY (`ID_PACIENTE`),
   KEY `ID_AREA` (`ID_AREA`),
+  KEY `ID_CUARTO` (`ID_CUARTO`),
+  KEY `ID_CAMA` (`ID_CAMA`),
   KEY `ID_PROVINCIA` (`ID_PROVINCIA`),
   KEY `ID_DISTRITO` (`ID_DISTRITO`),
   KEY `ID_CORREGIMIENTO` (`ID_CORREGIMIENTO`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `pacientes`
 --
 
-INSERT INTO `pacientes` (`ID_PACIENTE`, `ID_AREA`, `ID_PROVINCIA`, `ID_DISTRITO`, `ID_CORREGIMIENTO`, `NOMBRE1`, `NOMBRE2`, `APELLIDO1`, `APELLIDO2`, `DIAGNOSTICO`, `PROCEDENCIA`, `SEGURO`, `RESPONSABLES`, `EDAD`, `FECHA_NAC`, `CEDULA`, `SEXO`, `TIPAJE`, `TELEFONO`, `RELIGION`, `BARRIO`, `CALLE`, `NUMCASA`, `ESTADO`, `FECHA`) VALUES
-(1, 2, 1, 3, 1, '1', '1', '1', '1', '1', '1', '1', '1', 1, '1995-01-01', '1', 'F', 'B NEG.', '1', NULL, '1', '1', 1, 0, '2020-05-22'),
-(2, 3, 1, 3, 1, 'Iguana', 'Cardoze', 'Cardoze', 'Cardoze', 'Ta loco', 'sin procencia', '777', 'Maricruz Valencia y el abuelo', 13, '1995-01-01', '8-796-2481', 'M', 'O POS.', '6851-7784', NULL, 'Gonzalillo', '8', 10, 0, '2020-05-22'),
-(3, 1, 1, 1, 1, 'Angel', '', 'Garcia', '', 'no tiene', 'no tiene', '68-00-9900', 'el tío peluche', 33, '1995-01-01', '8-796-2481', 'M', 'O POS.', '6851-7784', NULL, 'Sin Barrio', '8', 10, 0, '2020-05-22'),
-(4, 1, 1, 1, 1, 'Angel', '', 'Garcia', '', 'no tiene', 'no tiene', '68-00-9900', 'el tío peluche', 33, '1995-01-01', '8-796-2481', 'M', 'O POS.', '6851-7784', NULL, 'Sin Barrio', '8', 10, 0, '2020-05-22'),
-(5, 1, 1, 1, 1, 'Angel', '', 'Garcia', '', 'no tiene', 'no tiene', '68-00-9900', 'el tío peluche', 33, '1995-01-01', '8-796-2481', 'M', 'O POS.', '6851-7784', NULL, 'Sin Barrio', '8', 10, 0, '2020-05-22'),
-(6, 2, 1, 1, 1, 'Roberto', '1', 'Garcia', '1', 'no tiene', 'no tiene', 'no tiene', 'la abuela', 33, '1995-01-01', '28', 'M', 'O POS.', '6851-7784', NULL, 'macaracas', '1', 28, 1, '2020-05-22'),
-(7, 1, 1, 1, 1, '1', '1', '1', '1', '1', '1', '1', '1', 1, '1995-01-01', '1', 'M', 'O NEG.', '1', NULL, '1', '1', 1, 0, '2020-05-22'),
-(8, 1, 1, 1, 1, '1', '1', '1', '1', '1', '1', '1', '1', 1, '1995-01-01', '1', 'M', 'O NEG.', '1', NULL, '1', '1', 1, 0, '2020-05-22'),
-(9, 1, 1, 1, 1, '1', '1', '1', '1', '1', '1', '1', '1', 1, '1995-01-01', '1', 'F', 'AB NEG.', '1', NULL, '1', '1', 1, 0, '2020-05-22'),
-(10, 1, 1, 1, 1, '1', '1', '1', '1', '1', '1', '1', '1', 1, '1995-01-01', '1', 'M', 'B NEG.', '1', NULL, '1', '1', 1, 0, '2020-05-22'),
-(11, 1, 1, 1, 1, '1', '1', '1', '1', '1', '1', '1', '1', 1, '1995-01-01', '1', 'M', 'B NEG.', '1', NULL, '1', '1', 1, 0, '2020-05-22'),
-(12, 1, 1, 1, 1, '2', '2', '2', '2', '2', '2', '2', '2', 2, '1995-01-01', '2', 'F', 'B NEG.', '2', NULL, '2', '2', 2, 0, '2020-05-22'),
-(13, 1, 1, 1, 1, '1', '1', '1', '1', '1', '1', '1', '1', 1, '1995-01-01', '1', 'F', 'B NEG.', '1', NULL, '1', '1', 1, 0, '2020-05-22'),
-(14, 1, 1, 1, 1, '1', '1', '1', '1', '1', '1', '1', '1', 1, '1995-01-01', '1', 'F', 'O NEG.', '1', NULL, '1', '1', 1, 0, '2020-05-22'),
-(15, 1, 1, 1, 1, '2', '2', '2', '2', '2', '2', '2', '2', 2, '1995-01-01', '2', 'F', 'O NEG.', '2', NULL, '2', '2', 2, 0, '2020-05-22'),
-(16, 1, 1, 1, 1, '2', '2', '2', '2', '2', '2', '2', '2', 2, '1995-01-01', '2', 'F', 'O NEG.', '2', NULL, '2', '2', 2, 0, '2020-05-22'),
-(17, 1, 1, 1, 1, '2', '2', '2', '2', '2', '2', '2', '2', 2, '1995-01-01', '2', 'F', 'O NEG.', '2', NULL, '2', '2', 2, 0, '2020-05-22'),
-(18, 1, 1, 1, 1, '3', '3', '3', '3', '3', '3', '3', '3', 3, '1995-01-01', '3', 'M', 'B NEG.', '3', NULL, '3', '3', 3, 0, '2020-05-22'),
-(19, 1, 1, 1, 1, '6', '6', '6', '6', '6', '6', '6', '6', 6, '1995-01-01', '6', 'F', 'A NEG.', '6', NULL, '6', '6', 6, 0, '2020-05-22'),
-(20, 2, 1, 3, 1, 'Sergio', '', 'Nelson', '', '1', '1', '1', 'la abuela', 1, '1995-01-28', '1', 'M', 'A POS.', '64', NULL, 'cerro pelado', '1', 1, 0, '2020-05-23'),
-(21, 2, 1, 2, 1, 'Guachimingo', 'Tercero', 'Gato', 'Mentecato', 'No tiene', 'No tiene procedencia', '8-796-2481', 'La abuela', 28, '1995-01-01', '8-796-2481', 'M', 'O NEG.', '6851-7784', NULL, 'No tiene barrio', '8', 10, 0, '2020-05-26'),
-(22, 1, 1, 1, 1, 'Madruga', 'Madruga', 'Madruga', 'Madruga', 'Madruga', 'Madruga', 'Madruga', 'Madruga', 5, '1995-01-01', 'Madruga', 'M', 'A POS.', 'Madruga', NULL, 'Madruga', 'Madruga', 5, 0, '2020-06-13');
+INSERT INTO `pacientes` (`ID_PACIENTE`, `ID_AREA`, `ID_CUARTO`, `ID_CAMA`, `ID_PROVINCIA`, `ID_DISTRITO`, `ID_CORREGIMIENTO`, `NOMBRE1`, `NOMBRE2`, `APELLIDO1`, `APELLIDO2`, `DIAGNOSTICO`, `PROCEDENCIA`, `SEGURO`, `RESPONSABLES`, `EDAD`, `FECHA_NAC`, `CEDULA`, `SEXO`, `TIPAJE`, `TELEFONO`, `RELIGION`, `BARRIO`, `CALLE`, `NUMCASA`, `ESTADO`, `FECHA`) VALUES
+(1, 1, 1, 3, 1, 1, 1, 'Nelson', 'Bernardo', 'Santana', 'Gill', 'No tiene', 'Sin procendencia', '99-999-99', 'no tiene familiares responsables', 35, '1995-01-01', '8-888-888', 'M', 'O POS.', '231-6711', 'Protestante', 'santa ana', 'sector 8', 10, 1, '2020-06-22');
 
 -- --------------------------------------------------------
 
@@ -405,16 +379,14 @@ CREATE TABLE IF NOT EXISTS `roles` (
   `FECHA_CREACION` date DEFAULT NULL,
   PRIMARY KEY (`ID_ROL`),
   KEY `ID_SECCION` (`ID_SECCION`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`ID_ROL`, `ID_SECCION`, `ROL`, `FECHA_CREACION`) VALUES
-(1, 2, 'Soporte IT', '2020-05-20'),
-(2, 1, 'Recepción', '2020-05-20'),
-(3, 3, 'Médico', '2020-05-26');
+(1, 1, 'Administrador', '2020-06-22');
 
 -- --------------------------------------------------------
 
@@ -427,16 +399,14 @@ CREATE TABLE IF NOT EXISTS `secciones` (
   `SECCION` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
   `FECHA_CREACION` date DEFAULT NULL,
   PRIMARY KEY (`ID_SECCION`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `secciones`
 --
 
 INSERT INTO `secciones` (`ID_SECCION`, `SECCION`, `FECHA_CREACION`) VALUES
-(1, 'Registro Médico', '2020-05-20'),
-(2, 'Sistema', '2020-05-20'),
-(3, 'Unidad de atención', '2020-05-26');
+(1, 'sistema', '2020-06-22');
 
 -- --------------------------------------------------------
 
@@ -454,16 +424,14 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `PASS` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`ID_USUARIO`),
   KEY `ID_ROL` (`ID_ROL`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`ID_USUARIO`, `ID_ROL`, `NOMBRE`, `APELLIDO`, `CORREO`, `NICK`, `PASS`) VALUES
-(1, 1, 'Nelson', 'Santana', 'nsantana8@hotmail.com', 'NSantana09', '123'),
-(2, 1, 'Angel', 'Garcia', 'gato@gmail.com', 'gato', '123'),
-(3, 3, 'Angel', 'Garcia', 'gato@gato.com', '8-796-2481', '123');
+(1, 1, 'Angel', 'Garcia', 'gato@gmail.com', '8-796-2481', '123');
 
 --
 -- Constraints for dumped tables
@@ -525,9 +493,11 @@ ALTER TABLE `hmedi`
 --
 ALTER TABLE `pacientes`
   ADD CONSTRAINT `pacientes_ibfk_1` FOREIGN KEY (`ID_AREA`) REFERENCES `areas` (`ID_AREA`),
-  ADD CONSTRAINT `pacientes_ibfk_2` FOREIGN KEY (`ID_PROVINCIA`) REFERENCES `provincias` (`ID_PROVINCIA`),
-  ADD CONSTRAINT `pacientes_ibfk_3` FOREIGN KEY (`ID_DISTRITO`) REFERENCES `distritos` (`ID_DISTRITO`),
-  ADD CONSTRAINT `pacientes_ibfk_4` FOREIGN KEY (`ID_CORREGIMIENTO`) REFERENCES `corregimientos` (`ID_CORREGIMIENTO`);
+  ADD CONSTRAINT `pacientes_ibfk_2` FOREIGN KEY (`ID_CUARTO`) REFERENCES `cuartos` (`ID_CUARTO`),
+  ADD CONSTRAINT `pacientes_ibfk_3` FOREIGN KEY (`ID_CAMA`) REFERENCES `camas` (`ID_CAMA`),
+  ADD CONSTRAINT `pacientes_ibfk_4` FOREIGN KEY (`ID_PROVINCIA`) REFERENCES `provincias` (`ID_PROVINCIA`),
+  ADD CONSTRAINT `pacientes_ibfk_5` FOREIGN KEY (`ID_DISTRITO`) REFERENCES `distritos` (`ID_DISTRITO`),
+  ADD CONSTRAINT `pacientes_ibfk_6` FOREIGN KEY (`ID_CORREGIMIENTO`) REFERENCES `corregimientos` (`ID_CORREGIMIENTO`);
 
 --
 -- Constraints for table `permisos`
