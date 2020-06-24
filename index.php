@@ -40,7 +40,7 @@
   <div class="row">
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fa fa-gear"></i></span>
+              <span class="info-box-icon bg-info elevation-1"><i class="fa fa-th"></i></span>
 
               <div class="info-box-content">
 
@@ -81,7 +81,7 @@ $pacientes= $row3[0];
           <!-- /.col -->
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-google-plus"></i></span>
+              <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-bed"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Camas usadas</span>
@@ -98,7 +98,7 @@ $pacientes= $row3[0];
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fa fa-shopping-cart"></i></span>
+              <span class="info-box-icon bg-success elevation-1"><i class="fa fa-bed"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Camas libres</span>

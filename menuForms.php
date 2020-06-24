@@ -13,7 +13,8 @@
             <div class="card-body p-0" style="display: block;"  >
               <ul class="nav nav-pills flex-column">
                 <li class="nav-item active">
-                  <a href="#" class="nav-link">
+                <?php	echo '<a href="regeEnf.php?id='.$_SESSION['idPaciente'].'" class="nav-link">'; ?>
+               
                     <i class="fa fa-inbox"></i> Registro médico (Reges)
                     <span class="badge bg-primary float-right">12</span>
                   </a>
