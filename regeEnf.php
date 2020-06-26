@@ -13,18 +13,28 @@ $_SESSION['idPaciente'] = $_GET['id'];
 $id =$_SESSION['idPaciente'];
 
 require_once("conn/conexion.php");
-$sql ="SELECT a.ID_PACIENTE, b.AREA,c.CUARTO, d.CAMA, 
-concat( a.NOMBRE1,' ',a.APELLIDO1) as NOMBRE, a.CEDULA, a.SEXO, a.TIPAJE,
-a.RESPONSABLES, a.RELIGION, a.SEGURO, a.TELEFONO, a.BARRIO, a.NUMCASA,a.CALLE,
+
+
+
+$sql2="SELECT b.ID_MEDICO, concat( b.NOMBRE1,' ',b.APELLIDO1) as MEDICO FROM CONSULTAS a, MEDICOS b WHERE a.ID_MEDICO=b.ID_MEDICO AND a.ID_PACIENTE=$id";
+$query2 = mysqli_query($con,$sql2);
+
+
+while($row1 = mysqli_fetch_array($query2))
+{
+  $medico =$row1['MEDICO'];
+}
+
+
+$sql ="SELECT a.ID_PACIENTE, b.AREA,c.CUARTO, d.CAMA, concat( a.NOMBRE1,' ',a.APELLIDO1) as NOMBRE, 
+a.CEDULA, a.SEXO, a.TIPAJE, a.RESPONSABLES, a.RELIGION, a.SEGURO, a.TELEFONO, a.BARRIO, a.NUMCASA,a.CALLE,
 a.DIAGNOSTICO, a.PROCEDENCIA, a.FECHA_NAC, a.EDAD
 FROM PACIENTES a, AREAS b, CUARTOS c, CAMAS d
-WHERE a.ID_AREA=b.ID_AREA AND a.ID_CUARTO = c.ID_CUARTO AND a.ID_CAMA= d.ID_CAMA AND ID_PACIENTE=$id";
-
-
-$query = mysqli_query($con,$sql);
+WHERE a.ID_AREA=b.ID_AREA AND a.ID_CUARTO = c.ID_CUARTO AND a.ID_CAMA= d.ID_CAMA
+AND ID_PACIENTE=$id";
 
 //$datos = array();
-
+  $query = mysqli_query($con,$sql);
   while($row = mysqli_fetch_array($query))
   {
     $area =$row['AREA'];
@@ -112,7 +122,7 @@ $query = mysqli_query($con,$sql);
                       <!-- text input -->
                       <div class="form-group">
                         <label>Médico</label>
-                        <input type="text" class="form-control" readonly>
+                        <input type="text" value="<?php echo $medico; ?>" class="form-control" readonly>
                       </div>
                     </div>
 

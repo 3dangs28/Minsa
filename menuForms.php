@@ -138,7 +138,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                <?php	echo '<a href="circulacionEnf.php?id='.$_SESSION['idPaciente'].'" class="nav-link">'; ?>
                     <i class="fa fa-circle text-primary"></i>
                     Circulación
                   </a>
