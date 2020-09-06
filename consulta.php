@@ -86,7 +86,7 @@ $.post("consulta/agregar.php", {
 //echo $_SESSION['iduser'];
 $usr = $_SESSION['iduser'];
 $id = $_GET['id'];
-
+ 
 require_once("conn/conexion.php");
 $sql ="SELECT NOMBRE1, APELLIDO1, EDAD, DIAGNOSTICO, CEDULA, FECHA_NAC, DIAGNOSTICO FROM PACIENTES WHERE ID_PACIENTE=$id";
 $query = mysqli_query($con,$sql);
@@ -101,12 +101,12 @@ $datos = array();
 //-----------------------------------------------------
 $cedula ='';
 
-$sql2 ="SELECT NICK  FROM USUARIOS WHERE ID_USUARIO=$usr";
+$sql2 ="SELECT cedula  FROM usuarios WHERE id_usuario=$usr";
 $query2 = mysqli_query($con,$sql2);
 
 while($row2 = mysqli_fetch_array($query2))
 {
-  $cedula =$row2['NICK'];
+  $cedula =$row2['cedula'];
 }
 
 echo '<br>';

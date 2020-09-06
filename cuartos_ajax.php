@@ -17,13 +17,11 @@ require_once("conn/conexion.php");
 		$reload = 'index.php';
 		//consulta principal para recuperar los datos
 
- 
-
-$sql = 'SELECT a.ID_CUARTO,a.CUARTO, a.ID_AREA, b.AREA, a.ESTADO
-from
-CUARTOS a, AREAS b
-where
-a.ID_AREA = b.ID_AREA';
+		$sql = 'SELECT a.ID_CUARTO,a.CUARTO, a.ID_AREA, b.AREA, a.ESTADO
+		from
+		CUARTOS a, AREAS b
+		where
+		a.ID_AREA = b.ID_AREA';
 
 		$query = mysqli_query($con,$sql);
 		
@@ -37,9 +35,6 @@ $.ajax({
 	type: 'get',
 	dataType: "json",
 	success: function(data){
-
-		//Log para saber que me llego la información de la consulta a la base de datos
-		//you can get a better view of what the script is returning.
 		console.log(data);
 
       var $select = $('#area2'); 
@@ -60,7 +55,7 @@ $.ajax({
 		<table ID="example1" class="table table-bordered">
 			  <thead>
 				<tr>
-				<th>Área</th>
+				<th>NOMBRE</th>
                 <th>Cuarto</th>
 				<th>Estado</th>
 		        <th>Acciones</th>
@@ -74,7 +69,7 @@ $.ajax({
 				<tr>
 			    	<td><?php echo $row['AREA'];?></td>
 					<td><?php echo $row['CUARTO'];?></td>
-				
+			
 					<td>
 										<?php  
 										if ($row['ESTADO']=='a'){
@@ -85,7 +80,6 @@ $.ajax({
 										}
 										;?>
 										</td>
-
 					<td>
 						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#dataUpdate" data-id="<?php echo $row['ID_CUARTO']?>" data-cuarto="<?php echo $row['CUARTO']?>"  data-estado="<?php echo $row['ESTADO']?>"  ><i class='nav-icon fa fa-pencil'></i> </button>
 						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['ID_CUARTO']?>"  ><i class='nav-icon fa fa-trash' ></i></button>

@@ -38,7 +38,7 @@ function verificar_login($user,$password,$con,&$iduser,&$rol,&$nombre){
 
 echo $user." ".$password."<br>";
  
-$sql = "SELECT * FROM USUARIOS WHERE NICK='$user' AND PASS='$password'";
+$sql = "SELECT * FROM usuarios WHERE cedula='$user' AND password='$password'";
   
     $query = mysqli_query($con,$sql);
 
@@ -46,10 +46,10 @@ $sql = "SELECT * FROM USUARIOS WHERE NICK='$user' AND PASS='$password'";
 
 while($row = mysqli_fetch_array($query)){
     $conteo++;
-    $iduser= $row['ID_USUARIO'];
-    $rol= $row['ID_ROL'];
+    $iduser= $row['id_usuario'];
+    $rol= $row['id_rol'];
     echo $rol;
-    $nombre= $row['NOMBRE'];
+    $nombre= $row['nombre'];
 }
 
 

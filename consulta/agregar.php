@@ -61,7 +61,7 @@
 		$query_update = mysqli_query($con,$sql);
 
 
-		$sql2="UPDATE PACIENTES SET ESTADO='1' WHERE ID_PACIENTE='".$id."'";
+		$sql2="UPDATE PACIENTES SET ESTADO='2' WHERE ID_PACIENTE='".$id."'";
 		$query_update2 = mysqli_query($con,$sql2);
 
 			if ($query_update){

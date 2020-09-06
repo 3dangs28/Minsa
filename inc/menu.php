@@ -19,13 +19,15 @@
         </div>
         <div class="info">
         <?php
+
         session_start();    
-       if($_SESSION['rol']==3){
+       if($_SESSION['rol']==1){
          $dr="Dr. ";
        }
        else{
         $dr="";
        }
+       
         ?>
           <a href="#" class="d-block"><?php echo "Bienvenido ".$dr."".$_SESSION['userName']; ?> </a>
         </div>

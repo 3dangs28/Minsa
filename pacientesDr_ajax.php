@@ -1,65 +1,86 @@
+<?php
  
+require_once("conn/conexion.php");
+		
+	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
+	if($action == 'ajax'){
+	include 'pagination.php'; //incluir el archivo de paginación
+	
+		//Cuenta el número total de filas de la tabla*/
+		$count_query   = mysqli_query($con,"SELECT count(*) AS numrows FROM PACIENTES a, AREAS b, CUARTOS c, CAMAS d WHERE a.ID_AREA=b.ID_AREA AND a.ID_CUARTO = c.ID_CUARTO AND a.ID_CAMA= d.ID_CAMA AND a.ESTADO =0");
 
- <div id="jsGrid1"></div>
+		if ($row= mysqli_fetch_array($count_query)){$numrows = $row['numrows'];}
+
+      $reload = 'index.php';
+      
+      $sql = "SELECT a.ID_PACIENTE, b.AREA,c.CUARTO, d.CAMA, concat( a.NOMBRE1,' ',a.APELLIDO1) as NOMBRE, a.CEDULA, a.DIAGNOSTICO, a.PROCEDENCIA FROM PACIENTES a, AREAS b, CUARTOS c, CAMAS d WHERE a.ID_AREA=b.ID_AREA AND a.ID_CUARTO = c.ID_CUARTO AND a.ID_CAMA= d.ID_CAMA AND a.ESTADO =0 order by a.ID_PACIENTE";
+		//consulta principal para recuperar los datos
+		$query = mysqli_query($con,$sql);
+		
+		if ($numrows>0){
+		
+			?>
+		<table ID="example1" class="table table-bordered">
+			  <thead>
+				<tr>
 
 
- 
-<script>
-$(document).ready(function() {
+				<th>Código</th>
+                <th>Nombre</th>
+                <th>Área</th>
+                <th>Cuarto</th>
+                <th>Cama</th>
+                <th>Cédula</th>
+                <th>Diagnostico</th>
+                <th>Procedencia</th>
+		       <th>Acción</th>
+				</tr>
+			</thead>
+			<tbody>
 
-   $("#jsGrid1").jsGrid({
 
-       height: "auto",
-       width: "100%",
+      <?php
+			while($row = mysqli_fetch_array($query)){
+				?>
+				<tr>
+					<td><?php echo $row['ID_PACIENTE'];?></td>
+					<td><?php echo $row['NOMBRE'];?></td>
+               <td><?php echo $row['AREA'];?></td>
+               <td><?php echo $row['CUARTO'];?></td>
+               <td><?php echo $row['CAMA'];?></td>
+               <td><?php echo $row['CEDULA'];?></td>
+               <td><?php echo $row['DIAGNOSTICO'];?></td>
+               <td><?php echo $row['PROCEDENCIA'];?></td>
 
-     sorting: true,
-     paging: true,
-     autoload: true,
-     pageSize:10,
-     pageButtonCount:5,
-   
-     deleteConfirm: "Quieres borrar esta locura",
 
-     controller : {
-     loadData: function (filter){
-      // console.log(filter);
-      return $.ajax({
-        type: "GET",
-        url: "data.php",
-        data: filter,
-        dataType: "json"
-                  });
-         }
- 
-    }, 
-fields: [
-   { name: "id", type: "text", align: "center", css: "hide"  },
-   { name: "nombre"},
-   { name: "area", title: "Área"},
-   { name: "cuarto"},
-   { name: "cama"},
-   { name: "cedula", title: "Cédula"},
-   { name: "diagnostico", title: "Diagnóstico"},
-   { name: "procedencia"}
-],
-
+					<td>
+					<a href="consulta.php?id=<?php echo $row['ID_PACIENTE']; ?>">Atender</a>
+					</td>
+				</tr>
+				<?php
+			}
+		
+			?>
+			</tbody>
+		</table>
 	
 
+			<?php
+			
+		} else {
+			?>
+			<div class="alert alert-warning alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <h4>Aviso!!!</h4> No hay datos para mostrar
+            </div>
+			<?php
+		}
 
-rowClick : function(args){
- document.location.href = "consulta.php?id="+args.item['id'];
-},
-
-sortorder: "desc",
-sortname : "id",
-noDataContent : "Sin datos",
-pagerFormat: "Página: {first} {prev} {pages} {next} {last}    {pageIndex} de {pageCount}",
-pagePrevText: "Previo",
-pageNextText: "Siguiente",
-pageFirstText: "Primero",
-pageLastText: "Último"
-  
-   });
-
+	}
+	mysqli_close($con);
+?>
+  <script>
+  $(function () {
+    $("#example1").DataTable();
   });
 </script>

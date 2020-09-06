@@ -3,7 +3,7 @@
   <body>
 	<?php include("inc/header.php"); ?>
 	<?php include("inc/menu.php"); ?>
-	
+
 	 
 	<div id="loader" class="text-center"> <img src="giphy.gif"></div>
   <div class="content-wrapper">
@@ -15,7 +15,7 @@
           <div class="col-sm-6">
             <h1>Pacientes</h1>
           </div>
-    
+        
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -28,7 +28,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Listado de pacientes</h3>
+              <h3 class="card-title">Listado de Pacientes</h3>
             </div>
             <!-- /.card-header -->
             <div id="loader" class="card-body">
