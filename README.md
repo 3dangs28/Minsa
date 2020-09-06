@@ -7,4 +7,6 @@ Proyecto piloto
  ###### importar el archivo minsa.sql que se encuentra en /db/minsa.sql
  ###### Ejemplo si su base de datos no tiene pass solo root comentar la contraseña que tiene por default
 
- ###### Prueba
+ ###### user: 8-796-2481
+
+ ###### pass: 20EAfcH0JSFQY
